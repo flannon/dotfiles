@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/kenny/Documents/dlib/repos/DLTSPuppet/r10k'
+let g:netrw_dirhist_2='/private/etc/puppetlabs/code/environments/kenny'
+let g:netrw_dirhist_3='/Users/kenny/Documents/dlib/repos/puppet-loris/templates'
+let g:netrw_dirhist_4='/Users/kenny/Documents/dlib/repos/puppet-loris/manifests/install'
