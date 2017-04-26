@@ -1,5 +1,5 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+set nocompatible " Required
+filetype off     " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -10,18 +10,18 @@ Plugin 'gmarik/Vundle.vim'
 
 " more Plugin commands
 " ...
-call vundle#end()            " required
-filetype plugin indent on    " required
+"call vundle#end()            " required
+"filetype plugin indent on    " required
 
 " plugin on Github
 Plugin 'tpope/vim-fugitive'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'rodjek/vim-puppet'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'davidhalter/jedi-vim'
-
-
+Plugin 'hashivim/vim-terraform'
+Plugin 'hashivim/vim-packer'
+Plugin 'hashivim/vim-vagrant'
 
 
 " plugin from http://vim-scripts.org/vim/scripts.html
@@ -53,6 +53,7 @@ au BufReadPost *.py colorscheme molokai
 au BufReadPost *.pp colorscheme molokai
 au BufReadPost *rc colorscheme molokai
 au BufReadPost Puppetfile colorscheme molokai
+au BufReadPost *.tf colorscheme molokai
 au BufReadPost Rakefile colorscheme molokai
 au BufReadPost Vagrantfile colorscheme molokai
 au BufReadPost vimrc colorscheme molokai
@@ -79,5 +80,6 @@ let g:indentLine_char = '│'
 " convert spaces to tabs after writing file (to show guides again)
 "autocmd! bufwritepost * set noexpandtab | retab! 4
 
-execute pathogen#infect()
+"execute pathogen#infect()
+call vundle#end()
 filetype plugin indent on
