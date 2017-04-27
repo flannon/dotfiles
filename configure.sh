@@ -2,7 +2,7 @@
 
 set -e
 
-#SOURCE=${HOME}/$(dirname $0)
+BIN=~/bin
 
 case $(dirname $0) in
   '.')
@@ -29,4 +29,22 @@ then
 fi
 
 vim +PluginInstall +qall
+
+# setup ~/bin
+if [[ ! -d $BIN ]];
+then
+  mkdir $BIN
+fi
+
+cd ${SOURCE}/bin
+
+for i in $(ls);
+do
+  if [[ ! -L $i ]] && [[ ! -f $i ]];
+  then
+    ln -s $i ${HOME}/bin
+  fi
+done
+
+cd -
 
