@@ -63,6 +63,7 @@ au BufReadPost *.yaml colorscheme molokai
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#09AA08'
 let g:indentLine_char = '│'
+let g:terraform_align=1
 
 " Tab stops work, but I'd like something better
 " use 4 spaces for tabs
@@ -80,6 +81,6 @@ let g:indentLine_char = '│'
 " convert spaces to tabs after writing file (to show guides again)
 "autocmd! bufwritepost * set noexpandtab | retab! 4
 
-"execute pathogen#infect()
+
 call vundle#end()
 filetype plugin indent on
