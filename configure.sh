@@ -6,11 +6,11 @@ BIN=~/bin
 
 case $(dirname $0) in
   '.')
-    echo "dirname: $(dirname $0)"
+    #echo "dirname: $(dirname $0)"
     SOURCE=$(pwd)
       ;;
   *)
-    echo "dirname: $(dirname $0)"
+    #echo "dirname: $(dirname $0)"
     SOURCE=${HOME}/$(dirname $0)
       ;;
 esac
@@ -24,8 +24,16 @@ cd -
 if [[ ! -f ${HOME}/.vimrc ]] || [[ ! -d ${HOME}/.vim ]]
 then
   echo "Linking vim"
-  ln -s $SOURCE/vimrc $HOME/.vimrc
-  ln -s $SOURCE/vim $HOME/.vim
+  if [[ ! -L ${HOME}/.vimrc ]] && [[ ! -f ${HOME}/.vimrc ]];
+  then
+
+    ln -s $SOURCE/vimrc $HOME/.vimrc
+  fi
+
+  if [[ ! -L ${HOME}/.vim ]] && [[ ! -d ${HOME}/.vim ]];
+  then
+    ln -s $SOURCE/vim $HOME/.vim
+  fi
 fi
 
 vim +PluginInstall +qall
@@ -38,11 +46,14 @@ fi
 
 cd ${SOURCE}/bin
 
+
 for i in $(ls);
 do
-  if [[ ! -L $i ]] && [[ ! -f $i ]];
+  if [[ ! -L ${HOME}/bin/${i:0:${#i} -3} ]] && \
+     [[ ! -f ${HOME}/bin/${i:0:${#i} -3} ]];
   then
-    ln -s $i ${HOME}/bin
+    echo linking $i
+    ln -s $i ${HOME}/bin/${i:0:${#i} -3}
   fi
 done
 
