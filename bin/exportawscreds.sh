@@ -8,26 +8,26 @@ CREDS="${HOME}/.aws/credentials"
 
 if [[ -f $CREDS ]]; then
 
+  # Read the file into an array
   while IFS= read -r line; do
     CREDARRAY+=("$line")
   done < "$CREDS"
 
+  # Check that the profile name exists
   for e in "${CREDARRAY[@]}"; do
     if [[ $e == "[${PROFILE}]" ]]; then
-      test=$e
-      echo "test: $test"
+      validate=$e
     fi
   done
 
-  if [[ -z $test ]]; then
+  if [[ -z $validate ]]; then
     echo "aws profile \"$PROFILE\" doesn't exit"
     exit 1
   fi
 
+  # Get the access key and secrete key
   for e in "${CREDARRAY[@]}"; do
     if [[ $e == "[${PROFILE}]" ]]; then
-      echo "PROFILE: $PROFILE"
-      #CURRENTPOSITION=${#CREDARRAY[@]} 
       if [[ $(echo ${CREDARRAY[1]} | cut -d "=" -f1) =~ aws_access_key_id ]]; then
 
         ACCESSKEY=$(echo ${CREDARRAY[1]} | cut -d "=" -f2)
@@ -41,7 +41,6 @@ if [[ -f $CREDS ]]; then
       fi
     fi
   done
-  
 
 fi
 
