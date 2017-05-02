@@ -53,7 +53,7 @@ do
      [[ ! -f ${HOME}/bin/${i:0:${#i} -3} ]];
   then
     echo linking $i
-    ln -s $i ${HOME}/bin/${i:0:${#i} -3}
+    ln -s ${SOURCE}/bin/${i} ${HOME}/bin/${i:0:${#i} -3}
   fi
 done
 
