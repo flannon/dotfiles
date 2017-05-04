@@ -48,7 +48,8 @@ echo "AWSPROFILE: $PROFILE"
 echo "ACCESSKEY : $ACCESSKEY"
 echo "SECRETKEY : $SECRETKEY"
 
-export AWS_PROFILE=$PROFILE
-export AWS_ACCESS_KEY_ID=$ACCESSKEY
-export AWS_SECRET_ACCESS_KEY=$SECRETKEY
+# choping the first char is a kludge, but works for now.
+export AWS_PROFILE=${PROFILE}
+export AWS_ACCESS_KEY_ID=${ACCESSKEY:1}
+export AWS_SECRET_ACCESS_KEY=${SECRETKEY:1}
 
