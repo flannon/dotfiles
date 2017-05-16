@@ -22,6 +22,7 @@ Plugin 'davidhalter/jedi-vim'
 Plugin 'hashivim/vim-terraform'
 Plugin 'hashivim/vim-packer'
 Plugin 'hashivim/vim-vagrant'
+Plugin 'Yggdroot/indentLine'
 
 
 " plugin from http://vim-scripts.org/vim/scripts.html
