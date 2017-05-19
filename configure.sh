@@ -15,6 +15,13 @@ case $(dirname $0) in
       ;;
 esac
 
+# Load hooks
+for i in $(ls ${SOURCE}/.hooks)
+do
+  ln -s ${SOURCE}/githooks/${i} ${SOURCE}/.git/hooks/${i}
+done
+
+
 # Load submodules
 cd $SOURCE
 git submodule update --init --recursive
@@ -27,12 +34,12 @@ then
   if [[ ! -L ${HOME}/.vimrc ]] && [[ ! -f ${HOME}/.vimrc ]];
   then
 
-    ln -s $SOURCE/vimrc $HOME/.vimrc
+    ln -s ${SOURCE}/vimrc ${HOME}/.vimrc
   fi
 
   if [[ ! -L ${HOME}/.vim ]] && [[ ! -d ${HOME}/.vim ]];
   then
-    ln -s $SOURCE/vim $HOME/.vim
+    ln -s ${SOURCE}/vim ${HOME}/.vim
   fi
 fi
 
