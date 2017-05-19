@@ -16,7 +16,7 @@ case $(dirname $0) in
 esac
 
 # Load hooks
-for i in $(ls ${SOURCE}/.hooks)
+for i in $(ls ${SOURCE}/githooks)
 do
   ln -s ${SOURCE}/githooks/${i} ${SOURCE}/.git/hooks/${i}
 done
