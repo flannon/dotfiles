@@ -1,3 +1,15 @@
+set background=dark
+set hlsearch
+set nu
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+filetype on
+filetype plugin indent on
+
+syntax on
+
 set nocompatible " Required
 filetype off     " required
 
@@ -27,18 +39,6 @@ Plugin 'Yggdroot/indentLine'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
-
-set background=dark
-set hlsearch
-set nu
-set smartindent
-set tabstop=2
-set shiftwidth=2
-set expandtab
-filetype on
-filetype plugin indent on
-
-syntax on
 
 au BufReadPost *.twig colorscheme koehler 
 au BufReadPost *.css colorscheme slate 
