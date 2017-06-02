@@ -18,7 +18,11 @@ esac
 # Load hooks
 for i in $(ls ${SOURCE}/githooks)
 do
-  ln -s ${SOURCE}/githooks/${i} ${SOURCE}/.git/hooks/${i}
+  if [[ ! -L ${SOURCE}/.git/hooks/${i} ]] &&
+     [[ ! -f ${SOURCE}/.git/hooks/${i} ]]
+  then
+    ln -s ${SOURCE}/githooks/${i} ${SOURCE}/.git/hooks/${i}
+  fi
 done
 
 
@@ -44,6 +48,9 @@ then
 fi
 
 vim +PluginInstall +qall
+
+# set vim as the git editor
+git config --global core.editor $(which vim)
 
 # setup ~/bin
 if [[ ! -d $BIN ]];
