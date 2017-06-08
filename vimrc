@@ -57,6 +57,7 @@ au BufReadPost *.rb colorscheme molokai
 au BufReadPost *rc colorscheme molokai
 au BufReadPost Rakefile colorscheme molokai
 au BufReadPost *.tf colorscheme molokai
+au BufReadPost *.tfvars colorscheme molokai
 au BufReadPost Vagrantfile colorscheme molokai
 au BufReadPost vimrc colorscheme molokai
 au BufReadPost *.vimrc colorscheme molokai
