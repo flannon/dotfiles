@@ -50,13 +50,13 @@ au BufReadPost *.json colorscheme molokai
 au BufReadPost *.js colorscheme elflord 
 au BufReadPost *.java colorscheme monokai
 au BufReadPost *.php colorscheme two2tango
-au BufReadPost *.py colorscheme molokai
 au BufReadPost *.pp colorscheme molokai
 au BufReadPost Puppetfile colorscheme molokai
-au BufReadPost *.sh colorscheme molokai
+au BufReadPost *.py colorscheme molokai
+au BufReadPost Rakefile colorscheme molokai
 au BufReadPost *.rb colorscheme molokai
 au BufReadPost *rc colorscheme molokai
-au BufReadPost Rakefile colorscheme molokai
+au BufReadPost *.sh colorscheme molokai
 au BufReadPost *.tf colorscheme molokai
 au BufReadPost *.tfvars colorscheme cleanroom
 au BufReadPost Vagrantfile colorscheme molokai
