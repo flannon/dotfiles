@@ -26,15 +26,16 @@ Plugin 'gmarik/Vundle.vim'
 "filetype plugin indent on    " required
 
 " plugin on Github
-Plugin 'tpope/vim-fugitive'
 Plugin 'flazz/vim-colorschemes'
-Plugin 'rodjek/vim-puppet'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'hashivim/vim-terraform'
-Plugin 'hashivim/vim-packer'
-Plugin 'hashivim/vim-vagrant'
+Plugin 'tpope/vim-fugitive'
 Plugin 'Yggdroot/indentLine'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'fatih/vim-go'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'hashivim/vim-packer'
+Plugin 'rodjek/vim-puppet'
+Plugin 'hashivim/vim-terraform'
+Plugin 'hashivim/vim-vagrant'
 
 
 " plugin from http://vim-scripts.org/vim/scripts.html
