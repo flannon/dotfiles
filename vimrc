@@ -31,12 +31,12 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'Yggdroot/indentLine'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'fatih/vim-go'
-Plugin 'plasticboy/vim-markdown'
+"Plugin 'plasticboy/vim-markdown'
 Plugin 'hashivim/vim-packer'
 Plugin 'rodjek/vim-puppet'
 Plugin 'hashivim/vim-terraform'
 Plugin 'hashivim/vim-vagrant'
-
+Plugin 'Valloric/YouCompleteMe'
 
 " plugin from http://vim-scripts.org/vim/scripts.html
 Plugin 'L9'
