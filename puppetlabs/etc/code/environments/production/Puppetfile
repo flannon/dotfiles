@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+moduledir 'modules/thirdparty'
+
+mod 'puppetlabs/concat',
+  :git => 'git://github.com/puppetlabs/puppetlabs-concat',
+  :tag => '4.0.1'
+
+mod 'TheKevJames/homebrew',
+  :git => 'git://github.com/TheKevJames/puppet-homebrew',
+  :tag => '1.5.0'
+
+mod 'puppetlabs/inifile',
+    :git => 'git://github.com/puppetlabs/puppetlabs-inifile.git',
+    :tag => '1.6.0'
+
+mod 'puppetlabs/stdlib',
+  :git => 'git://github.com/puppetlabs/puppetlabs-stdlib',
+  :tag => '4.17.1'
+
+mod 'puppetlabs/vcsrepo',
+    :git => 'git://github.com/puppetlabs/puppetlabs-vcsrepo',
+    :tag => '1.5.0'
+

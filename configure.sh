@@ -29,7 +29,7 @@ done
 # Load submodules
 cd $SOURCE
 git submodule update --init --recursive
-cd -
+cd $OLDPWD
 
 # Link vim
 if [[ ! -f ${HOME}/.vimrc ]] || [[ ! -d ${HOME}/.vim ]]
@@ -71,8 +71,22 @@ do
   fi
 done
 
-cd -
+cd $OLDPWD
 
-ln -s ${SOURCE}/puppetlabs ${HOME}/.puppetlabs
-puppet apply --modulepath=${HOME}/.puppetlabs/etc/code/modules \
- ${HOME}/.puppetlabs/etc/code/environments/production/manifests/default.pp
+if [[ ! -L ${HOME}/.puppetlabs ]]; then
+  ln -s ${SOURCE}/puppetlabs ${HOME}/.puppetlabs
+fi
+
+CONFDIR=${HOME}/.puppetlabs/etc/puppet
+CODEDIR=${HOME}/.puppetlabs/etc/code
+ENVIRONMENTPATH=${CODEDIR}/environments
+ENVIRONMENT=production
+MODULEPATH=${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/site:${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/thirdparty
+MANIFEST=${HOME}/.puppetlabs/etc/code/environments/production/manifests/default.pp
+
+cd ${ENVIRONMENTPATH}/${ENVIRONMENT}
+r10k puppetfile install --moduledir modules/thirdparty
+cd $OLDPWD
+
+#puppet apply --confdir=$CONFDIR --codedir=$CODEDIR --environmentpath=$ENVIRONMENTPATH --modulepath=$MODULEPATH $MANIFEST
+puppet apply --modulepath=$MODULEPATH $MANIFEST
