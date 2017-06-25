@@ -1,0 +1,17 @@
+# managed by puppet
+---
+:backends:
+  - yaml
+
+:logger: console
+
+:hierarchy:
+  - "%{environment}/%{calling_class}"
+  - "%{environment}"
+  - accounts
+  - common
+
+:yaml:
+  #:datadir: "%{settings::manifestdir}/hieradata"
+  #:datadir: "/vagrant/puppet/hieradata"
+  :datadir: "/etc/puppetlabs/code/environments/%{::environment}/hieradata"

@@ -1,0 +1,33 @@
+---
+resources:
+  Concat_file[/tmp/bashrc]:
+    parameters:
+      owner:
+        system_value:
+        - kenny
+      group:
+        system_value:
+        - staff
+      mode:
+        system_value:
+        - '644'
+      ensure:
+        system_value:
+        - :present
+  File[/tmp/bashrc]:
+    parameters:
+      ensure:
+        system_value:
+        - :file
+      owner:
+        system_value:
+        - 501
+      group:
+        system_value:
+        - 20
+      mode:
+        system_value:
+        - '644'
+      content:
+        system_value:
+        - "{md5}dd8682c3454a92803fe61127dd7e8df5"

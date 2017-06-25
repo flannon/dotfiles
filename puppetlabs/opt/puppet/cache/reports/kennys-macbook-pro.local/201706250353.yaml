@@ -1,0 +1,340 @@
+--- !ruby/object:Puppet::Transaction::Report
+metrics:
+  resources: !ruby/object:Puppet::Util::Metric
+    name: resources
+    label: Resources
+    values:
+    - - total
+      - Total
+      - 9
+    - - skipped
+      - Skipped
+      - 0
+    - - failed
+      - Failed
+      - 0
+    - - failed_to_restart
+      - Failed to restart
+      - 0
+    - - restarted
+      - Restarted
+      - 0
+    - - changed
+      - Changed
+      - 1
+    - - out_of_sync
+      - Out of sync
+      - 1
+    - - scheduled
+      - Scheduled
+      - 0
+    - - corrective_change
+      - Corrective change
+      - 0
+  time: !ruby/object:Puppet::Util::Metric
+    name: time
+    label: Time
+    values:
+    - - concat_file
+      - Concat file
+      - 0.000479
+    - - file
+      - File
+      - 0.003419
+    - - schedule
+      - Schedule
+      - 0.001075
+    - - filebucket
+      - Filebucket
+      - 0.00034
+    - - config_retrieval
+      - Config retrieval
+      - 0.423354
+    - - total
+      - Total
+      - 0.428667
+  changes: !ruby/object:Puppet::Util::Metric
+    name: changes
+    label: Changes
+    values:
+    - - total
+      - Total
+      - 1
+  events: !ruby/object:Puppet::Util::Metric
+    name: events
+    label: Events
+    values:
+    - - total
+      - Total
+      - 1
+    - - failure
+      - Failure
+      - 0
+    - - success
+      - Success
+      - 1
+logs:
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: group changed 'wheel' to 'staff'
+  source: "/Stage[main]/Profiles::Default/Concat[/tmp/kenny.bashrc]/File[/tmp/kenny.bashrc]/group"
+  tags:
+  - notice
+  - file
+  - _tmp_kenny.bashrc
+  - concat_file
+  - concat
+  - class
+  - profiles::default
+  - profiles
+  - default
+  - node
+  time: '2017-06-24T23:53:26.169878000-04:00'
+  file: 
+  line: 
+- !ruby/object:Puppet::Util::Log
+  level: :notice
+  message: Applied catalog in 0.06 seconds
+  source: Puppet
+  tags:
+  - notice
+  time: '2017-06-24T23:53:26.192813000-04:00'
+  file: 
+  line: 
+resource_statuses:
+  Concat_file[/tmp/kenny.bashrc]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/kenny.bashrc"
+    file: "/Users/kenny/.puppetlabs/etc/code/modules/concat/manifests/init.pp"
+    line: 84
+    resource: Concat_file[/tmp/kenny.bashrc]
+    resource_type: Concat_file
+    containment_path:
+    - Stage[main]
+    - Profiles::Default
+    - Concat[/tmp/kenny.bashrc]
+    - Concat_file[/tmp/kenny.bashrc]
+    evaluation_time: 0.000479
+    tags:
+    - _tmp_kenny.bashrc
+    - concat_file
+    - concat
+    - class
+    - profiles::default
+    - profiles
+    - default
+    - node
+    time: '2017-06-24T23:53:26.165925000-04:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  File[/tmp/kenny.bashrc]: !ruby/object:Puppet::Resource::Status
+    title: "/tmp/kenny.bashrc"
+    file: 
+    line: 
+    resource: File[/tmp/kenny.bashrc]
+    resource_type: File
+    containment_path:
+    - Stage[main]
+    - Profiles::Default
+    - Concat[/tmp/kenny.bashrc]
+    - File[/tmp/kenny.bashrc]
+    evaluation_time: 0.003419
+    tags:
+    - file
+    - _tmp_kenny.bashrc
+    - concat_file
+    - concat
+    - class
+    - profiles::default
+    - profiles
+    - default
+    - node
+    time: '2017-06-24T23:53:26.167160000-04:00'
+    failed: false
+    changed: true
+    out_of_sync: true
+    skipped: false
+    change_count: 1
+    out_of_sync_count: 1
+    events:
+    - !ruby/object:Puppet::Transaction::Event
+      audited: false
+      property: group
+      previous_value: 0
+      desired_value: 20
+      historical_value: 
+      message: group changed 'wheel' to 'staff'
+      name: :group_changed
+      status: success
+      time: 2017-06-24 23:53:26.168459000 -04:00
+      redacted: 
+      corrective_change: 
+    corrective_change: false
+  Schedule[puppet]: !ruby/object:Puppet::Resource::Status
+    title: puppet
+    file: 
+    line: 
+    resource: Schedule[puppet]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[puppet]
+    evaluation_time: 0.000356
+    tags:
+    - schedule
+    - puppet
+    time: '2017-06-24T23:53:26.174837000-04:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Schedule[hourly]: !ruby/object:Puppet::Resource::Status
+    title: hourly
+    file: 
+    line: 
+    resource: Schedule[hourly]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[hourly]
+    evaluation_time: 0.000156
+    tags:
+    - schedule
+    - hourly
+    time: '2017-06-24T23:53:26.175721000-04:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Schedule[daily]: !ruby/object:Puppet::Resource::Status
+    title: daily
+    file: 
+    line: 
+    resource: Schedule[daily]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[daily]
+    evaluation_time: 0.000174
+    tags:
+    - schedule
+    - daily
+    time: '2017-06-24T23:53:26.176207000-04:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Schedule[weekly]: !ruby/object:Puppet::Resource::Status
+    title: weekly
+    file: 
+    line: 
+    resource: Schedule[weekly]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[weekly]
+    evaluation_time: 0.000164
+    tags:
+    - schedule
+    - weekly
+    time: '2017-06-24T23:53:26.176623000-04:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Schedule[monthly]: !ruby/object:Puppet::Resource::Status
+    title: monthly
+    file: 
+    line: 
+    resource: Schedule[monthly]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[monthly]
+    evaluation_time: 0.000115
+    tags:
+    - schedule
+    - monthly
+    time: '2017-06-24T23:53:26.177095000-04:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Schedule[never]: !ruby/object:Puppet::Resource::Status
+    title: never
+    file: 
+    line: 
+    resource: Schedule[never]
+    resource_type: Schedule
+    containment_path:
+    - Schedule[never]
+    evaluation_time: 0.00011
+    tags:
+    - schedule
+    - never
+    time: '2017-06-24T23:53:26.177453000-04:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+  Filebucket[puppet]: !ruby/object:Puppet::Resource::Status
+    title: puppet
+    file: 
+    line: 
+    resource: Filebucket[puppet]
+    resource_type: Filebucket
+    containment_path:
+    - Filebucket[puppet]
+    evaluation_time: 0.00034
+    tags:
+    - filebucket
+    - puppet
+    time: '2017-06-24T23:53:26.177904000-04:00'
+    failed: false
+    changed: false
+    out_of_sync: false
+    skipped: false
+    change_count: 0
+    out_of_sync_count: 0
+    events: []
+    corrective_change: false
+host: kennys-macbook-pro.local
+time: 2017-06-24 23:53:26.125290000 -04:00
+kind: apply
+report_format: 6
+puppet_version: 4.10.1
+configuration_version: 1498362805
+transaction_uuid: e77332b6-5a10-4bc0-aef0-46b3385635ab
+code_id: 
+catalog_uuid: 1ab2ac14-96a7-4b1a-96cf-288ef475e8cc
+cached_catalog_status: not_used
+master_used: 
+environment: production
+status: changed
+noop: false
+noop_pending: false
+corrective_change: false

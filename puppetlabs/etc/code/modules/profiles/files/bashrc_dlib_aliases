@@ -1,0 +1,48 @@
+##
+#  dlib aliases
+##   
+alias bastion="ssh -l jackson b.dlib.nyu.edu"
+alias ca="ssh -l jackson ca.dlib.nyu.edu"
+alias dev-ca="ssh -l jackson dev-ca.dlib.nyu.edu"
+alias dev-discovery="ssh -l jackson dev-discovery.dlib.nyu.edu"
+alias dev-dl-rs="ssh -l jackson dev-dl-rs.home.nyu.edu"
+alias dev-dl-pa="ssh -l jackson dev-dl-pa.home.nyu.edu"
+alias dev-ead="ssh -l jackson dev-ead-publisher.dlib.nyu.edu"
+alias dl-img="ssh -l jackson dl-img.home.nyu.edu"
+alias discovery="ssh -l jackson discovery.dlib.nyu.edu"
+alias dl-pa="ssh -l jackson dl-pa.home.nyu.edu"
+alias dl-rs="ssh -l jackson dl-rs.home.nyu.edu"
+alias devhandle="ssh -l jackson devhandle.dlib.nyu.edu"
+alias ead="ssh -l jackson ead-publisher.dlib.nyu.edu"
+alias handle="ssh -l jackson handle.dlib.nyu.edu"
+alias stage-dl-pa="ssh -l jackson stage-dl-pa.home.nyu.edu"
+alias archive="ssh -l jackson archive.nyu.edu"
+alias dlibprod="ssh -l jackson dlibprod.home.nyu.edu"
+alias dlibtest="ssh -l jackson dlibtest.home.nyu.edu"
+alias dlibdev="ssh -l jackson dlibdev.nyu.edu"
+alias tlon="ssh -l jackson tlon.dlib.nyu.edu"
+alias sites="ssh -l jackson sites.dlib.nyu.edu"
+alias dev-sites="ssh -l jackson dev-sites.dlib.nyu.edu"
+alias ead-publisher="ssh -l jackson ead-publisher.dlib.nyu.edu"
+alias dev-ead-publisher="ssh -l jackson dev-ead-publisher.dlib.nyu.edu"
+
+alias v1="ssh -l fj5 variations1.bobst.nyu.edu"
+alias v2="ssh -l fj5 variations2.bobst.nyu.edu"
+
+# CCG aliases
+alias akerman="ssh -l dlts dl-akerman.bobst.nyu.edu"
+alias atkins="ssh -l dlts dl-atkins.bobst.nyu.edu"
+alias lange="ssh -l dlts dl_lange.bobst.nyu.edu"
+alias lippmann="ssh -l dlts dl-lippmann.bobst.nyu.edu"
+alias marker="ssh -l dlts dl-marker.bobst.nyu.edu"
+alias miller="ssh -l dlts dl-miller.bobst.nyu.edu"
+alias nadar="ssh -l dlts dl-nadar.bobst.nyu.edu"
+alias taro="ssh -l dlts dl-taro.bobst.nyu.edu"
+alias pc01="ssh -l dlts dlts-pc01.bobst.nyu.edu"
+
+# Preservation aliases
+alias afc-macpro="ssh -l dlts afc-macpro.bobst.nyu.edu"
+alias video-lab="ssh -l dlts video-lab.bobst.nyu.edu"
+alias video-lab2="ssh -l dlts video2-lab.bobst.nyu.edu"
+
+

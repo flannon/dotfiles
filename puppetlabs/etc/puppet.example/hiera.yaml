@@ -1,0 +1,17 @@
+version: 5
+defaults:
+  datadir: data
+  data_hash: yaml_data
+hierarchy:
+  - name: "Per-node data (yamle version)"
+    path: "nodes/%{trusted.certname}.yaml"
+
+  - name: "Other yaml hierarch levels"
+    paths:  # Can specifiy an array of paths insted of just one.
+      - "location/%{facts.whereami}/%{facts.group}.yaml"
+      - "groups/%{facts.group}.yaml"
+      - "os/%{facts.os.family}.yaml"
+      - "classes.yaml"
+      - "accounts.yaml"
+      - "common.yaml"
+

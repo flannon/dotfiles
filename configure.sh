@@ -73,3 +73,6 @@ done
 
 cd -
 
+ln -s ${SOURCE}/puppetlabs ${HOME}/.puppetlabs
+puppet apply --modulepath=${HOME}/.puppetlabs/etc/code/modules \
+ ${HOME}/.puppetlabs/etc/code/environments/production/manifests/default.pp

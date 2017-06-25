@@ -1,0 +1,5 @@
+##
+#  vbox aliases
+##
+#alias vbox=VboxManage
+alias vbox="/usr/bin/vboxmanage"
