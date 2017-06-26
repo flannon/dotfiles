@@ -13,6 +13,7 @@ class roles::default {
 
   include profiles::bashrc
   include profiles::packages
+  include profiles::vim
 
   Class['profiles::bashrc']->
   Class['profiles::packages']

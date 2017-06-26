@@ -6,7 +6,7 @@ alias lo=exit
 alias ls="ls -F"
 alias rm="rm -i"
 alias ssh="ssh -o VisualHostKey=yes"
-alias vi=/usr/local/bin/vim
+#alias vi=/usr/local/bin/vim
 
 set -o vi
 

@@ -25,10 +25,9 @@ alias sites="ssh -l jackson sites.dlib.nyu.edu"
 alias dev-sites="ssh -l jackson dev-sites.dlib.nyu.edu"
 alias ead-publisher="ssh -l jackson ead-publisher.dlib.nyu.edu"
 alias dev-ead-publisher="ssh -l jackson dev-ead-publisher.dlib.nyu.edu"
-
+# Library IT aliases
 alias v1="ssh -l fj5 variations1.bobst.nyu.edu"
 alias v2="ssh -l fj5 variations2.bobst.nyu.edu"
-
 # CCG aliases
 alias akerman="ssh -l dlts dl-akerman.bobst.nyu.edu"
 alias atkins="ssh -l dlts dl-atkins.bobst.nyu.edu"
@@ -39,10 +38,8 @@ alias miller="ssh -l dlts dl-miller.bobst.nyu.edu"
 alias nadar="ssh -l dlts dl-nadar.bobst.nyu.edu"
 alias taro="ssh -l dlts dl-taro.bobst.nyu.edu"
 alias pc01="ssh -l dlts dlts-pc01.bobst.nyu.edu"
-
 # Preservation aliases
 alias afc-macpro="ssh -l dlts afc-macpro.bobst.nyu.edu"
 alias video-lab="ssh -l dlts video-lab.bobst.nyu.edu"
 alias video-lab2="ssh -l dlts video2-lab.bobst.nyu.edu"
-
 
