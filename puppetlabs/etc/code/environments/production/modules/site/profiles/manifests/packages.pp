@@ -45,7 +45,8 @@ class profiles::packages {
   package { 'packer':     ensure => latest, }
   package { 'pkg-config': ensure => latest, }
   package { 'pyenv':      ensure => latest, }
-  package { 'pyenv-pip-rehash': ensure => latest, }
+  # pyenv-pip-reshash requires brew boneyard
+  #package { 'pyenv-pip-rehash': ensure => latest, }
   package { 'pyenv-virtualenv': ensure => latest, }
   package { 'python':     ensure => latest, }
   package { 'python3':    ensure => latest, }
