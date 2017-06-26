@@ -20,7 +20,8 @@ class profiles::vim {
   $bashrc = "/Users/${identity['user']}/.bashrc"
   concat::fragment { 'bashrc_vim_alias' :
     target  => $bashrc,
-    content => "\nalias vi=/usr/local/bin/vim\n",
+    #content => "\nalias vi=/usr/local/bin/vim\n",
+    content => "\nalias vi=vim\n",
     order   => '01',
   }
 
