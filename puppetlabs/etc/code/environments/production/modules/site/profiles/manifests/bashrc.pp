@@ -8,11 +8,15 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class profiles::kenny {
+class profiles::bashrc {
 
-  notice("NOTICE from profile::${identity['user']}")
-  #package { 'wget': ensure => present, }
+  notice("Configuring .bashrc for ${identity['user']}")
+  File {
+    group => 'staff',
+    owner => $identity['user'],
+  }
 
+  # set up .bashrc
   $bashrc = "/Users/${identity['user']}/.bashrc"
   concat  { $bashrc :
     owner   => kenny,
@@ -50,4 +54,5 @@ class profiles::kenny {
     source => "puppet:///modules/profiles/bashrc_path_and_evals",
     order  => '30',
   }
+
 }
