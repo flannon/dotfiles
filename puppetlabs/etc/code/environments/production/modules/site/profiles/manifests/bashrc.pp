@@ -19,7 +19,7 @@ class profiles::bashrc {
   # set up .bashrc
   $bashrc = "/Users/${identity['user']}/.bashrc"
   concat  { $bashrc :
-    owner   => kenny,
+    owner   => $identity['user]'],
     group   => staff,
     mode    => '0644',
     replace => true,
