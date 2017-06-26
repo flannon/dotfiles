@@ -22,7 +22,6 @@ class profiles::default {
     provider => homebrew,
   }
 
-  ##
 
   #notice("NOTICE from profile::${identity['user']}")
   package { 'wget': ensure => present, }
