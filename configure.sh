@@ -4,17 +4,15 @@ set -e
 
 BIN=~/bin
 SUDO_USER=$(who am i | awk '{print $1}')
+FULL_PATH="$(cd "$(dirname "$0")" && pwd)/$(basename "$0")"
+SOURCE="$(cd "$(dirname "$0")" && pwd)"
+RED="\033[1;31m" # Red
+NC="\033[0m"     # No Color
 
-case $(dirname $0) in
-  '.')
-    #echo "dirname: $(dirname $0)"
-    SOURCE=$(pwd)
-      ;;
-  *)
-    #echo "dirname: $(dirname $0)"
-    SOURCE=${HOME}/$(dirname $0)
-      ;;
-esac
+abort() { echo -e "${RED}$* ${NC}" >&2 && exit 1; }
+
+[[ $USER == "root" ]] && abort \
+   "Can't be run as root, must be run as $SUDO_USER."
 
 # Load hooks
 for i in $(ls ${SOURCE}/githooks)
@@ -26,28 +24,10 @@ do
   fi
 done
 
-
 # Load submodules
 cd $SOURCE
 git submodule update --init --recursive
 cd $OLDPWD
-
-# Link vim
-#if [[ ! -f ${HOME}/.vimrc ]] || [[ ! -d ${HOME}/.vim ]]
-#then
-#  echo "Linking vim"
-#  if [[ ! -L ${HOME}/.vimrc ]] && [[ ! -f ${HOME}/.vimrc ]];
-#  then
-#
-#    ln -s ${SOURCE}/vimrc ${HOME}/.vimrc
-##  fi
-#
-#  if [[ ! -L ${HOME}/.vim ]] && [[ ! -d ${HOME}/.vim ]];
-#  then
-#    ln -s ${SOURCE}/vim ${HOME}/.vim
-#  fi
-#fi
-
 
 # setup ~/bin
 if [[ ! -d $BIN ]];
@@ -58,6 +38,7 @@ fi
 cd ${SOURCE}/bin
 
 
+# link binaries
 for i in $(ls);
 do
   if [[ ! -L ${HOME}/bin/${i:0:${#i} -3} ]] && \
@@ -74,6 +55,7 @@ if [[ ! -L ${HOME}/.puppetlabs ]]; then
   ln -s ${SOURCE}/puppetlabs ${HOME}/.puppetlabs
 fi
 
+# Run puppet
 CONFDIR=${HOME}/.puppetlabs/etc/puppet
 CODEDIR=${HOME}/.puppetlabs/etc/code
 ENVIRONMENTPATH=${CODEDIR}/environments
@@ -88,7 +70,7 @@ cd $OLDPWD
 #puppet apply --confdir=$CONFDIR --codedir=$CODEDIR --environmentpath=$ENVIRONMENTPATH --modulepath=$MODULEPATH $MANIFEST
 puppet apply --modulepath=$MODULEPATH $MANIFEST
 
-# Install vim plugins
+# Load vim plugins
 vim +PluginInstall +qall
 
 # set vim as the git editor
