@@ -1,0 +1,82 @@
+"set background=dark
+set hlsearch
+set nu
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+filetype on
+filetype plugin indent on
+
+syntax on
+
+set nocompatible " Required
+filetype off     " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" more Plugin commands
+"call vundle#end()            " required
+"filetype plugin indent on    " required
+
+" plugin on Github
+Plugin 'flazz/vim-colorschemes'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Yggdroot/indentLine'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'fatih/vim-go'
+"Plugin 'plasticboy/vim-markdown'
+Plugin 'hashivim/vim-packer'
+Plugin 'rodjek/vim-puppet'
+Plugin 'hashivim/vim-terraform'
+Plugin 'hashivim/vim-vagrant'
+Plugin 'Valloric/YouCompleteMe'
+
+" plugin from http://vim-scripts.org/vim/scripts.html
+Plugin 'L9'
+
+au BufReadPost *.twig colorscheme koehler 
+au BufReadPost *.css colorscheme slate 
+au BufReadPost *.cfg colorscheme monokai
+au BufReadPost *.erb colorscheme molokai
+au BufReadPost *.go colorscheme molokai
+au BufReadPost *.html colorscheme monokai
+au BufReadPost *.json colorscheme molokai
+au BufReadPost *.js colorscheme elflord 
+au BufReadPost *.java colorscheme monokai
+au BufReadPost *.php colorscheme two2tango
+au BufReadPost *.pp colorscheme molokai
+au BufReadPost Puppetfile colorscheme molokai
+au BufReadPost *.py colorscheme molokai
+au BufReadPost Rakefile colorscheme molokai
+au BufReadPost *.rb colorscheme molokai
+au BufReadPost *rc colorscheme molokai
+au BufReadPost *.sh colorscheme molokai
+au BufReadPost *.tf colorscheme molokai
+au BufReadPost *.tfvars colorscheme cleanroom
+au BufReadPost Vagrantfile colorscheme molokai
+au BufReadPost vimrc colorscheme molokai
+au BufReadPost *.vimrc colorscheme molokai
+au BufReadPost *.yaml colorscheme molokai
+
+let g:indentLine_color_term = 239
+let g:indentLine_color_gui = '#09AA08'
+let g:indentLine_char = '│'
+let g:terraform_align=1
+
+" convert spaces to tabs when reading file
+"autocmd! bufreadpost * set noexpandtab | retab! 2
+
+" convert tabs to spaces before writing file
+"autocmd! bufwritepre * set expandtab | retab! 2
+
+" convert spaces to tabs after writing file (to show guides again)
+"autocmd! bufwritepost * set noexpandtab | retab! 2
+
+call vundle#end()
+filetype plugin indent on

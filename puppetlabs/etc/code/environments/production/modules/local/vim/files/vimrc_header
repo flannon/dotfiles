@@ -1,0 +1,22 @@
+"set background=dark
+set hlsearch
+set nu
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+filetype on
+filetype plugin indent on
+
+syntax on
+
+set nocompatible " Required
+filetype off     " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
