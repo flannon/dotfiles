@@ -3,6 +3,7 @@
 set -e
 
 BIN=~/bin
+SUDO_USER=$(who am i | awk '{print $1}')
 
 case $(dirname $0) in
   '.')
@@ -32,25 +33,21 @@ git submodule update --init --recursive
 cd $OLDPWD
 
 # Link vim
-if [[ ! -f ${HOME}/.vimrc ]] || [[ ! -d ${HOME}/.vim ]]
-then
-  echo "Linking vim"
-  if [[ ! -L ${HOME}/.vimrc ]] && [[ ! -f ${HOME}/.vimrc ]];
-  then
+#if [[ ! -f ${HOME}/.vimrc ]] || [[ ! -d ${HOME}/.vim ]]
+#then
+#  echo "Linking vim"
+#  if [[ ! -L ${HOME}/.vimrc ]] && [[ ! -f ${HOME}/.vimrc ]];
+#  then
+#
+#    ln -s ${SOURCE}/vimrc ${HOME}/.vimrc
+##  fi
+#
+#  if [[ ! -L ${HOME}/.vim ]] && [[ ! -d ${HOME}/.vim ]];
+#  then
+#    ln -s ${SOURCE}/vim ${HOME}/.vim
+#  fi
+#fi
 
-    ln -s ${SOURCE}/vimrc ${HOME}/.vimrc
-  fi
-
-  if [[ ! -L ${HOME}/.vim ]] && [[ ! -d ${HOME}/.vim ]];
-  then
-    ln -s ${SOURCE}/vim ${HOME}/.vim
-  fi
-fi
-
-vim +PluginInstall +qall
-
-# set vim as the git editor
-git config --global core.editor $(which vim)
 
 # setup ~/bin
 if [[ ! -d $BIN ]];
@@ -81,7 +78,7 @@ CONFDIR=${HOME}/.puppetlabs/etc/puppet
 CODEDIR=${HOME}/.puppetlabs/etc/code
 ENVIRONMENTPATH=${CODEDIR}/environments
 ENVIRONMENT=production
-MODULEPATH=${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/site:${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/thirdparty
+MODULEPATH=${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/site:${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/local:${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/thirdparty
 MANIFEST=${HOME}/.puppetlabs/etc/code/environments/production/manifests/default.pp
 
 cd ${ENVIRONMENTPATH}/${ENVIRONMENT}
@@ -90,3 +87,9 @@ cd $OLDPWD
 
 #puppet apply --confdir=$CONFDIR --codedir=$CODEDIR --environmentpath=$ENVIRONMENTPATH --modulepath=$MODULEPATH $MANIFEST
 puppet apply --modulepath=$MODULEPATH $MANIFEST
+
+# Install vim plugins
+vim +PluginInstall +qall
+
+# set vim as the git editor
+git config --global core.editor $(which vim)
