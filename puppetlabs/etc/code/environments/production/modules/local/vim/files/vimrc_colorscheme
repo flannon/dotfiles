@@ -1,4 +1,5 @@
 au BufReadPost *.twig colorscheme koehler 
+au BufReadPost Dockerfile colorscheme molokai
 au BufReadPost *.css colorscheme slate 
 au BufReadPost *.cfg colorscheme monokai
 au BufReadPost *.erb colorscheme molokai
