@@ -42,6 +42,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'L9'
 
 au BufReadPost *.twig colorscheme koehler 
+au BufReadPost Dockerfile colorscheme molokai
 au BufReadPost *.css colorscheme slate 
 au BufReadPost *.cfg colorscheme monokai
 au BufReadPost *.erb colorscheme molokai
@@ -64,6 +65,7 @@ au BufReadPost Vagrantfile colorscheme molokai
 au BufReadPost vimrc colorscheme molokai
 au BufReadPost *.vimrc colorscheme molokai
 au BufReadPost *.yaml colorscheme molokai
+au BufReadPost *.yml colorscheme molokai
 
 let g:indentLine_color_term = 239
 let g:indentLine_color_gui = '#09AA08'
