@@ -1,4 +1,5 @@
 "set background=dark
+set encoding=utf-8
 set hlsearch
 set nu
 set smartindent
