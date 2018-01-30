@@ -14,3 +14,7 @@ PATH="/opt/puppetlabs/bin/:$PATH"
 
 export PATH="$GOPATH/bin:$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# openshift config
+eval $(minishift oc-env)
+eval $(minishift docker-env)

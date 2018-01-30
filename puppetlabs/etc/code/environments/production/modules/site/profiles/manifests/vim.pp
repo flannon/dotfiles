@@ -17,12 +17,21 @@ class profiles::vim {
     owner => $identity['user'],
   }
 
-  $bashrc = "/Users/${identity['user']}/.bashrc"
-  concat::fragment { 'bashrc_vim_alias' :
-    target  => $bashrc,
-    #content => "\nalias vi=/usr/local/bin/vim\n",
-    content => "\nalias vi=vim\n",
-    order   => '01',
-  }
+  include vim
+  vim::vimrc { "${identity['user']}" : }
+  #vim::vimrc { "kenny" : }
+
+  vim::plugin { "L9" :}
+  vim::plugin { "Valloric/YouCompleteMe" : }
+  vim::plugin { "hashivim/vim-vagrant" : }
+  vim::plugin { "hashivim/vim-terraform" : }
+  vim::plugin { "rodjek/vim-puppet" : }
+  vim::plugin { "hashivim/vim-packer" : }
+  vim::plugin { "fatih/vim-go" : }
+  vim::plugin { "davidhalter/jedi-vim" : }
+  vim::plugin { "Yggdroot/indentLine" : }
+  vim::plugin { "tpope/vim-fugitive" : }
+  vim::plugin { "flazz/vim-colorschemes" : }
 
 }
+  
