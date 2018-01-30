@@ -24,10 +24,15 @@ class profiles::bashrc {
     mode    => '0644',
     replace => true,
   }
+  concat::fragment{ 'bashrc_preamble':
+    target => $bashrc,
+    source => "puppet:///modules/profiles/bashrc_preamble",
+    order  => '01',
+  }
   concat::fragment{ 'bashrc_defaults':
     target => $bashrc,
     source => "puppet:///modules/profiles/bashrc_default_aliases",
-    order  => '01',
+    order  => '02',
   }
   concat::fragment { 'bashrc_aws' :
     target => $bashrc,
