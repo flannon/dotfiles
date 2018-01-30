@@ -39,11 +39,11 @@ class profiles::bashrc {
     source => "puppet:///modules/profiles/bashrc_dlib_aliases",
     order  => '15',
   }
-  concat::fragment { 'bashrc_docker' :
-    target => $bashrc,
-    source => "puppet:///modules/profiles/bashrc_docker_conf",
-    order  => '20',
-  }
+  #concat::fragment { 'bashrc_docker' :
+  #  target => $bashrc,
+  #  source => "puppet:///modules/profiles/bashrc_docker_conf",
+  #  order  => '20',
+  #}
   concat::fragment { 'bashrc_vbox' :
     target => $bashrc,
     source => "puppet:///modules/profiles/bashrc_vbox_aliases",
