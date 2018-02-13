@@ -20,6 +20,7 @@ class vim (
   package { 'vim':        
     ensure          => present, 
     install_options => '--with-override-system-vi',
+    provider        => homebrew,
   }
 
   file_line { 'alias_vi' :
