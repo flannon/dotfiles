@@ -7,6 +7,7 @@ au BufReadPost *.cfg colorscheme monokai
 au BufReadPost *.erb colorscheme molokai
 au BufReadPost *.go colorscheme molokai
 au BufReadPost *.html colorscheme monokai
+au BufReadPost *.j2 colorscheme molokai
 au BufReadPost *.json colorscheme molokai
 au BufReadPost *.js colorscheme elflord 
 au BufReadPost *.java colorscheme monokai
