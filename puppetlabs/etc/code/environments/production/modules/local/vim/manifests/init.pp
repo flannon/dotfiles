@@ -17,6 +17,12 @@ class vim (
 ){
   notice ("The idenity user is: $vim_user")
 
+  package { 'vim':        
+    ensure          => present, 
+    install_options => '--with-override-system-vi',
+    provider        => homebrew,
+  }
+
   file_line { 'alias_vi' :
     ensure => present,
     path   => "${vim_home}/.bashrc",

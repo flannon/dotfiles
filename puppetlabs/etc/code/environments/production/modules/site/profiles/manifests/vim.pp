@@ -9,8 +9,7 @@
 # Copyright 2017 Your name here, unless otherwise noted.
 #
 class profiles::vim {
-  notice("Configuring vim and vundle for ${identity['user']}")
-
+  alert("Configuring vim and vundle for ${identity['user']}")
 
   File {
     group => 'staff',

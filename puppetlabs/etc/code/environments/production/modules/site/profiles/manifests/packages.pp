@@ -56,7 +56,7 @@ class profiles::packages {
   package { 'ruby-build': ensure => latest, }
   package { 'sqlite':     ensure => present, }
   package { 'terraform':   ensure => present, }
-  package { 'vim':        ensure => present, }
+  #package { 'vim':        ensure => present, }
   package { 'wget':       ensure => latest, }
   # brewcask provider
   package { 'java':    ensure => present, provider => 'brewcask', }
