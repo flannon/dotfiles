@@ -22,6 +22,7 @@ class profiles::packages {
   package { 'autoconf':  ensure => latest, }
   package { 'cmake':     ensure => latest, }
   package { 'curl':      ensure => latest, }
+  package { 'dep':      ensure => latest, }
   package { 'dnsmasq':   ensure => latest, }
   package { 'docker-machine': ensure => latest, }
   package { 'dynamodb-local': ensure => latest, }
