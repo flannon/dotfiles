@@ -10,7 +10,6 @@ RED="\033[1;31m" # Red
 NC="\033[0m"     # No Color
 
 abort() { echo -e "${RED}$* ${NC}" >&2 && exit 1; }
-
 [[ $USER == "root" ]] && abort \
    "Can't be run as root, must be run as $SUDO_USER."
 
