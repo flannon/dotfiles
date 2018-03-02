@@ -63,4 +63,13 @@ class profiles::packages {
   package { 'java':    ensure => present, provider => 'brewcask', }
   package { 'vagrant': ensure => latest,  provider => 'brewcask', }
     
+  # Atom
+  package { 'atom':    ensure => present, provider => 'brewcask', }
+  package { 'language-ansible': ensure => latest, provider => apm, }
+  package { 'linter-ansible-syntax': ensure => latest, provider => apm, }
+  package { 'language-puppet': ensure => latest, provider => apm, }
+  package { 'go-plus': ensure => latest, provider => apm, }
+  package { 'vim-mode-plus': ensure => latest, provider => apm, }
+
 }
+
