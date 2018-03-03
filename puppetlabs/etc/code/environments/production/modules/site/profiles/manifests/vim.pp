@@ -31,6 +31,7 @@ class profiles::vim {
   vim::plugin { "Yggdroot/indentLine" : }
   vim::plugin { "tpope/vim-fugitive" : }
   vim::plugin { "flazz/vim-colorschemes" : }
+  vim::plugin { "tpope/vim-surround.git" : }
 
 }
   
