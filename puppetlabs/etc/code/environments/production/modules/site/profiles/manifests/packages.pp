@@ -64,12 +64,38 @@ class profiles::packages {
   package { 'vagrant': ensure => latest,  provider => 'brewcask', }
     
   # Atom
-  package { 'atom':    ensure => present, provider => 'brewcask', }
+  package { 'atom': ensure => present, provider => 'brewcask', }
+  #
+  package { 'atom-json': ensure => latest, provider => apm, }
+  package { 'atom-go-jump-test': ensure => latest, provider => apm, }
+  package { 'atom-gist-dev': ensure => latest, provider => apm, }
+  package { 'aligner-golang': ensure => latest, provider => apm, }
+  package { 'autocomplete-json': ensure => latest, provider => apm, }
+  package { 'formatter-gofmt': ensure => latest, provider => apm, }
+  package { 'git-gui': ensure => latest, provider => apm, }
+  package { 'git-plus-plus': ensure => latest, provider => apm, }
+  package { 'go-debug': ensure => latest, provider => apm, }
+  package { 'go-impl': ensure => latest, provider => apm, }
+  package { 'go-plus': ensure => latest, provider => apm, }
+  package { 'go-signature-statusbar': ensure => latest, provider => apm, }
+  package { 'gotests': ensure => latest, provider => apm, }
+  package { 'go-tip': ensure => latest, provider => apm, }
+  package { 'go-types': ensure => latest, provider => apm, }
+  package { 'hclfmt': ensure => latest, provider => apm, }
+  package { 'ide-go': ensure => latest, provider => apm, }
+  package { 'json-converter': ensure => latest, provider => apm, }
+  package { 'json-to-go-struct': ensure => latest, provider => apm, }
   package { 'language-ansible': ensure => latest, provider => apm, }
   package { 'linter-ansible-syntax': ensure => latest, provider => apm, }
+  package { 'linter-golinter': ensure => latest, provider => apm, }
+  package { 'linter-gotype': ensure => latest, provider => apm, }
+  package { 'linter-packer-validate': ensure => latest, provider => apm, }
+  package { 'linter-vagrant-validate': ensure => latest, provider => apm, }
+  package { 'linter-terraform-syntax': ensure => latest, provider => apm, }
   package { 'language-puppet': ensure => latest, provider => apm, }
-  package { 'go-plus': ensure => latest, provider => apm, }
+  package { 'monokai-seti': ensure => latest, provider => apm, }
+  package { 'pretty-json': ensure => present, provider => 'brewcask', }
+  package { 'terraform-fmt': ensure => present, provider => 'brewcask', }
+  package { 'you-complete-me': ensure => present, provider => 'brewcask', }
   package { 'vim-mode-plus': ensure => latest, provider => apm, }
-
 }
-
