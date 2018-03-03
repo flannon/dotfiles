@@ -1,4 +1,4 @@
-BUILDFILE = dot-build.sh
+BUILDFILE = build.sh
 
 .PHONY: build
 build:

@@ -71,9 +71,13 @@ class profiles::packages {
   package { 'atom-gist-dev': ensure => latest, provider => apm, }
   package { 'aligner-golang': ensure => latest, provider => apm, }
   package { 'autocomplete-json': ensure => latest, provider => apm, }
+  package { 'busy-signal': ensure => latest, provider => apm, }
+  package { 'color-picker': ensure => latest, provider => apm, }
+  package { 'declarations': ensure => latest, provider => apm, }
   package { 'formatter-gofmt': ensure => latest, provider => apm, }
   package { 'git-gui': ensure => latest, provider => apm, }
-  package { 'git-plus-plus': ensure => latest, provider => apm, }
+  #package { 'git-plus-plus': ensure => latest, provider => apm, }
+  package { 'git-plus': ensure => latest, provider => apm, }
   package { 'go-debug': ensure => latest, provider => apm, }
   package { 'go-impl': ensure => latest, provider => apm, }
   package { 'go-plus': ensure => latest, provider => apm, }
@@ -82,10 +86,16 @@ class profiles::packages {
   package { 'go-tip': ensure => latest, provider => apm, }
   package { 'go-types': ensure => latest, provider => apm, }
   package { 'hclfmt': ensure => latest, provider => apm, }
+  package { 'hyperclick': ensure => latest, provider => apm, }
   package { 'ide-go': ensure => latest, provider => apm, }
+  package { 'intentions': ensure => latest, provider => apm, }
+  package { 'intentions-colorpicker': ensure => latest, provider => apm, }
+  package { 'intentions-numbers': ensure => latest, provider => apm, }
   package { 'json-converter': ensure => latest, provider => apm, }
   package { 'json-to-go-struct': ensure => latest, provider => apm, }
   package { 'language-ansible': ensure => latest, provider => apm, }
+  package { 'linter': ensure => latest, provider => apm, }
+  package { 'linter-ui-default': ensure => latest, provider => apm, }
   package { 'linter-ansible-syntax': ensure => latest, provider => apm, }
   package { 'linter-golinter': ensure => latest, provider => apm, }
   package { 'linter-gotype': ensure => latest, provider => apm, }
@@ -94,8 +104,8 @@ class profiles::packages {
   package { 'linter-terraform-syntax': ensure => latest, provider => apm, }
   package { 'language-puppet': ensure => latest, provider => apm, }
   package { 'monokai-seti': ensure => latest, provider => apm, }
-  package { 'pretty-json': ensure => present, provider => 'brewcask', }
-  package { 'terraform-fmt': ensure => present, provider => 'brewcask', }
-  package { 'you-complete-me': ensure => present, provider => 'brewcask', }
+  package { 'pretty-json': ensure => present, provider => apm, }
+  package { 'terraform-fmt': ensure => present, provider => apm, }
+  package { 'you-complete-me': ensure => present, provider => apm, }
   package { 'vim-mode-plus': ensure => latest, provider => apm, }
 }
