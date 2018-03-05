@@ -55,19 +55,26 @@ do
 done
 cd $OLDPWD
 
-if [[ ! -L ${HOME}/.puppetlabs ]]; then
-  ln -s ${SOURCE}/puppetlabs ${HOME}/.puppetlabs
+[[ -L ${HOME}/.puppetlabs ]] && unlink ${HOME}/.puppetlabs
+if [[ -d ${HOME}/.puppetlabs ]]; then
+  echo "${HOME}/.puppetlabs is a directory!!!"
+  echo "Exiting..."
+  exit 2
 fi
-
+[[ ! -d ${HOME}/.puppetlabs ]] && ln -s ${SOURCE}/puppetlabs \
+                                  ${HOME}/.puppetlabs
+  
 if [[ $(command -v puppet) ]]; then
 
   # Run puppet
-  CONFDIR=${HOME}/.puppetlabs/etc/puppet
-  CODEDIR=${HOME}/.puppetlabs/etc/code
+  BASEDIR=${HOME}/.puppetlabs
+  CONFDIR=${BASEDIR}/etc/puppet
+  CODEDIR=${BASEDIR}/etc/code
   ENVIRONMENTPATH=${CODEDIR}/environments
   ENVIRONMENT=production
   MODULEPATH=${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/site:${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/local:${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/thirdparty
-  MANIFEST=${HOME}/.puppetlabs/etc/code/environments/production/manifests/default.pp
+  MANIFEST=${ENVIRONMENTPATH}/${ENVIRONMENT}/manifests/default.pp
+  #MANIFEST=${HOME}/.puppetlabs/etc/code/environments/production/manifests/default.pp
 
   cd ${ENVIRONMENTPATH}/${ENVIRONMENT}
   r10k puppetfile install --moduledir modules/thirdparty
