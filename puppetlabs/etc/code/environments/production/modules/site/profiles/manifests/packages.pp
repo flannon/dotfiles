@@ -82,6 +82,7 @@ class profiles::packages {
   package { 'color-picker': ensure => latest, provider      => apm, }
   package { 'declarations': ensure => latest, provider      => apm, }
   package { 'file-icons': ensure => latest, provider        => apm, }
+  package { 'fonts': ensure => latest, provider   => apm, }
   package { 'formatter-gofmt': ensure => latest, provider   => apm, }
   package { 'git-gui': ensure => latest, provider           => apm, }
   package { 'git-plus': ensure => latest, provider          => apm, }
@@ -124,23 +125,24 @@ class profiles::packages {
   package { 'vim-mode-plus': ensure => latest, provider       => apm, }
   
   # Atom Themes and syntax
-  package { 'monokai-seti': ensure => latest, provider      => apm, }
-  package { 'dark-pastel-eighties-syntax': ensure => latest, provider => apm, }
-  package { 'spacegray-dark-neue-ui': ensure => present, provider => apm, }
-  package { 'spacegray-dark-neue-syntax': ensure => present, provider => apm, }
-  package { 'nucleus-dark-ui': ensure => present, provider => apm, }
-  package { 'immersive-nucleus-dark-ui': ensure => present, provider => apm, }
-  package { 'one-dark-shade-ui': ensure => present, provider => apm, }
-  package { 'one-dark-matte-syntax': ensure => present, provider => apm, }
-  package { 'github-atom-dark-syntax': ensure => present, provider => apm, }
-  package { 'unite-ui': ensure => present, provider => apm, }
-  package { 'base16-syntax': ensure => present, provider => apm, }
-  package { 'base16-ocean-dark-spacegray': ensure => present, provider => apm, }
+  package { 'afterglow-monokai-syntax': ensure => absent, provider => apm, }
   package { 'atom-dark-fusion-syntax': ensure => present, provider => apm, }
-  package { 'null-syntax': ensure => present, provider => apm, }
+  package { 'base16-syntax': ensure => present, provider => apm, }
+  package { 'base16-ocean-dark-spacegray': ensure => absent, provider => apm, }
+  package { 'dark-pastel-eighties-syntax': ensure => latest, provider => apm, }
+  package { 'dracula-theme': ensure => latest, provider => apm, }
+  package { 'github-atom-dark-syntax': ensure => present, provider => apm, }
+  package { 'grayscale-syntax': ensure => absent, provider => apm, }
+  package { 'immersive-nucleus-dark-ui': ensure => absent, provider => apm, }
   package { 'leche-syntax': ensure => present, provider => apm, }
-  package { 'grayscale-syntax': ensure => present, provider => apm, }
-  package { 'afterglow-monokai-syntax': ensure => latest, provider => apm, }
+  package { 'monokai-seti': ensure => absent, provider      => apm, }
+  package { 'null-syntax': ensure => present, provider => apm, }
+  package { 'one-dark-shade-ui': ensure => absent, provider => apm, }
+  package { 'one-dark-matte-syntax': ensure => absent, provider => apm, }
+  package { 'nucleus-dark-ui': ensure => absent, provider => apm, }
+  package { 'spacegray-dark-neue-ui': ensure => absent, provider => apm, }
+  package { 'spacegray-dark-neue-syntax': ensure => absent, provider => apm, }
+  package { 'unite-ui': ensure => present, provider => apm, }
   
 }
 

@@ -32,6 +32,7 @@ class profiles::vim {
   vim::plugin { "tpope/vim-fugitive" : }
   vim::plugin { "flazz/vim-colorschemes" : }
   vim::plugin { "tpope/vim-surround.git" : }
+  vim::plugin { "dracula/vim" : }
 
 }
   
