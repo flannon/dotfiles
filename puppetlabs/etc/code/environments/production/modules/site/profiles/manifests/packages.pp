@@ -24,7 +24,7 @@ class profiles::packages {
   package { 'curl':      ensure => latest, }
   package { 'dep':       ensure => latest, }
   # see https://github.com/go-delve/homebrew-delve/issues/19#issuecomment-330442033
-  # run /Library/Caches/Homebrew/delve-?.?.?/scripts/gencert.sh
+  # run ~/Library/Caches/Homebrew/delve-?.?.?/scripts/gencert.sh
   # and enter your pasword to enable delve
   # then go-delve/delve/delve will work.
   package { 'go-delve/delve/delve':       ensure => latest, }
