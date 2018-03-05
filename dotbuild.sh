@@ -68,8 +68,10 @@ if [[ $(command -v puppet) ]]; then
 
   # Run puppet
   BASEDIR=${HOME}/.puppetlabs
-  CONFDIR=${BASEDIR}/etc/puppet
-  CODEDIR=${BASEDIR}/etc/code
+  #CONFDIR=${BASEDIR}/etc/puppet
+  CONFDIR=${BASEDIR}/puppet
+  #CODEDIR=${BASEDIR}/etc/code
+  CODEDIR=${BASEDIR}/code
   ENVIRONMENTPATH=${CODEDIR}/environments
   ENVIRONMENT=production
   MODULEPATH=${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/site:${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/local:${ENVIRONMENTPATH}/${ENVIRONMENT}/modules/thirdparty
