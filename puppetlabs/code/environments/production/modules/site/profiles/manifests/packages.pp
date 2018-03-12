@@ -73,6 +73,7 @@ class profiles::packages {
   
   package { 'atom-json': ensure => latest, provider => apm, }
   package { 'atom-go-jump-test': ensure => latest, provider => apm, }
+  package { 'atom-go-get': ensure => latest, provider => apm, }
   package { 'atom-gist-dev': ensure => latest, provider     => apm, }
   package { 'atom-beautify': ensure => absent, provider     => apm, }
   package { 'atom-runner': ensure => latest, provider       => apm, }
