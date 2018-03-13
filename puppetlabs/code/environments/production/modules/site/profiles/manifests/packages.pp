@@ -71,6 +71,7 @@ class profiles::packages {
   # Atom
   package { 'atom': ensure => latest, provider => 'brewcask', }
   
+  package { 'atom-bash-snippets': ensure => latest, provider => apm, }
   package { 'atom-json': ensure => latest, provider => apm, }
   package { 'atom-go-jump-test': ensure => latest, provider => apm, }
   package { 'atom-go-get': ensure => latest, provider => apm, }
