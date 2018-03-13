@@ -124,6 +124,7 @@ class profiles::packages {
   package { 'term3': ensure => present, provider      => apm, }
   package { 'you-complete-me': ensure => present, provider    => apm, }
   package { 'vim-mode-plus': ensure => latest, provider       => apm, }
+  package { 'ex-mode': ensure => latest, provider       => apm, }
   
   # Atom Themes and syntax
   package { 'afterglow-monokai-syntax': ensure => absent, provider => apm, }
