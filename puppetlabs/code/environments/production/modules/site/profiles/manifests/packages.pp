@@ -64,10 +64,15 @@ class profiles::packages {
   package { 'sqlite':     ensure => present, }
   package { 'terraform':  ensure => present, }
   package { 'wget':       ensure => latest, }
+
   # brewcask provider
   package { 'java':    ensure => present, provider => 'brewcask', }
   package { 'vagrant': ensure => latest,  provider => 'brewcask', }
     
+  # Gem provider
+  package { 'metadata-json-lint': ensure => latest, provider => 'gem', }
+  package { 'semantic_puppet':    ensure => latest, provider => 'gem', }
+
   # Atom
   package { 'atom': ensure => latest, provider => 'brewcask', }
   
