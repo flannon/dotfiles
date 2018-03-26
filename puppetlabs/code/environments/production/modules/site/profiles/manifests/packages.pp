@@ -67,7 +67,7 @@ class profiles::packages {
 
   # brewcask provider
   package { 'java':    ensure => present, provider => 'brewcask', }
-  package { 'kap':     ensure => present, provider => 'brewcask', }
+  #package { 'kap':     ensure => present, provider => 'brewcask', }
   package { 'vagrant': ensure => latest,  provider => 'brewcask', }
     
   # Gem provider
