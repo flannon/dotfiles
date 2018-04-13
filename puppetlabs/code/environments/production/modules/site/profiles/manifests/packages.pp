@@ -75,8 +75,12 @@ class profiles::packages {
   package { 'semantic_puppet':    ensure => latest, provider => 'gem', }
 
   # Atom
-  package { 'atom': ensure => latest, provider => 'brewcask', }
+
+  $atom_ensure = latest
+
+  package { 'atom': ensure => $atom_ensure, provider => 'brewcask', }
   
+<<<<<<< HEAD
   package { 'atom-bash-snippets':      ensure => latest, provider => apm, }
   package { 'atom-json':               ensure => latest, provider => apm, }
   package { 'atom-go-jump-test':       ensure => latest, provider => apm, }
@@ -135,23 +139,23 @@ class profiles::packages {
   
   # Atom Themes and syntax
   package { 'afterglow-monokai-syntax': ensure => absent, provider => apm, }
-  package { 'atom-dark-fusion-syntax': ensure => present, provider => apm, }
-  package { 'base16-syntax': ensure => present, provider => apm, }
+  package { 'atom-dark-fusion-syntax': ensure => absent, provider => apm, }
+  package { 'base16-syntax': ensure => $atom_ensure, provider => apm, }
   package { 'base16-ocean-dark-spacegray': ensure => absent, provider => apm, }
-  package { 'dark-pastel-eighties-syntax': ensure => latest, provider => apm, }
-  package { 'dracula-theme': ensure => latest, provider => apm, }
-  package { 'github-atom-dark-syntax': ensure => present, provider => apm, }
+  package { 'dark-pastel-eighties-syntax': ensure => absent, provider => apm, }
+  package { 'dracula-theme': ensure => absent, provider => apm, }
+  package { 'github-atom-dark-syntax': ensure => absent, provider => apm, }
   package { 'grayscale-syntax': ensure => absent, provider => apm, }
   package { 'immersive-nucleus-dark-ui': ensure => absent, provider => apm, }
-  package { 'leche-syntax': ensure => present, provider => apm, }
+  package { 'leche-syntax': ensure => absent, provider => apm, }
   package { 'monokai-seti': ensure => absent, provider      => apm, }
-  package { 'null-syntax': ensure => present, provider => apm, }
+  package { 'null-syntax': ensure => absent, provider => apm, }
   package { 'one-dark-shade-ui': ensure => absent, provider => apm, }
   package { 'one-dark-matte-syntax': ensure => absent, provider => apm, }
   package { 'nucleus-dark-ui': ensure => absent, provider => apm, }
   package { 'spacegray-dark-neue-ui': ensure => absent, provider => apm, }
   package { 'spacegray-dark-neue-syntax': ensure => absent, provider => apm, }
-  package { 'unite-ui': ensure => present, provider => apm, }
+  package { 'unite-ui': ensure => absent, provider => apm, }
   
 }
 
