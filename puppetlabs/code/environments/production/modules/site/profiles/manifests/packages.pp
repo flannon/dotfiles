@@ -8,7 +8,9 @@
 #
 # Copyright 2017 Your name here, unless otherwise noted.
 #
-class profiles::packages {
+class profiles::packages(
+  $atom_ensure = lookup('profiles::atom_ensure', String, 'first'),
+){
 
   notice("Installing packages for ${identity['user']}")
 
@@ -76,7 +78,7 @@ class profiles::packages {
 
   # Atom
 
-  $atom_ensure = latest
+  #$atom_ensure = latest
 
   package { 'atom': ensure => $atom_ensure, provider => 'brewcask', }
   
@@ -109,8 +111,8 @@ class profiles::packages {
   package { 'go-types':                ensure => $atom_ensure, provider => apm, }
   package { 'hclfmt':                  ensure => $atom_ensure, provider => apm, }
   package { 'hyperclick':              ensure => $atom_ensure, provider => apm, }
-  package { 'atom-ide-ui':             ensure => absent, provider => apm, }
   package { 'ide-go':                  ensure => $atom_ensure, provider => apm, }
+  package { 'atom-ide-ui':             ensure => $atom_ensure, provider => apm, }
   package { 'intentions':              ensure => $atom_ensure, provider => apm, }
   package { 'intentions-colorpicker':  ensure => $atom_ensure, provider => apm, }
   package { 'intentions-numbers':      ensure => $atom_ensure, provider => apm, }
@@ -137,6 +139,6 @@ class profiles::packages {
   package { 'ex-mode':                 ensure => $atom_ensure, provider => apm, }
   
   # Atom Themes and syntax
-  package { 'base16-syntax':               ensure => $atom_ensure, provider => apm, }
+  package { 'base16-syntax':           ensure => $atom_ensure, provider => apm, }
 }
 
