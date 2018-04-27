@@ -111,6 +111,7 @@ class profiles::packages {
   package { 'hyperclick':              ensure => $atom_ensure, provider => apm, }
   package { 'atom-ide-ui':             ensure => absent, provider => apm, }
   package { 'ide-go':                  ensure => $atom_ensure, provider => apm, }
+  package { 'ide-python':                  ensure => $atom_ensure, provider => apm, }
   package { 'intentions':              ensure => $atom_ensure, provider => apm, }
   package { 'intentions-colorpicker':  ensure => $atom_ensure, provider => apm, }
   package { 'intentions-numbers':      ensure => $atom_ensure, provider => apm, }
