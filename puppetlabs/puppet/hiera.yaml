@@ -12,6 +12,5 @@ hierarchy:
       - "groups/%{facts.group}.yaml"
       - "os/%{facts.os.family}.yaml"
       - "classes.yaml"
-      - "accounts.yaml"
       - "common.yaml"
 
