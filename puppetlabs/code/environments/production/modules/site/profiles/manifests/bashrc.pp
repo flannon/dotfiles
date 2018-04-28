@@ -54,6 +54,11 @@ class profiles::bashrc {
     source => "puppet:///modules/profiles/bashrc_vbox_aliases",
     order  => '25',
   }
+  concat::fragment { 'bashrc_env_vars' :
+    target => $bashrc,
+    source => "puppet:///modules/profiles/bashrc_env_vars",
+    order  => '30',
+  }
   concat::fragment { 'bashrc_path' :
     target => $bashrc,
     source => "puppet:///modules/profiles/bashrc_path_and_evals",

@@ -1,0 +1,6 @@
+##
+#  EnnVars
+##
+if [[ -f ~/.ansible/vault_password ]]; then
+  export ANSIBLE_VAULT_PASSWORD_FILE=~/.ansible/vault_password
+fi
