@@ -32,7 +32,7 @@ class profiles::packages(
   package { 'go-delve/delve/delve': ensure => latest, }
   package { 'dnsmasq':              ensure => latest, }
   package { 'docker-machine':       ensure => latest, }
-  package { 'dynamodb-local':       ensure => latest, }
+  #package { 'dynamodb-local':       ensure => latest, }
   package { 'git':                  ensure => latest, }
   package { 'gnupg2':               ensure => latest, }
   package { 'go':                   ensure => latest, }
@@ -68,9 +68,10 @@ class profiles::packages(
   package { 'wget':                 ensure => latest, }
 
   # brewcask provider
-  package { 'java':    ensure => present, provider => 'brewcask', }
+  package { 'java':           ensure => present, provider => 'brewcask', }
   #package { 'kap':     ensure => present, provider => 'brewcask', }
-  package { 'vagrant': ensure => latest,  provider => 'brewcask', }
+  package { 'vagrant':        ensure => latest,  provider => 'brewcask', }
+  package { 'dynamodb-local': ensure => latest,  provider => 'brewcask', }
     
   # Gem provider
   package { 'metadata-json-lint': ensure => latest, provider => 'gem', }
