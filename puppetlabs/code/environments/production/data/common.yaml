@@ -1,3 +1,4 @@
 ---
 message: "This node is using common data"
 profiles::atom_ensure: latest
+#profiles::atom_ensure: absent
