@@ -113,7 +113,7 @@ class profiles::packages(
   package { 'hyperclick':              ensure => $atom_ensure, provider => apm, }
   package { 'atom-ide-ui':             ensure => $atom_ensure, provider => apm, }
   package { 'ide-go':                  ensure => $atom_ensure, provider => apm, }
-  package { 'ide-python':                  ensure => $atom_ensure, provider => apm, }
+  package { 'ide-python':              ensure => absent, provider => apm, }
   package { 'intentions':              ensure => $atom_ensure, provider => apm, }
   package { 'intentions-colorpicker':  ensure => $atom_ensure, provider => apm, }
   package { 'intentions-numbers':      ensure => $atom_ensure, provider => apm, }
@@ -121,21 +121,21 @@ class profiles::packages(
   package { 'json-to-go-struct':       ensure => $atom_ensure, provider => apm, }
   package { 'language-ansible':        ensure => $atom_ensure, provider => apm, }
   package { 'last-cursor-position':    ensure => $atom_ensure, provider => apm, }
-  package { 'linter':                  ensure => $atom_ensure, provider => apm, }
-  package { 'linter-ui-default':       ensure => $atom_ensure, provider => apm, }
-  package { 'linter-ansible-syntax':   ensure => $atom_ensure, provider => apm, }
-  package { 'linter-golinter':         ensure => $atom_ensure, provider => apm, }
-  package { 'linter-gotype':           ensure => $atom_ensure, provider => apm, }
-  package { 'linter-packer-validate':  ensure => $atom_ensure, provider => apm, }
-  package { 'linter-vagrant-validate': ensure => $atom_ensure, provider => apm, }
-  package { 'linter-terraform-syntax': ensure => $atom_ensure, provider => apm, }
+  package { 'linter':                  ensure => absent, provider => apm, }
+  package { 'linter-ui-default':       ensure => absent, provider => apm, }
+  package { 'linter-ansible-syntax':   ensure => absent, provider => apm, }
+  package { 'linter-golinter':         ensure => absent, provider => apm, }
+  package { 'linter-gotype':           ensure => absent, provider => apm, }
+  package { 'linter-packer-validate':  ensure => absent, provider => apm, }
+  package { 'linter-vagrant-validate': ensure => absent, provider => apm, }
+  package { 'linter-terraform-syntax': ensure => absent, provider => apm, }
   package { 'language-puppet':         ensure => $atom_ensure, provider => apm, }
   package { 'pretty-json':             ensure => $atom_ensure, provider => apm, }
   package { 'platformio-ide-terminal': ensure => $atom_ensure, provider => apm, }
   package { 'script':                  ensure => $atom_ensure, provider => apm, }
   package { 'terraform-fmt':           ensure => $atom_ensure, provider => apm, }
   package { 'term3':                   ensure => $atom_ensure, provider => apm, }
-  package { 'you-complete-me':         ensure => $atom_ensure, provider => apm, }
+  package { 'you-complete-me':         ensure => absent, provider => apm, }
   package { 'vim-mode-plus':           ensure => $atom_ensure, provider => apm, }
   package { 'ex-mode':                 ensure => $atom_ensure, provider => apm, }
   
