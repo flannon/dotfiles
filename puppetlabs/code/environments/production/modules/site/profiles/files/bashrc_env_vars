@@ -2,5 +2,9 @@
 #  EnnVars
 ##
 if [[ -f ~/.ansible/vault_password ]]; then
-  export ANSIBLE_VAULT_PASSWORD_FILE=~/.ansible/vault_password
+  export ANSIBLE_VAULT_PASSWORD_FILE="${HOME}/.ansible-vault-secrets/vault_password"
 fi
+
+[[ -f ${HOME}/.ansible-vault-secrets/decrypted ]] &&  source ${HOME}/.ansible-vault-secrets/decrypted
+
+[[ -f ${HOME}/.aws/cmk_arn.sh ]] && source ${HOME}/.aws/cmk_arn.sh
