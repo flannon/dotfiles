@@ -12,6 +12,7 @@
 class roles::default {
 
   include profiles
+  include profiles::atom
   include profiles::bashrc
   include profiles::packages
   include profiles::vim
