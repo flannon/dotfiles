@@ -34,6 +34,7 @@ class profiles::atom(
   #package { 'autocomplete-clang':       ensure => $atom_ensure, provider => apm, }
   package { 'autocomplete-json':       ensure => $atom_ensure, provider => apm, }
   package { 'autocomplete-plus':       ensure => $atom_ensure, provider => apm, }
+  package { 'build-cmake':             ensure => $atom_ensure, provider => apm, }
   package { 'busy-signal':             ensure => $atom_ensure, provider => apm, }
   package { 'color-picker':            ensure => $atom_ensure, provider => apm, }
   package { 'declarations':            ensure => $atom_ensure, provider => apm, }
@@ -56,6 +57,7 @@ class profiles::atom(
   package { 'hclfmt':                  ensure => $atom_ensure, provider => apm, }
   package { 'hyperclick':              ensure => $atom_ensure, provider => apm, }
   package { 'atom-ide-ui':             ensure => $atom_ensure, provider => apm, }
+  package { 'ide-cpp':                  ensure => $atom_ensure, provider => apm, }
   package { 'ide-go':                  ensure => $atom_ensure, provider => apm, }
   package { 'ide-python':              ensure => absent, provider => apm, }
   package { 'intentions':              ensure => $atom_ensure, provider => apm, }
@@ -64,6 +66,8 @@ class profiles::atom(
   package { 'json-converter':          ensure => $atom_ensure, provider => apm, }
   package { 'json-to-go-struct':       ensure => $atom_ensure, provider => apm, }
   package { 'language-ansible':        ensure => $atom_ensure, provider => apm, }
+  package { 'language-cpp14':        ensure => $atom_ensure, provider => apm, }
+  package { 'language-puppet':         ensure => $atom_ensure, provider => apm, }
   package { 'last-cursor-position':    ensure => $atom_ensure, provider => apm, }
   package { 'linter':                  ensure => absent, provider => apm, }
   package { 'linter-ui-default':       ensure => absent, provider => apm, }
@@ -73,7 +77,6 @@ class profiles::atom(
   package { 'linter-packer-validate':  ensure => absent, provider => apm, }
   package { 'linter-vagrant-validate': ensure => absent, provider => apm, }
   package { 'linter-terraform-syntax': ensure => absent, provider => apm, }
-  package { 'language-puppet':         ensure => $atom_ensure, provider => apm, }
   package { 'pretty-json':             ensure => $atom_ensure, provider => apm, }
   package { 'platformio-ide-terminal': ensure => $atom_ensure, provider => apm, }
   package { 'script':                  ensure => $atom_ensure, provider => apm, }

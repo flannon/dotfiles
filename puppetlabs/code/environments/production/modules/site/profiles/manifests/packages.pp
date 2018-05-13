@@ -67,20 +67,60 @@ class profiles::packages{
 
   # OpenCV requirments
   # needs `brew tap homebrew/science`
-  package { 'opencv3':              ensure => latest, }
+  #    homebrew/science was depricated and all formula iwere 
+  #    migrated to hombrew-core
+  package { 'opencv3':
+    ensure          => latest, 
+    install_options => [ '-v', '--with-contrib', '--with-ffmpeg', '--with-tbb', '--with-qt', '--c++11', '--with-python3', ],
+  }
+  package { 'opencv@2':                 ensure => latest, }
   package { 'ffmpeg':               ensure => latest, }
   package { 'jpeg':                 ensure => latest, }
   package { 'libtiff':              ensure => latest, }
-  package { 'openxr':               ensure => latest, }
+  package { 'openexr':              ensure => latest, }
   package { 'numpy':                ensure => latest, }
   package { 'tbb':                  ensure => latest, }
   package { 'xz':                   ensure => latest, }
+
+  package { 'llvm':              
+    ensure          => latest, 
+    install_options => ['--with-ocaml', '--with-pyton@2', '--with-toolchain', ],
+  }
+  $clang_version = '6.0.0'
+  $clang_dirs = [ "/usr/local/lib/clang", "/usr/local/lib/clang/${clang_version}", ] 
+  file { $clang_dirs :
+    ensure => 'directory',
+  }
+  # set manually for the moment - need to fix perms
+  #file { '/usr/bin/clangd' :
+  #  ensure => link,
+  #  target => "/usr/local/Cellar/llvm/${clang_version}/bin/clangd",
+  #  owner  => 'root',
+  #  group  =>  'wheel',
+  #}
+  file { '/usr/local/bin/clangd' :
+    ensure => link,
+    target => "/usr/local/Cellar/llvm/${clang_version}0/bin/clangd",
+  }
+  file { "/usr/local/lib/clang/${clang_version}/include" :
+    ensure => link,
+    target => "/usr/local/Cellar/llvm/${clang_version}/lib/clang/${clang_version}/include",
+  }
+  # set manually for the moment - need to fix perms
+  #file { '/usr/include/c++/v1' :
+  #  ensure => link,
+  #  target => "/usr/local/Cellar/llvm/${clang_version}/include/c++/v1",
+  #}
+
+
+  package { 'ocaml':              ensure => latest, }
   
   # brewcask provider
   package { 'java':           ensure => present, provider => 'brewcask', }
   #package { 'kap':     ensure => present, provider => 'brewcask', }
-  package { 'vagrant':        ensure => latest,  provider => 'brewcask', }
   package { 'dynamodb-local': ensure => latest,  provider => 'brewcask', }
+  package { 'vagrant':        ensure => latest,  provider => 'brewcask', }
+  package { 'visual-studio-code': ensure => latest,  provider => 'brewcask', }
     
   # Gem provider
   package { 'metadata-json-lint': ensure => latest, provider => 'gem', }
