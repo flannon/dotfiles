@@ -62,7 +62,12 @@ class profiles::bashrc {
   concat::fragment { 'bashrc_path' :
     target => $bashrc,
     source => "puppet:///modules/profiles/bashrc_path_and_evals",
-    order  => '30',
+    order  => '31',
+  }
+  concat::fragment { 'bashrc_pyenv' :
+    target => $bashrc,
+    source => "puppet:///modules/profiles/bashrc_pyenv",
+    order  => '99',
   }
 
 }

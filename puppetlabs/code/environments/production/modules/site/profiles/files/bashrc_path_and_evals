@@ -1,11 +1,11 @@
 ##
 #  path and evals
 ##
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+#export PYENV_ROOT="$HOME/.pyenv"
+#export PATH="$PYENV_ROOT/bin:$PATH"
+#eval "$(pyenv init -)"
 
-eval "$(pyenv virtualenv-init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 export GOPATH=$HOME/Documents/go
 PATH=/usr/local/bin:/usr/local/sbin:$PATH:~/bin:.
