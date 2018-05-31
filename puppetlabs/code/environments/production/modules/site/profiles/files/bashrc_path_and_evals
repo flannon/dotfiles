@@ -1,17 +1,23 @@
 ##
 #  path and evals
 ##
+
+# pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
 eval "$(pyenv virtualenv-init -)"
 
+# Run git from hub
+eval "$(hub alias -s)"
+
+# Golang
 export GOPATH=$HOME/Documents/go
 PATH=/usr/local/bin:/usr/local/sbin:$PATH:~/bin:.
 
 PATH="/opt/puppetlabs/bin/:$PATH"
 
+# rbenv
 export PATH="$GOPATH/bin:$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
