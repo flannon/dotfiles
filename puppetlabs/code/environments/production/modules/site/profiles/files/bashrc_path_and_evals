@@ -2,12 +2,6 @@
 #  path and evals
 ##
 
-# pyenv
-#export PYENV_ROOT="$HOME/.pyenv"
-#export PATH="$PYENV_ROOT/bin:$PATH"
-#eval "$(pyenv init -)"
-#eval "$(pyenv virtualenv-init -)"
-
 # Run git from hub
 eval "$(hub alias -s)"
 
