@@ -41,6 +41,7 @@ class profiles::packages{
   package { 'hub':                  ensure => latest, }
   package { 'jenv':                 ensure => latest, }
   package { 'jq':                   ensure => latest, }
+  package { 'kompose':                   ensure => latest, }
   package { 'lua':                  ensure => latest, }
   package { 'macvim':               ensure => latest, }
   package { 'makedepend':           ensure => latest, }
@@ -64,6 +65,7 @@ class profiles::packages{
   package { 'sqlite':               ensure => present, }
   package { 'terraform':            ensure => present, }
   package { 'wget':                 ensure => latest, }
+  package { 'yq':                   ensure => latest, }
 
   # OpenCV requirments
   # needs `brew tap homebrew/science`
