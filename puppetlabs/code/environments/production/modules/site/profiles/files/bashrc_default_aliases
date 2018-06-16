@@ -6,6 +6,8 @@ alias lo=exit
 alias ls="ls -F"
 alias rm="rm -i"
 alias ssh="ssh -o VisualHostKey=yes"
+[[ $(uname) == Darwin ]] && alias wakeup="caffeinate -u -t 1
+"
 [[ $(uname) == Linux ]] && alias more=less
 
 set -o vi
