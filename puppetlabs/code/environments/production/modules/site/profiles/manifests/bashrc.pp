@@ -10,7 +10,20 @@
 #
 class profiles::bashrc {
 
-  notice("Configuring .bashrc for ${identity['user']}")
+  #notice("Configuring .bashrc for ${identity['user']}")
+  alert("Configuring .bashrc for ${identity['user']}")
+
+
+  if $facts['system_profiler']['model_name'] == 'MacBook Pro' {
+    alert("system-profiler.model_name:  ${facts['system_profiler']['model_name']}")
+  }
+
+  #case $facts['system_profiler']['model_name'] {
+  #  'MacBook Pro' :  { alert("case: $facts['system_profiler']['model_na    me']")}
+  #  default :           { alert("$facts['os']['name'] not supported for minishift at this time") }
+  #}
+
+
   File {
     group => 'staff',
     owner => $identity['user'],
