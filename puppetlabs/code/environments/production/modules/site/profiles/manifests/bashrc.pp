@@ -18,10 +18,12 @@ class profiles::bashrc {
     alert("system-profiler.model_name:  ${facts['system_profiler']['model_name']}")
   }
 
-  #case $facts['system_profiler']['model_name'] {
-  #  'MacBook Pro' :  { alert("case: $facts['system_profiler']['model_na    me']")}
-  #  default :           { alert("$facts['os']['name'] not supported for minishift at this time") }
-  #}
+  case $facts['system_profiler']['model_name'] {
+    #'MacBook Pro' :  { alert("case: $facts['system_profiler']['model_name']")}
+    'MacBook Pro' :  { alert("case: model name is MacBook Pro, os.family is ${os['family']}")}
+    'Mac Pro' :  { alert("case: model name is Mac---- Pro")}
+    default :           { alert("$facts['os']['name'] not supported for minishift at this time") }
+  }
 
 
   File {
