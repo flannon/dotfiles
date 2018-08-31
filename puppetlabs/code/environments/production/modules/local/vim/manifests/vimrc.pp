@@ -1,6 +1,6 @@
 #
 define vim::vimrc (
-  String $vimuser = $title,
+  String $vim_user = $title,
   String $vim_group = 'staff',
   String $home_dir  = "/Users/${title}",
 ){
