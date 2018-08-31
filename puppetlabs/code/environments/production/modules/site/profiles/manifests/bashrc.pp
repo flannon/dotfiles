@@ -15,20 +15,20 @@ class profiles::bashrc {
 
 
   #if $facts['system_profiler']['model_name'] == 'MacBook Pro' {
-  #  alert("system-profiler.model_name:  ${facts['system_profiler']['model_name']}")
+  #  alert("system-profiler.model_name--:  ${facts['system_profiler']['model_name']}")
   #}
 
   case $facts['system_profiler']['model_name'] {
-    #'MacBook Pro' :  { alert("case: $facts['system_profiler']['model_name']")}
     'MacBook Pro' :  { 
-      alert("case: model name is MacBook Pro, os.family is ${os['family']}")
+      alert("model_name:  ${facts['system_profiler']['model_name']}")
       $minishift_cpus = 2
       $minishift_memory = 4096
       $minishift_vm_driver = "virtualbox"
       $minishift_disk_size = "20GB"
       alert("cpus, $minishift_cpus, memory, $minishift_memory, vm-driver, $minishift_vm_driver")
     }
-    'Mac Pro' :  { alert("case: model name is Mac---- Pro")
+    'Mac Pro' :  { 
+      alert("case: model name is ${facts['system_profiler']['model_name']}, os.family is ${os['family']}")
       $minishift_cpus = 8
       $minishift_memory = 8192
       $minishift_vm_driver = "virtualbox"

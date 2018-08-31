@@ -119,9 +119,9 @@ class profiles::packages{
   
   # brewcask provider
   package { 'java':           ensure => present, provider => 'brewcask', }
-  #package { 'kap':     ensure => present, provider => 'brewcask', }
+  package { 'kap':            ensure => present, provider => 'brewcask', }
   package { 'dynamodb-local': ensure => latest,  provider => 'brewcask', }
-  #package { 'minishift': ensure => latest,  provider => 'brewcask', }
+  #package { 'minishift':     ensure => latest,  provider => 'brewcask', }
   package { 'vagrant':        ensure => latest,  provider => 'brewcask', }
   package { 'visual-studio-code': ensure => latest,  provider => 'brewcask', }
     
