@@ -12,6 +12,7 @@ alias ls="ls -F"
 alias rm="rm -i"
 alias ssh="ssh -o VisualHostKey=yes"
 [[ $(uname -s) == Darwin ]] && alias wakeup="caffeinate -u -t 1"
+[[ $(uname -s) == Darwin ]] && alias sleepnow="pmset displaysleephow"
 [[ $(uname -s) == Linux ]] && alias more=less
 
 set -o vi
