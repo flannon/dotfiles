@@ -1,5 +1,0 @@
-##
-#  vbox aliases
-##
-alias vbox=$(which vboxmanage)
-
