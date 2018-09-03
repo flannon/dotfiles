@@ -89,7 +89,7 @@ fi
 
 [[ -f ${HOME}/.ansible-vault-secrets/decrypted ]] &&  source ${HOME}/.ansible-vault-secrets/decrypted
 
-[[ -f ${HOME}/.aws/cmk_arn.sh ]] && source ${HOME}/.aws/cmk_arn.sh
+[[ -f ${HOME}/.aws/cmk_arnrc ]] && source ${HOME}/.aws/cmk_arnrc
 
 [[ -f ${HOME}/.secrets/plaintext.yaml ]] && \
   export MINISHIFT_USERNAME=$( yq r ${HOME}/.secrets/plaintext.yaml MINISHIFT_USERNAME) && \
