@@ -130,7 +130,7 @@ class profiles::packages{
   package { 'semantic_puppet': ensure        => latest, provider => 'gem', }
 
   # pip provider
-  package { 'awscli': ensure                    => latest, provider => 'pip', 
+  package { 'awscli': ensure                    => latest, provider => 'pip', }
 
 
  }
