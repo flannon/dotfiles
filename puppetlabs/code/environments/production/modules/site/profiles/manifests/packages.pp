@@ -41,7 +41,7 @@ class profiles::packages{
   package { 'hub':                  ensure      => latest, }
   package { 'jenv':                 ensure      => latest, }
   package { 'jq':                   ensure      => latest, }
-  package { 'kompose':                   ensure => latest, }
+  package { 'kompose':              ensure      => latest, }
   package { 'lua':                  ensure      => latest, }
   package { 'macvim':               ensure      => latest, }
   package { 'makedepend':           ensure      => latest, }
@@ -50,6 +50,7 @@ class profiles::packages{
   package { 'mysql':                ensure      => latest, }
   package { 'node':                 ensure      => latest, }
   package { 'openssl':              ensure      => latest, }
+  package { 'openshift-cli':        ensure      => latest, }
   package { 'packer':               ensure      => latest, }
   package { 'pkg-config':           ensure      => latest, }
   package { 'pyenv':                ensure      => latest, }
