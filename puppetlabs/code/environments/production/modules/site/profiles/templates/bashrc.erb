@@ -89,7 +89,6 @@ fi
 
 [[ -f ${HOME}/.ansible-vault-secrets/decrypted ]] &&  source ${HOME}/.ansible-vault-secrets/decrypted
 
-[[ -f ${HOME}/.aws/cmk_arnrc ]] && source ${HOME}/.aws/cmk_arnrc
 
 ##
 #  path and evals
@@ -114,7 +113,8 @@ eval "$(rbenv init -)"
 #  export MINISHIFT_PASSWORD=$( yq r ${HOME}/.secrets/plaintext.yaml MINISHIFT_PASSWORD)
   
 # Get CMK_ARN and CMK_ENCRYPTION_SDK endpoints
-source ${HOME}/.secrets/cmk_arnrc
+#[[ -f ${HOME}/.aws/cmk_arnrc ]] && source ${HOME}/.aws/cmk_arnrc
+[[ -f ${HOME}/.secrets/cmk_arnrc ]] && source ${HOME}/.secrets/cmk_arnrc
 
 # Set minishift config variables
 [[ -d ${HOME}/.minishift ]] && \
