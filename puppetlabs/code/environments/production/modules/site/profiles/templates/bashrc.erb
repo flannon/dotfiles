@@ -91,10 +91,6 @@ fi
 
 [[ -f ${HOME}/.aws/cmk_arnrc ]] && source ${HOME}/.aws/cmk_arnrc
 
-[[ -f ${HOME}/.secrets/plaintext.yaml ]] && \
-  export MINISHIFT_USERNAME=$( yq r ${HOME}/.secrets/plaintext.yaml MINISHIFT_USERNAME) && \
-  export MINISHIFT_PASSWORD=$( yq r ${HOME}/.secrets/plaintext.yaml MINISHIFT_PASSWORD)
-  
 ##
 #  path and evals
 ##
@@ -114,8 +110,16 @@ PATH="/opt/puppetlabs/bin/:$PATH"
 export PATH="$GOPATH/bin:$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+#  export MINISHIFT_USERNAME=$( yq r ${HOME}/.secrets/plaintext.yaml MINISHIFT_USERNAME) && \
+#  export MINISHIFT_PASSWORD=$( yq r ${HOME}/.secrets/plaintext.yaml MINISHIFT_PASSWORD)
+  
+# Get CMK_ARN and CMK_ENCRYPTION_SDK endpoints
+source ${HOME}/.secrets/cmk_arnrc
+
 # Set minishift config variables
 [[ -d ${HOME}/.minishift ]] && \
+  export MINISHIFT_USERNAME="$(${HOME}/.secrets/cmk_secret.py --decrypt MINISHIFT_USERNAME)"
+  export MINISHIFT_PASSWORD=$(${HOME}/.secrets/cmk_secret.py --decrypt MINISHIFT_PASSWORD)
   export MINISHIFT_CPUS=<%= @minishift_cpus %> && \
   export MINISHIFT_MEMORY=<%= @minishift_memory %> && \
   export MINISHIFT_VM_DRIVER=<%= @minishift_vm_driver %>
