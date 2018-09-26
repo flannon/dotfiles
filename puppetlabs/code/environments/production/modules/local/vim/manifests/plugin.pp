@@ -2,8 +2,8 @@
 define vim::plugin (
   String $plugin = $title,
   String $vim_group = 'staff',
-  String $vimuser = $identity['user'],
-  String $home_dir = "/Users/${vimuser}",
+  String $vim_user = $identity['user'],
+  String $home_dir = "/Users/${vim_user}",
 ){
 
   notice("From the defined type: $title")
