@@ -36,6 +36,7 @@ class profiles::packages{
   package { 'go':                   ensure => latest, }
   package { 'gotags':               ensure => latest, }
   package { 'gradle':               ensure => latest, }
+  package { 'grafana':              ensure => latest, }
   package { 'groovy':               ensure => latest, }
   package { 'htop':                 ensure => latest, }
   package { 'hub':                  ensure => latest, }
