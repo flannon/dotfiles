@@ -27,7 +27,7 @@ class profiles::packages{
   # run ~/Library/Caches/Homebrew/delve-?.?.?/scripts/gencert.sh
   # and enter your pasword to enable delve
   # then go-delve/delve/delve will work.
-  package { 'go-delve/delve/delve': ensure      => latest, }
+  #package { 'go-delve/delve/delve': ensure      => latest, }
   package { 'dnsmasq':              ensure      => latest, }
   package { 'docker-machine':       ensure      => latest, }
   #package { 'dynamodb-local':       ensure     => latest, }
@@ -41,6 +41,7 @@ class profiles::packages{
   package { 'hub':                  ensure      => latest, }
   package { 'jenv':                 ensure      => latest, }
   package { 'jq':                   ensure      => latest, }
+  package { 'kubectl':              ensure      => latest, }
   package { 'kompose':              ensure      => latest, }
   package { 'lua':                  ensure      => latest, }
   package { 'macvim':               ensure      => latest, }
