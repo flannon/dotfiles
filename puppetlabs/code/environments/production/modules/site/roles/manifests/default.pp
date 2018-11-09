@@ -14,6 +14,8 @@ class roles::default {
   include profiles
   include profiles::atom
   include profiles::bashrc
+  include profiles::minikuberc
+  include profiles::minishiftrc
   include profiles::packages
   include profiles::vim
 
