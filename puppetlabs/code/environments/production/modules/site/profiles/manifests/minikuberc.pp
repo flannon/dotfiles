@@ -42,7 +42,7 @@ class profiles::minikuberc {
   $minikuberc = "/Users/${identity['user']}/.minikuberc"
   file { $minikuberc :
     ensure  => file,
-    mode    => '0600',
+    mode    => '0644',
     content => template("profiles/minikuberc.erb"),
   }
 

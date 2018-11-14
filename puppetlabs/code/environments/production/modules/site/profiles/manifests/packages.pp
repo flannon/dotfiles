@@ -118,12 +118,13 @@ class profiles::packages{
   #}
 
 
-  package { 'ocaml':              ensure => latest, }
+  package { 'ocaml':          ensure => latest, }
   
   # brewcask provider
   package { 'java':           ensure => present, provider => 'brewcask', }
   #package { 'kap':     ensure => present, provider => 'brewcask', }
   package { 'dynamodb-local': ensure => latest,  provider => 'brewcask', }
+  package { 'minikube':       ensure => latest,  provider => 'brewcask', }
   package { 'vagrant':        ensure => latest,  provider => 'brewcask', }
   package { 'visual-studio-code': ensure => latest,  provider => 'brewcask', }
     
