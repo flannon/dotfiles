@@ -116,6 +116,12 @@ eval "$(rbenv init -)"
 #[[ -f ${HOME}/.aws/cmk_arnrc ]] && source ${HOME}/.aws/cmk_arnrc
 [[ -f ${HOME}/.secrets/cmk_arnrc ]] && source ${HOME}/.secrets/cmk_arnrc
 
+# openshift config
+eval $(minishift oc-env)
+eval $(minishift docker-env) 2>/dev/null # this is heavy handed, but it 
+                                         # keeps things quite for the moment
+
+>>>>>>> 698688a22f5fbe65957132bd2d8e6097f5c3494e
 # start the ssh agent
 eval $(ssh-agent -s)
 
