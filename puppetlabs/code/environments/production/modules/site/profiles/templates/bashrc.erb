@@ -129,3 +129,6 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 alias vi=vim
+
+[[ -f ${HOME}/.ssh/brooklyn-ca-bundle.trust.crt ]] && \
+  export OS_CACERT="${HOME}/.ss/brooklyn-ca-bundle.trust.crt"
