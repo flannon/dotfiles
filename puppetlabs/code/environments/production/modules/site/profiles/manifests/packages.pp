@@ -132,6 +132,9 @@ class profiles::packages{
   package { 'metadata-json-lint': ensure => latest, provider => 'gem', }
   package { 'semantic_puppet':    ensure => latest, provider => 'gem', }
 
+  # Pip provider
+  package { 'python-openstackclient': ensure => latest, provider => 'pip', }
+
 
  }
   
