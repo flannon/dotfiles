@@ -24,6 +24,7 @@ class profiles::bashrc {
   file { $bashrc :
     ensure  => file,
     mode    => '0600',
+    replace => true,
     content => template("profiles/bashrc.erb"),
   }
 

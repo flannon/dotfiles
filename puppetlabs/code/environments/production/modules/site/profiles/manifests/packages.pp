@@ -29,8 +29,7 @@ class profiles::packages{
   # then go-delve/delve/delve will work.
   #package { 'go-delve/delve/delve': ensure => latest, }
   package { 'dnsmasq':              ensure => latest, }
-  package { 'docker-machine':       ensure => latest, }
-  #package { 'dynamodb-local':       ensure => latest, }
+  #package { 'docker-machine':       ensure => latest, }
   package { 'git':                  ensure => latest, }
   package { 'gnupg2':               ensure => latest, }
   package { 'go':                   ensure => latest, }
@@ -43,7 +42,7 @@ class profiles::packages{
   package { 'jenv':                 ensure => latest, }
   package { 'jq':                   ensure => latest, }
   package { 'kompose':              ensure => latest, }
-  package { 'kubectl':              ensure => latest, }
+  package { 'kubernetes-cli':       ensure => latest, }
   package { 'lua':                  ensure => latest, }
   package { 'macvim':               ensure => latest, }
   package { 'makedepend':           ensure => latest, }
