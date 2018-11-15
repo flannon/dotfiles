@@ -12,7 +12,7 @@ alias ls="ls -F"
 alias rm="rm -i"
 alias ssh="ssh -o VisualHostKey=yes"
 [[ $(uname -s) == Darwin ]] && alias wakeup="caffeinate -u -t 1"
-[[ $(uname -s) == Darwin ]] && alias sleepnow="pmset displaysleephow"
+[[ $(uname -s) == Darwin ]] && alias sleepnow="pmset displaysleepnow"
 [[ $(uname -s) == Linux ]] && alias more=less
 
 set -o vi
@@ -109,22 +109,12 @@ PATH="/opt/puppetlabs/bin/:$PATH"
 export PATH="$GOPATH/bin:$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
-#  export MINISHIFT_USERNAME=$( yq r ${HOME}/.secrets/plaintext.yaml MINISHIFT_USERNAME) && \
-#  export MINISHIFT_PASSWORD=$( yq r ${HOME}/.secrets/plaintext.yaml MINISHIFT_PASSWORD)
-  
 # Get CMK_ARN and CMK_ENCRYPTION_SDK endpoints
 #[[ -f ${HOME}/.aws/cmk_arnrc ]] && source ${HOME}/.aws/cmk_arnrc
 [[ -f ${HOME}/.secrets/cmk_arnrc ]] && source ${HOME}/.secrets/cmk_arnrc
 
-# openshift config
-eval $(minishift oc-env)
-eval $(minishift docker-env) 2>/dev/null # this is heavy handed, but it 
-                                         # keeps things quite for the moment
-
->>>>>>> 698688a22f5fbe65957132bd2d8e6097f5c3494e
 # start the ssh agent
 eval $(ssh-agent -s)
-
 
 ##
 #  pyenv
@@ -134,7 +124,13 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
+# aliases
 alias vi=vim
+[[ -f ${HOME}/.minikuberc ]] && alias kubecon="source ${HOME}/.minikuberc"
+[[ -f ${HOME}/.minishiftrc ]] && \
+  alias shiftcon="source ${HOME}/.minishiftrc"
 
+#  openstack
 [[ -f ${HOME}/.ssh/brooklyn-ca-bundle.trust.crt ]] && \
   export OS_CACERT="${HOME}/.ssh/brooklyn-ca-bundle.trust.crt"
+
