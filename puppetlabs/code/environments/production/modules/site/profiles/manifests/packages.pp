@@ -65,7 +65,6 @@ class profiles::packages{
   package { 'readline':             ensure => latest, }
   package { 'ruby':                 ensure => latest, }
   package { 'ruby-build':           ensure => latest, }
-  package { 'chellcheck':           ensure => present, }
   package { 'shellcheck':           ensure => present, }
   package { 'sqlite':               ensure => present, }
   package { 'terraform':            ensure => present, }
