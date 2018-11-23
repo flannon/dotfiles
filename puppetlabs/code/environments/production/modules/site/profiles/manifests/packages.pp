@@ -20,6 +20,7 @@ class profiles::packages{
   package { 'ant':       ensure => latest, }
   package { 'asciinema': ensure => latest, }
   package { 'autoconf':  ensure => latest, }
+  package { 'circleci':  ensure => latest, }
   package { 'cmake':     ensure => latest, }
   package { 'curl':      ensure => latest, }
   package { 'dep':       ensure => latest, }
