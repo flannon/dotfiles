@@ -50,7 +50,7 @@ class profiles::packages{
   package { 'maven':                ensure => latest, }
   package { 'mongodb':              ensure => latest, }
   package { 'mysql':                ensure => latest, }
-  package { 'node':                 ensure => latest, }
+  #package { 'node':                 ensure => latest, }
   package { 'openshift-cli':        ensure => latest, }
   package { 'openssl':              ensure => latest, }
   package { 'packer':               ensure => latest, }
