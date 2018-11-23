@@ -17,6 +17,8 @@ set -o vi
 # OS specific aliases
 [[ $(uname -s) == Darwin ]] && alias wakeup="caffeinate -u -t 1"
 [[ $(uname -s) == Darwin ]] && alias sleepnow="pmset displaysleepnow"
+[[ $(uname -s) == Darwin ]] && \
+  alias burp='brew update && brew upgrade && brew cleanup'
 [[ $(uname -s) == Linux ]] && alias more=less
 
 
