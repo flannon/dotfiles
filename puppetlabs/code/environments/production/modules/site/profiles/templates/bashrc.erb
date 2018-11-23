@@ -17,8 +17,8 @@ set -o vi
 # OS specific aliases
 [[ $(uname -s) == Darwin ]] && alias wakeup="caffeinate -u -t 1"
 [[ $(uname -s) == Darwin ]] && alias sleepnow="pmset displaysleepnow"
-[[ $(uname -s) == Darwin ]] && \
-  alias burp='brew update && brew upgrade && brew cleanup'
+#[[ $(uname -s) == Darwin ]] && \
+#  alias burp='brew update && brew upgrade && brew cleanup'
 [[ $(uname -s) == Linux ]] && alias more=less
 
 
@@ -104,23 +104,22 @@ eval $(ssh-agent -s)
 [[ -d ${HOME}/Documents/go ]] && \
 export GOPATH=${HOME}/Documents/go
 
-
-# Get CMK_ARN and CMK_ENCRYPTION_SDK endpoints
-#[[ -f ${HOME}/.aws/cmk_arnrc ]] && source ${HOME}/.aws/cmk_arnrc
-[[ -f ${HOME}/.secrets/cmk_arnrc ]] && source ${HOME}/.secrets/cmk_arnrc
-
 PATH=/usr/local/bin:/usr/local/sbin:$PATH:~/bin:.
 [[ -d /opt/puppetlabs/bin ]] && PATH="/opt/puppetlabs/bin/:$PATH"
 
 #  pyenv
-
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 
+# Get CMK_ARN and CMK_ENCRYPTION_SDK endpoints
+[[ -f ${HOME}/.secrets/cmk_arnrc ]] && source ${HOME}/.secrets/cmk_arnrc
+[[ -f ${HOME}/.secrets/cmk_secrets.yaml ]] && \
+  export DOCKER_HUB_USER="$(${HOME}/.secrets/cmk_secret.py --decrypt DOCKER_HUB_USER)" && \
+  export DOCKER_HUB_PASSWORD="$(${HOME}/.secrets/cmk_secret.py --decrypt DOCKER_HUB_PASSWORD)" 
+  
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
-# minishift aliases
 # Set minishift config variables
 [[ -d ${HOME}/.minishift ]] && \
   export MINISHIFT_USERNAME="$(${HOME}/.secrets/cmk_secret.py --decrypt MINISHIFT_USERNAME)"
