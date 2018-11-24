@@ -128,8 +128,6 @@ eval "$(pyenv virtualenv-init -)"
   export MINISHIFT_MEMORY=<%= @minishift_memory %> && \
   export MINISHIFT_VM_DRIVER=<%= @minishift_vm_driver %> \
   export MINISHIFT_DISK_SIZE=<%= @minishift_vm_disk_size %>
-  export MINISHIFT_USERNAME="$(${HOME}/.secrets/cmk_secret.py --decrypt MINISHIFT_USERNAME)"
-  export MINISHIFT_PASSWORD=$(${HOME}/.secrets/cmk_secret.py --decrypt MINISHIFT_PASSWORD)
 
 # openshift config
 minishift status &>/dev/null
