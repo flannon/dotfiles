@@ -130,7 +130,8 @@ eval "$(pyenv virtualenv-init -)"
   export MINISHIFT_DISK_SIZE=<%= @minishift_vm_disk_size %>
 
 # openshift config
-minishift status &>/dev/null
+minishift status | \
+egrep "Minishift:[[:space:]][[:space:]]Running" &>/dev/null
 [[ $? == 0 ]] && eval $(minishift docker-env) && eval $(minishift oc-env)
 
 #  openstack env vars
