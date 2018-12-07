@@ -2,6 +2,8 @@
 
 set -e
 
+export PATH="/usr/local/opt/ruby/bin:/usr/local/lib/ruby/gems/2.5.0/bin:$PATH"
+
 BIN=~/bin
 SUDO_USER=$(who am i | awk '{print $1}')
 FULL_PATH="$(cd "$(dirname "$0")" && pwd)/$(basename "$0")"
@@ -78,6 +80,8 @@ if [[ $(command -v puppet) ]]; then
   MANIFEST=${ENVIRONMENTPATH}/${ENVIRONMENT}/manifests/default.pp
   #MANIFEST=${HOME}/.puppetlabs/etc/code/environments/production/manifests/default.pp
 
+  echo $(which ruby)
+  ruby --version
   cd ${ENVIRONMENTPATH}/${ENVIRONMENT}
   r10k puppetfile install --moduledir modules/thirdparty
   cd $OLDPWD

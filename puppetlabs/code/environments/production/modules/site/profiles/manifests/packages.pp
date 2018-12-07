@@ -20,6 +20,7 @@ class profiles::packages{
   package { 'ant':       ensure => latest, }
   package { 'asciinema': ensure => latest, }
   package { 'autoconf':  ensure => latest, }
+  package { 'circleci':  ensure => latest, }
   package { 'cmake':     ensure => latest, }
   package { 'curl':      ensure => latest, }
   package { 'dep':       ensure => latest, }
@@ -29,8 +30,7 @@ class profiles::packages{
   # then go-delve/delve/delve will work.
   #package { 'go-delve/delve/delve': ensure => latest, }
   package { 'dnsmasq':              ensure => latest, }
-  package { 'docker-machine':       ensure => latest, }
-  #package { 'dynamodb-local':       ensure => latest, }
+  #package { 'docker-machine':       ensure => latest, }
   package { 'git':                  ensure => latest, }
   package { 'gnupg2':               ensure => latest, }
   package { 'go':                   ensure => latest, }
@@ -50,7 +50,7 @@ class profiles::packages{
   package { 'maven':                ensure => latest, }
   package { 'mongodb':              ensure => latest, }
   package { 'mysql':                ensure => latest, }
-  package { 'node':                 ensure => latest, }
+  #package { 'node':                 ensure => latest, }
   package { 'openshift-cli':        ensure => latest, }
   package { 'openssl':              ensure => latest, }
   package { 'packer':               ensure => latest, }
@@ -65,6 +65,7 @@ class profiles::packages{
   package { 'readline':             ensure => latest, }
   package { 'ruby':                 ensure => latest, }
   package { 'ruby-build':           ensure => latest, }
+  package { 'shellcheck':           ensure => present, }
   package { 'sqlite':               ensure => present, }
   package { 'terraform':            ensure => present, }
   package { 'wget':                 ensure => latest, }
@@ -131,6 +132,9 @@ class profiles::packages{
   # Gem provider
   package { 'metadata-json-lint': ensure => latest, provider => 'gem', }
   package { 'semantic_puppet':    ensure => latest, provider => 'gem', }
+
+  # Pip provider
+  package { 'python-openstackclient': ensure => latest, provider => 'pip', }
 
 
  }

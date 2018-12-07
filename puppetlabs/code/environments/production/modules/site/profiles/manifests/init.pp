@@ -9,6 +9,10 @@
 # Copyright 2017 Your name here, unless otherwise noted.
 #
 class profiles {
+  File {
+    group => 'staff',
+    owner => $identity['user'],
+  }
 
 
 }

@@ -14,9 +14,10 @@ class profiles::bashrc {
   alert("Configuring .bashrc for ${identity['user']}")
 
 
-  #if $facts['system_profiler']['model_name'] == 'MacBook Pro' {
-  #  alert("system-profiler.model_name--:  ${facts['system_profiler']['model_name']}")
-  #}
+  File {
+    group => 'staff',
+    owner => $identity['user'],
+  }
 
   case $facts['system_profiler']['model_name'] {
     'MacBook Pro' :  { 
@@ -39,17 +40,12 @@ class profiles::bashrc {
     default :           { alert("$facts['os']['name'] not supported for minishift at this time") }
   }
 
-
-  File {
-    group => 'staff',
-    owner => $identity['user'],
-  }
-
   # set up .bashrc
   $bashrc = "/Users/${identity['user']}/.bashrc"
   file { $bashrc :
     ensure  => file,
     mode    => '0600',
+    replace => true,
     content => template("profiles/bashrc.erb"),
   }
 

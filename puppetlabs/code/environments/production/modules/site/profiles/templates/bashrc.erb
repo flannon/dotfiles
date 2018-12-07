@@ -3,23 +3,26 @@
 #  and managed by puppet. 
 ##
 
-##
 #  default aliases
-##
 alias c=clear
 alias lo=exit
 alias ls="ls -F"
 alias rm="rm -i"
 alias ssh="ssh -o VisualHostKey=yes"
-[[ $(uname -s) == Darwin ]] && alias wakeup="caffeinate -u -t 1"
-[[ $(uname -s) == Darwin ]] && alias sleepnow="pmset displaysleephow"
-[[ $(uname -s) == Linux ]] && alias more=less
+alias vi=vim
+alias vbox=$(which vboxmanage)
 
 set -o vi
 
-##
+# OS specific aliases
+[[ $(uname -s) == Darwin ]] && alias wakeup="caffeinate -u -t 1"
+[[ $(uname -s) == Darwin ]] && alias sleepnow="pmset displaysleepnow"
+#[[ $(uname -s) == Darwin ]] && \
+#  alias burp='brew update && brew upgrade && brew cleanup'
+[[ $(uname -s) == Linux ]] && alias more=less
+
+
 #  AWS aliases
-##
 alias ec2-connect="ssh -i ~/.ssh/dlts-aws-flannon.pem"
 alias ec2-scp="scp -i ~/.ssh/dlts-aws-flannon.pem"
 alias cfn="aws cloudformation"
@@ -29,8 +32,6 @@ alias cfn="aws cloudformation"
 
 alias ec2-frankfurt="ssh -i ~/.ssh/dlts-aws-frankfurt-flannon.pem"
 
-alias jenkins-dev="ec2-connect ec2-user@jenkins-dev.dlts.org"
-alias nexus-dev="ec2-connect ec2-user@nexus-dev.dlts.org"
 
 ##
 #  dlib aliases
@@ -70,19 +71,16 @@ alias miller="ssh -l dlts dl-miller.bobst.nyu.edu"
 alias nadar="ssh -l dlts dl-nadar.bobst.nyu.edu"
 alias taro="ssh -l dlts dl-taro.bobst.nyu.edu"
 alias pc01="ssh -l dlts dlts-pc01.bobst.nyu.edu"
+alias jenkins-dev="ec2-connect ec2-user@jenkins-dev.dlts.org"
+alias nexus-dev="ec2-connect ec2-user@nexus-dev.dlts.org"
+
 # Preservation aliases
 alias afc-macpro="ssh -l dlts afc-macpro.bobst.nyu.edu"
 alias video-lab="ssh -l dlts video-lab.bobst.nyu.edu"
 alias video-lab2="ssh -l dlts video2-lab.bobst.nyu.edu"
 
-##
-#  vbox aliases
-##
-alias vbox=$(which vboxmanage)
 
-##
-#  Env Vars
-##
+#  ansible vault vars
 if [[ -f ~/.ansible/vault_password ]]; then
   export ANSIBLE_VAULT_PASSWORD_FILE="${HOME}/.ansible-vault-secrets/vault_password"
 fi
@@ -90,132 +88,139 @@ fi
 [[ -f ${HOME}/.ansible-vault-secrets/decrypted ]] &&  source ${HOME}/.ansible-vault-secrets/decrypted
 
 
-##
 #  path and evals
-##
 
 # Run git from hub
 eval "$(hub alias -s)"
+
+# rbenv
+export PATH="$GOPATH/bin:$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# start the ssh agent
+eval $(ssh-agent -s)
 
 # Golang
 [[ -d ${HOME}/Documents/go ]] && \
 export GOPATH=${HOME}/Documents/go
 
 PATH=/usr/local/bin:/usr/local/sbin:$PATH:~/bin:.
+[[ -d /opt/puppetlabs/bin ]] && PATH="/opt/puppetlabs/bin/:$PATH"
 
-PATH="/opt/puppetlabs/bin/:$PATH"
+#  pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 
-# rbenv
-export PATH="$GOPATH/bin:$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
-#  export MINISHIFT_USERNAME=$( yq r ${HOME}/.secrets/plaintext.yaml MINISHIFT_USERNAME) && \
-#  export MINISHIFT_PASSWORD=$( yq r ${HOME}/.secrets/plaintext.yaml MINISHIFT_PASSWORD)
-  
 # Get CMK_ARN and CMK_ENCRYPTION_SDK endpoints
-#[[ -f ${HOME}/.aws/cmk_arnrc ]] && source ${HOME}/.aws/cmk_arnrc
 [[ -f ${HOME}/.secrets/cmk_arnrc ]] && source ${HOME}/.secrets/cmk_arnrc
+[[ -f ${HOME}/.secrets/cmk_secrets.yaml ]] && \
+  export DOCKER_HUB_USER="$(${HOME}/.secrets/cmk_secret.py --decrypt DOCKER_HUB_USER)" && \
+  export DOCKER_HUB_PASSWORD="$(${HOME}/.secrets/cmk_secret.py --decrypt DOCKER_HUB_PASSWORD)" 
+  
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # Set minishift config variables
-export MINISHIFT_USERNAME="$(${HOME}/.secrets/cmk_secret.py --decrypt MINISHIFT_USERNAME)"
-export MINISHIFT_PASSWORD=$(${HOME}/.secrets/cmk_secret.py --decrypt MINISHIFT_PASSWORD)
-export MINISHIFT_CPUS=<%= @minishift_cpus %> 
-export MINISHIFT_MEMORY=<%= @minishift_memory %> 
-export MINISHIFT_VM_DRIVER=<%= @minishift_vm_driver %>
-export MINISHIFT_DISK_SIZE=<%= @minishift_vm_disk_size %>
+[[ -d ${HOME}/.minishift ]] && \
+  export MINISHIFT_USERNAME="$(${HOME}/.secrets/cmk_secret.py --decrypt MINISHIFT_USERNAME)"
+  export MINISHIFT_PASSWORD=$(${HOME}/.secrets/cmk_secret.py --decrypt MINISHIFT_PASSWORD)
+  export MINISHIFT_CPUS=<%= @minishift_cpus %> && \
+  export MINISHIFT_MEMORY=<%= @minishift_memory %> && \
+  export MINISHIFT_VM_DRIVER=<%= @minishift_vm_driver %> \
+  export MINISHIFT_DISK_SIZE=<%= @minishift_vm_disk_size %>
 
 # openshift config
-eval $(minishift oc-env)
-eval $(minishift docker-env) 2>/dev/null # this is heavy handed, but it 
-                                         # keeps things quite for the moment
+minishift status | \
+egrep "Minishift:[[:space:]][[:space:]]Running" &>/dev/null
+[[ $? == 0 ]] && eval $(minishift docker-env) && eval $(minishift oc-env)
 
-# start the ssh agent
-eval $(ssh-agent -s)
+#  openstack env vars
+[[ -f ${HOME}/.ssh/brooklyn-ca-bundle.trust.crt ]] && \
+  export OS_CACERT="${HOME}/.ssh/brooklyn-ca-bundle.trust.crt"
 
-# openshift aliases
+# minikube aliases
+if [[ $(minikube status | egrep "minikube:[[:space:]]Running") ]]; then
+  # kubectl aliases !+
+  # kc aliases barrowed from tamas-molnar
+  # https://gist.github.com/tamas-molnar/32a07c0eb83e95484e3cdb4b7fada32b
+  alias kc='kubectl'
+  alias kclf='kubectl logs --tail=200  -f'
+  alias kcgs='kubectl get service -o wide'
+  alias kcgd='kubectl get deployment -o wide'
+  alias kcgp='kubectl get pod -o wide'
+  alias kcgn='kubectl get node -o wide'
+  alias kcdp='kubectl describe pod'
+  alias kcds='kubectl describe service'
+  alias kcdd='kubectl describe deployment'
+  alias kcdf='kubectl delete -f'
+  alias kcaf='kubectl apply -f'
+  alias kcci='kubectl cluster-info'
+  alias kcbad='kubectl get pod | grep "0\/"'
+  alias kcre='kubectl get pod | sort -nk 4 | grep -v "Running   0"'
+  alias kcrey='kubectl get pod  | sort -nk 4 | grep -v "Running   0\|NAME" | cut -d" " -f1 | xargs -i kubectl describe pod {} | grep "Reason\|^Name:\|Finished"'
+  alias kcall='kubectl get nodes --no-headers | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
+  alias hd='helm list --deployed | grep -v "NAME" | awk '\''{print $1}'\'' | sort | uniq -c  | awk '\''{print $1,$2}'\'' | grep -v  "^1 "'
 
-
-# !+ kubectl aliases
-# kc aliases barrowed from tamas-molnar
-# https://gist.github.com/tamas-molnar/32a07c0eb83e95484e3cdb4b7fada32b
-alias kc='kubectl'
-alias kclf='kubectl logs --tail=200  -f'
-alias kcgs='kubectl get service -o wide'
-alias kcgd='kubectl get deployment -o wide'
-alias kcgp='kubectl get pod -o wide'
-alias kcgn='kubectl get node -o wide'
-alias kcdp='kubectl describe pod'
-alias kcds='kubectl describe service'
-alias kcdd='kubectl describe deployment'
-alias kcdf='kubectl delete -f'
-alias kcaf='kubectl apply -f'
-alias kcci='kubectl cluster-info'
-alias kcbad='kubectl get pod | grep "0\/"'
-alias kcre='kubectl get pod | sort -nk 4 | grep -v "Running   0"'
-alias kcrey='kubectl get pod  | sort -nk 4 | grep -v "Running   0\|NAME" | cut -d" " -f1 | xargs -i kubectl describe pod {} | grep "Reason\|^Name:\|Finished"'
-alias kcall='kubectl get nodes --no-headers | awk '\''{print $1}'\'' | xargs -I {} sh -c '\''echo {} ; kubectl describe node {} | grep Allocated -A 5 | grep -ve Event -ve Allocated -ve percent -ve -- ; echo '\'''
-alias hd='helm list --deployed | grep -v "NAME" | awk '\''{print $1}'\'' | sort | uniq -c  | awk '\''{print $1,$2}'\'' | grep -v  "^1 "'
-
-function hl() { helm list $@; }
-function hh() { helm history $(helm list -q $@); }
-function gcm() { kubectl get configmap $@ -o yaml; }
-function kclfl() { kubectl logs --tail=$@  -f; }
-function kcpf() { 
-	result=$(kubectl get pod | grep -m1 $@)
+  function hl() { helm list $@; }
+  function hh() { helm history $(helm list -q $@); }
+  function gcm() { kubectl get configmap $@ -o yaml; }
+  function kclfl() { kubectl logs --tail=$@  -f; }
+  function kcpf() { 
+	  result=$(kubectl get pod | grep -m1 $@)
         exitCode=$?
         if [ ! "$exitCode" -eq 0 ]; then
-	 	echo "Could not find pod matching [$@]."
-	 	return 1;	
-	fi
+	 	      echo "Could not find pod matching [$@]."
+	 	      return 1;	
+	        fi
         podName=$(echo $result | awk '{print $1}')
-	echo "Forwarding port 8080 of $podName to local port 8080"
-	kubectl port-forward $podName 8080:8080
-}
-function kclfa() {
-	result=($(kubectl get pod | grep $@))
-	exitCode=$?
+	    echo "Forwarding port 8080 of $podName to local port 8080"
+	    kubectl port-forward $podName 8080:8080
+    }
+    function kclfa() {
+	    result=($(kubectl get pod | grep $@))
+	    exitCode=$?
         if [ ! "$exitCode" -eq 0 ]; then
                 echo "Could not find pod matching [$@]."
                 return 1;       
         fi
-	read -n 1 -p "Press any key for logs of ${result[0]} and ${result[5]}"
-	(kubectl logs --tail=10 -f ${result[0]} & kubectl logs --tail=10 -f ${result[5]} &) | tee
-}
-function kclff(){
-	result=($(kubectl get pod | grep $1))
+	    read -n 1 -p "Press any key for logs of ${result[0]} and ${result[5]}"
+	    (kubectl logs --tail=10 -f ${result[0]} & kubectl logs --tail=10 -f ${result[5]} &) | tee
+    }
+    function kclff(){
+	    result=($(kubectl get pod | grep $1))
         exitCode=$?
         if [ ! "$exitCode" -eq 0 ]; then
                 echo "Could not find pod matching [$@]."
                 return 1;
         fi
-	echo "Showing logs for ${result[0]}"
-	kubectl logs --tail=200 -f ${result[0]}
-}
-function kcops(){
-	kubectl proxy &
-	docker run -it --net=host hjacobs/kube-ops-view &
-	xdg-open http://localhost:8080 &
-} 
-function kcfp() { kubectl get pod -o wide| grep $@; }
-function kcfs() { kubectl get service -o wide| grep $@; } 
-function kcfd() { kubectl get deployment -o wide | grep $@; }
-function kcxsh() { kubectl exec -ti $@ sh; }
-function kcxbash() { kubectl exec -ti $@ bash; }
-function kcph() { kubectl exec -ti $@ -- sh -c 'apk -q update; apk add -q curl jq; curl localhost:8080/__health | jq'; }
-function kcstop() {
-	echo "Stopping $1"
-	desired_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].spec.replicas}');
-	kubectl scale --replicas=0 deployments/$1;
-	current_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].status.availableReplicas}')
-	while [ ! -z "$current_replicas" ]; do
+	    echo "Showing logs for ${result[0]}"
+	    kubectl logs --tail=200 -f ${result[0]}
+    }
+    function kcops(){
+	    kubectl proxy &
+	    docker run -it --net=host hjacobs/kube-ops-view &
+	    xdg-open http://localhost:8080 &
+    } 
+    function kcfp() { kubectl get pod -o wide| grep $@; }
+    function kcfs() { kubectl get service -o wide| grep $@; } 
+    function kcfd() { kubectl get deployment -o wide | grep $@; }
+    function kcxsh() { kubectl exec -ti $@ sh; }
+    function kcxbash() { kubectl exec -ti $@ bash; }
+    function kcph() { kubectl exec -ti $@ -- sh -c 'apk -q update; apk add -q curl jq; curl localhost:8080/__health | jq'; }
+    function kcstop() {
+	    echo "Stopping $1"
+	    desired_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].spec.replicas}');
+	    kubectl scale --replicas=0 deployments/$1;
+	    current_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].status.availableReplicas}')
+	    while [ ! -z "$current_replicas" ]; do
                 sleep 1;
                 current_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].status.availableReplicas}')
         done;
-	echo "Stopped [$desired_replicas] instances of $1."
-	return $desiredReplicas
-}
-function kcstart() {
-	echo "Scaling deployment $1 up to $2 replicas...";
+	    echo "Stopped [$desired_replicas] instances of $1."
+	    return $desiredReplicas
+    }
+    function kcstart() {
+	    echo "Scaling deployment $1 up to $2 replicas...";
         kubectl scale --replicas=$2 deployments/$1;
         if [ "$3" == "skipCheck" ]; then
                 echo "Skipping healthchecks"
@@ -236,63 +241,59 @@ function kcstart() {
                 echo "Current nr of replicas: $current_replicas"
         done;
         echo "$1 restarted"
-}
-function kcres() {
-	echo "Scaling $1"
-	desired_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].spec.replicas}');
-	echo "Desired nf or replicas: $desired_replicas";
+    }
+    function kcres() {
+	    echo "Scaling $1"
+	    desired_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].spec.replicas}');
+	    echo "Desired nf or replicas: $desired_replicas";
         echo "Scaling deployment $1 down to 0 replicas...";
         kubectl scale --replicas=0 deployments/$1;
-	current_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].status.availableReplicas}')
-	while [ ! -z "$current_replicas" ]; do
-		sleep 1;
+	    current_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].status.availableReplicas}')
+	    while [ ! -z "$current_replicas" ]; do
+		    sleep 1;
 	        current_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].status.availableReplicas}')
-	done;
-	echo "Scaling deployment $1 up to $desired_replicas replicas...";
-	kubectl scale --replicas=$desired_replicas deployments/$1;
-	if [ "$2" == "skipCheck" ]; then
-		echo "Skipping healthchecks"
-		return
-	fi
+	    done;
+	    echo "Scaling deployment $1 up to $desired_replicas replicas...";
+	    kubectl scale --replicas=$desired_replicas deployments/$1;
+	    if [ "$2" == "skipCheck" ]; then
+		    echo "Skipping healthchecks"
+		    return
+	    fi
 
-	default_sleep=10
-	initial_sleep=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].spec.template.spec.containers[0].readinessProbe.initialDelaySeconds}')
-	initial_sleep=${initial_sleep:-10}
-	echo "Waiting $initial_sleep seconds for the first readiness probe check..."
+	    default_sleep=10
+	    initial_sleep=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].spec.template.spec.containers[0].readinessProbe.initialDelaySeconds}')
+	    initial_sleep=${initial_sleep:-10}
+	    echo "Waiting $initial_sleep seconds for the first readiness probe check..."
         sleep $initial_sleep
-  	period_sleep=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].spec.template.spec.containers[0].readinessProbe.periodSeconds}')
-	period_sleep=${period_sleep:-10}
-	while [ "$current_replicas" != "$desired_replicas" ]; do
-		echo "Waiting $period_sleep seconds until checking the node count"
-		sleep $period_sleep
-		current_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].status.availableReplicas}')
+  	    period_sleep=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].spec.template.spec.containers[0].readinessProbe.periodSeconds}')
+	    period_sleep=${period_sleep:-10}
+	    while [ "$current_replicas" != "$desired_replicas" ]; do
+		    echo "Waiting $period_sleep seconds until checking the node count"
+		    sleep $period_sleep
+		    current_replicas=$(kubectl get deployments --selector=app=$1 -o jsonpath='{$.items[0].status.availableReplicas}')
                 current_replicas=${current_replicas:-0}
                 echo "Current nr of replicas: $current_replicas"
         done;
-	echo "$1 restarted"
-}
-function kcgnt() { for machine in $(kcgn | tail -n +2 | awk '{ print $1 }' ); do echo -n "${machine}: "; echo $(kc describe node $machine | grep -i "node-role\|role="); done | sort -k 2; }
-function kcstat() {
-	for node in  $(kubectl get nodes | tail -n +2 | awk '{print $1}'); do 
-		echo $node
-		echo -e "$(kubectl describe node $node | grep -A 4 "Allocated resources")\n";
-	done
-}
-function kcready() {
+	    echo "$1 restarted"
+    }
+    function kcgnt() { for machine in $(kcgn | tail -n +2 | awk '{ print $1 }' ); do echo -n "${machine}: "; echo $(kc describe node $machine | grep -i "node-role\|role="); done | sort -k 2; }
+    function kcstat() {
+	    for node in  $(kubectl get nodes | tail -n +2 | awk '{print $1}'); do 
+		    echo $node
+		    echo -e "$(kubectl describe node $node | grep -A 4 "Allocated resources")\n";
+	    done
+    }
+    function kcready() {
         for node in  $(kubectl get nodes | tail -n +2 | awk '{print $1}'); do
                 echo $node
                 echo -e "$(kubectl describe node $node | grep  "Ready")\n";
         done
-}
+    }
 
+    alias konsole="minikube dashboard &"
 
-## !- kubectl aliases
-##
-#  pyenv
-##
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+    minikube status &>/dev/null
+    [[ $? == 0 ]] && eval $(minikube docker-env)
 
-alias vi=vim
+    ## !- kubectl aliases
+fi
