@@ -34,6 +34,7 @@ class profiles::atom(
   #package { 'autocomplete-clang':       ensure => $atom_ensure, provider => apm, }
   package { 'autocomplete-json':       ensure => $atom_ensure, provider => apm, }
   package { 'autocomplete-plus':       ensure => $atom_ensure, provider => apm, }
+  package { 'block-select':             ensure => $atom_ensure, provider => apm, }
   package { 'build-cmake':             ensure => $atom_ensure, provider => apm, }
   package { 'busy-signal':             ensure => $atom_ensure, provider => apm, }
   package { 'color-picker':            ensure => $atom_ensure, provider => apm, }
