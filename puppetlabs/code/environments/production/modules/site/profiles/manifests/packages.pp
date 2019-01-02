@@ -135,6 +135,7 @@ class profiles::packages{
 
   # Pip provider
   package { 'python-openstackclient': ensure => latest, provider => 'pip', }
+  package { 'aws-encryption-sdk-cli': ensure => latest, provider => 'pip', }
 
 
  }
