@@ -87,6 +87,18 @@ class profiles::atom(
   package { 'vim-mode-plus':           ensure => $atom_ensure, provider => apm, }
   package { 'ex-mode':                 ensure => $atom_ensure, provider => apm, }
   
+  package { 'tool-bar': ensure => $atom_ensure, provider => apm, }
+  package { 'browser-plus': ensure => $atom_ensure, provider => apm, }
+  package { 'wordcount': ensure => $atom_ensure, provider => apm, }
+
+  # Markdown support
+  package { 'language-markdown': ensure => $atom_ensure, provider => apm, }
+  package { 'markdown-writer': ensure => $atom_ensure, provider => apm, }
+  package { 'markdown-preview-plus': ensure => $atom_ensure, provider => apm, }
+  #package { 'markdown-scroll-sync': ensure => $atom_ensure, provider => apm, }
+  package { 'markdown-folding': ensure => $atom_ensure, provider => apm, }
+  package { 'markdown': ensure => $atom_ensure, provider => apm, }
+
   # Atom Themes and syntax
   package { 'base16-syntax':           ensure => $atom_ensure, provider => apm, }
 }

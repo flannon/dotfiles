@@ -75,11 +75,11 @@ class profiles::packages{
   # needs `brew tap homebrew/science`
   #    homebrew/science was depricated and all formula iwere 
   #    migrated to hombrew-core
-  package { 'opencv3':
-    ensure          => latest, 
-    install_options => [ '-v', '--with-contrib', '--with-ffmpeg', '--with-tbb', '--with-qt', '--c++11', '--with-python3', ],
-  }
-  package { 'opencv@2':             ensure => latest, }
+  #package { 'opencv3':
+  #  ensure          => latest, 
+  #  install_options => [ '-v', '--with-contrib', '--with-ffmpeg', '--with-tbb', '--with-qt', '--c++11', '--with-python3', ],
+  #}
+  #package { 'opencv@2':             ensure => latest, }
   package { 'ffmpeg':               ensure => latest, }
   package { 'jpeg':                 ensure => latest, }
   package { 'libtiff':              ensure => latest, }
@@ -128,6 +128,7 @@ class profiles::packages{
   package { 'minikube':       ensure => latest,  provider => 'brewcask', }
   package { 'vagrant':        ensure => latest,  provider => 'brewcask', }
   package { 'visual-studio-code': ensure => latest,  provider => 'brewcask', }
+  package { 'virtualbox': ensure => latest,  provider         => 'brewcask', }
     
   # Gem provider
   package { 'metadata-json-lint': ensure => latest, provider => 'gem', }
