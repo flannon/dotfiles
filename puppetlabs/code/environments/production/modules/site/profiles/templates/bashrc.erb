@@ -139,7 +139,7 @@ egrep "Minishift:[[:space:]][[:space:]]Running" &>/dev/null
   export OS_CACERT="${HOME}/.ssh/brooklyn-ca-bundle.trust.crt"
 
 # minikube aliases
-if [[ $(minikube status | egrep "minikube:[[:space:]]Running") ]]; then
+if [[ $(minikube status | egrep "host:[[:space:]]Running") ]]; then
   # kubectl aliases !+
   # kc aliases barrowed from tamas-molnar
   # https://gist.github.com/tamas-molnar/32a07c0eb83e95484e3cdb4b7fada32b
@@ -290,7 +290,8 @@ if [[ $(minikube status | egrep "minikube:[[:space:]]Running") ]]; then
         done
     }
 
-    alias konsole="minikube dashboard &"
+    #alias konsole="minikube dashboard &"
+    #alias console="minikube dashboard &"
 
     minikube status &>/dev/null
     [[ $? == 0 ]] && eval $(minikube docker-env)
