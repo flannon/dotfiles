@@ -131,7 +131,7 @@ class profiles::packages{
   package { 'virtualbox': ensure => latest,  provider         => 'brewcask', }
     
   # Gem provider
-  package { 'metadata-json-lint': ensure => latest, provider => 'gem', }
+  #package { 'metadata-json-lint': ensure => latest, provider => 'gem', }
   package { 'semantic_puppet':    ensure => latest, provider => 'gem', }
 
   # Pip provider
