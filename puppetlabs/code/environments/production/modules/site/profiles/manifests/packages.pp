@@ -67,7 +67,7 @@ class profiles::packages{
   package { 'ruby-build':           ensure => latest, }
   package { 'shellcheck':           ensure => present, }
   package { 'sqlite':               ensure => present, }
-  package { 'terraform':            ensure => present, }
+  #package { 'terraform':            ensure => present, }
   package { 'wget':                 ensure => latest, }
   package { 'yq':                   ensure => latest, }
 
