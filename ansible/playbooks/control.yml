@@ -1,0 +1,122 @@
+---
+- hosts: 127.0.0.1
+  user: "{{ user }}"
+  #become: yes
+  become: false
+  connection: ssh
+  gather_facts: true
+
+  vars: 
+    #atom_packages_packages:
+    #   - atom-bash-snippets
+    #   - atom-clang
+    #   - atom-json
+    #   - atom-go-jump-test
+    #  
+    #  To uninstall flatpaks st flatpak_state to absent
+    flatpak_state: present
+    atom_packages_packages:
+      - atom-bash-snippets
+        #- atom-clang
+      - atom-json
+      - atom-go-jump-test
+        #- atom-go-get
+      - atom-gist-dev
+      - atom-beautify
+      - atom-runner
+      - aligner-golang
+      - autocomplete-json
+      - autocomplete-plus
+      - block-select
+      - build-cmake
+      - busy-signal
+      - color-picker
+      - declarations
+      - file-icons
+      - fonts
+      - formatter-gofmt
+        #- git-gui
+      - git-plus
+      - go-plus
+      - go-debug
+        #- go-impl
+      - go-imports
+      - go-rename
+      - go-signature-statusbar
+      - gotests
+        #- got-tip
+      - go-types
+      - gpp-compiler
+      - hclfmt
+      - hyperclick
+      - atom-ide-ui
+      - ide-cpp
+      - ide-go
+      - ide-python
+      - intentions
+      - intentions-colorpicker
+      - intentions-numbers
+      - json-converter
+      - json-to-go-struct
+      - language-ansible
+      - language-cpp14
+      - language-puppet
+      - last-cursor-position
+      - linter
+      - linter-ui-default
+      - linter-ansible-syntax
+      - linter-golinter
+      - linter-gotype
+      - linter-packer-validate
+      - linter-vagrant-validate
+      - linter-terraform-syntax
+      - pretty-json
+        #- platformio-ide-terminal
+      - script
+      - terraform-fmt
+        #- term3
+      - you-complete-me
+      - vim-mode-plus
+      - ex-mode
+      - base16-syntax
+    ntp_manage_config: true
+    ntp_timezone: America/New_York
+    firewall_state: started
+    firewall_enabled_at_boot: true
+    firewall_allowed_tcp_ports:
+      - "22"
+      - "80"
+      - "443"
+      - "5000"
+      - "8080"
+      - "8443"
+    firewall_additional_rules:
+      - "iptables -A INPUT -p icmp -m comment --comment '000 accept all icmp' -j ACCEPT"
+      - "iptables -A INPUT -i lo -m comment --comment '001 accept all to lo interface' -j ACCEPT"
+      - "iptables -A INPUT -m comment --comment '003 accept related established rules' -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT"
+      - "iptables -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT"
+      - "iptables -A INPUT -p icmp -j ACCEPT"
+      - "iptables -A INPUT -i lo -j ACCEPT"
+      - "iptables -A OUTPUT -o lo -j ACCEPT"
+      - "iptables -A INPUT -m comment --comment '910 deny all other input requests' -j DROP"
+    firewall_disable_firewalld: true
+    terraform_version: 0.11.11
+    #user: hopper
+  
+  tasks:
+  - name: Debug message from localhost.localdomain
+    debug:
+      msg: System message from the playbook
+
+  roles:
+    #- firewall
+    #- housekeeping
+    #- ntp
+    #- logrotate
+    #- vim
+    #- atom-packages
+    - fedora_sb
+
+
+
+

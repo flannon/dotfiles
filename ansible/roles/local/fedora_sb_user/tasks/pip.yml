@@ -1,0 +1,13 @@
+---
+- name: pip install packages
+  pip:
+    name:
+      - boto
+      - boto3
+      - molecule
+      - six
+      - awscli
+    executable: pip3
+    extra_args: --user
+  become: false
+

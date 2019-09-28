@@ -1,0 +1,39 @@
+---
+# $USER
+- name: "bashrc for {{ user }}"
+  template:
+    src: templates/bashrc.j2
+    dest: ~{{ user }}/.bashrc
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+  become: false
+
+- name: "ensure Projects folder"
+  file:
+    path: "/home/{{ user  }}/Projects"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0755
+    state: directory
+
+- name: "ensure Projects folder"
+  file:
+    path: "/home/{{ user  }}/bin"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0755
+    state: directory
+
+
+  # root
+- name: "bashrc for root"
+  template:
+    src: templates/rootbashrc.j2
+    dest: ~root/.bashrc
+    owner: root
+    group: root
+    mode: 0644
+  become: true
+  become_user: root
+  become_method: su

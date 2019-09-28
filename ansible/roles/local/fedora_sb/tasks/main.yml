@@ -1,0 +1,34 @@
+---
+- name: Debug message from main.yml
+  debug:
+    msg: System message from the main.yml
+
+- name: "Ensure /home/{{ user }}/Services"
+  file:
+    path: "/home/{{ user }}/Services"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0755
+  become: false
+
+- import_tasks: packages.yml
+  tags:
+    - packages
+
+- import_tasks: podman.yml
+  tags:
+    - podman
+
+
+- import_tasks: projects.yml
+  tags:
+    - projects
+
+#- import_tasks: minikube.yml
+#  tags:
+#    - minikube
+
+- import_tasks: users.yml
+  tags:
+    - users

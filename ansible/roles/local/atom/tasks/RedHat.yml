@@ -1,0 +1,10 @@
+---
+- name: os specific facts
+  include_vars: "{{item }}"
+  with_first_found:
+    - "{{ ansible_os_family }}".yml
+  tags: vars
+
+- yum:
+    name: vim-enhanced
+    state: "{{ role_state['package'] }}"

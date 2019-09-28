@@ -1,0 +1,24 @@
+---
+- include_tasks: users.yml
+  tags:
+    - users
+
+- include_tasks: packages.yml
+  tags:
+    - packages
+
+- include_tasks: gcp-sdk.yml
+  tags:
+    - gcp-sdk
+
+- include_tasks: remote_archives.yml
+  tags:
+    - remote_archives
+
+- include_tasks: zoom.yml
+  tags:
+    - zoom
+
+- include_tasks: pip.yml
+  tags:
+    - pip

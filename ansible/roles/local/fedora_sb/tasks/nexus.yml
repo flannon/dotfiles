@@ -1,0 +1,85 @@
+---
+- name: Debug message from nexus.yml
+  debug:
+    msg: System message from the nexus.yml
+
+- name: "Show nexus_container_image_state"
+  debug:
+    msg: "container_image_state {{ nexus_container_image_state }}"
+
+- name: "Ensure nexus image --> {{ nexus_container_image_name }}"
+  podman_image:
+    name: "{{ nexus_container_image_name }}"
+    tag: "{{ nexus_container_image_version }}"
+    state: "{{ nexus_container_image_state }}"
+  become: false
+
+- name: "Ensure /home/{{ user }}{{ nexus_project_dir }}"
+  file:
+    path: "/home/{{ user }}{{ nexus_project_dir }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0755
+  become: true
+
+- name: "Ensure nexus-data -->  /home/{{ user }}{{ nexus_project_dir }}{{ nexus_volume_mount_name }}"
+  file:
+    path: "/home/{{ user }}{{ nexus_project_dir }}{{ nexus_volume_mount_name }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0777
+  become: true
+
+# see - https://github.com/containers/libpod/issues/2536
+# According to issue 2536 functionality to se the SELinux context will
+# be added to podman.  For now we set it manually
+- name: "Set selinux context on nexus-data"
+  sefcontext:
+    target: "/var/home/{{ user }}{{ nexus_project_dir }}{{ nexus_volume_mount_name }}(/.*)?"
+    setype: container_file_t
+  become: true
+
+- name: Apply new SELinux file context to the file system
+  command: "restorecon -irv /var/home/{{ user }}{{ nexus_project_dir }}{{ nexus_volume_mount_name }}"
+  become: true
+
+
+- name: "Template nexus.yaml --> /home/{{ user }}{{ nexus_project_dir }}{{ nexus_pod_yaml }}"
+  template:
+    src: nexus.yml.j2
+    dest: "/home/{{ user }}{{ nexus_project_dir }}{{ nexus_pod_yaml }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+  become: true
+
+- name: "Validatenexil.yaml -->  /home/{{ user }}{{ nexus_project_dir }}{{ nexus_pod_yaml }}"
+  stat:
+    path: "/home/{{ user }}{{ nexus_project_dir }}{{ nexus_pod_yaml }}"
+  register: pod_file
+  when: nexus_pod_yaml is defined
+  become: true
+
+- name: fail if pod configfile is missing
+  fail:
+    msg: "Error: Asking to run nexus pod, but pod definition yml file is missing: /home/{{ user }}{{ nexus_project_dir }}{{ nexus_pod_yaml }}"
+  when:
+    - nexus_pod_yaml is defined
+    - not pod_file.stat.exists
+  become: true
+
+- name: "Nexus unit file {{ unit_files_dir }}/{{ nexus_service_name }}"
+  template:
+    src: nexus_unit_file.j2
+    dest: "{{ unit_files_dir }}/{{ nexus_service_name }}"
+    owner: root
+    group: root
+    mode: 0755
+  notify:
+    - reload systemctl
+    - "start {{ nexus_service_name }}"
+  register: service_file
+  when: nexus_container_image_name is defined
+  become: true

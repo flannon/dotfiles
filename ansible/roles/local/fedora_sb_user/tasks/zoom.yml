@@ -1,0 +1,5 @@
+---
+- name: Ensure openjdk
+  dnf:
+    name: https://zoom.us/client/latest/zoom_x86_64.rpm    
+    state: "{{ package_state }}"

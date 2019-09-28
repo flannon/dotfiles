@@ -1,0 +1,5 @@
+---
+pkg_manager: dnf
+
+users:
+  - "{{ user }} "

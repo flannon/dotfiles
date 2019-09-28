@@ -1,0 +1,12 @@
+---
+- name: "Ensure terraform {{ terraform_version }}"
+  unarchive:
+    src: "https://releases.hashicorp.com/terraform/{{ terraform_version }}/terraform_{{ terraform_version }}_linux_amd64.zip"
+    dest: "/home/{{ user }}/bin"
+    remote_src: true
+
+- name: "Ensure packer {{ packer_version }}"
+  unarchive:
+    src: "https://releases.hashicorp.com/packer/{{ packer_version }}/packer_{{ packer_version }}_linux_amd64.zip"
+    dest: "/home/{{ user }}/bin"
+    remote_src: true
