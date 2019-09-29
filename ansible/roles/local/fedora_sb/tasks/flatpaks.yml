@@ -1,0 +1,77 @@
+---
+- name: Debug message from packages.yml
+  debug:
+    msg: System message from the packages.yml
+
+# tasks file for fedora_sb
+- name: Configure flathub flatpak repo
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: system
+  become: true
+
+- name: Uninstall flatpaks
+  flatpak:
+    name: "{{ item }}"
+    state: absent
+    method: system
+  with_items:
+    - com.visualstudio.code.oss
+    - com.visualstudio.code
+    - org.vim.Vim
+  become: true
+
+- name: Install flatpaks
+  flatpak:
+    name: "{{ item }}"
+    state: "{{ flatpak_state }}"
+    method: system
+  with_items:
+    - com.slack.Slack
+    #- com.calibre_ebook.calibre
+    #- com.calibre_ebook.calibre
+    #- com.github.bilelmoussaoui.Authenticator
+    #- com.github.mdh34.hackup
+    - com.github.unrud.djpdf
+    - com.jgraph.drawio.desktop
+    #- com.uploadedlobster.peek
+    #- com.vinszent.GnomeTwitch
+    - com.xnview.XnConvert
+    - com.xnview.XnRetro
+    - com.xnview.XnSketch
+    - com.xnview.XnViewMP
+    - ind.ie.Gnomit
+    #- io.atom.Atom
+    #- io.github.GnomeMpv
+    - net.bartkessels.getit
+    ##- org.freedesktop.Platform.ffmpeg/x86_64/1.6
+    - org.gimp.Gimp
+    #- org.gnome.Books
+    - org.gnome.Calculator
+    - org.gnome.Calendar
+    #- org.gnome.Chess
+    - org.gnome.Contacts
+    - org.gnome.clocks
+    - org.gnome.eog
+    - org.gnome.ghex
+    - org.gnome.gitg
+    - org.gnome.Music
+    - org.gnome.Notes
+    - org.gnome.Podcasts
+    #- org.gnome.Polari
+    - org.gnome.PasswordSafe
+    #- org.gnome.Shotwell
+    - org.gnome.SoundRecorder
+    #- org.gnome.Totem
+    - org.gnome.Weather
+    #- org.inkscape.Inkscape
+    - org.photoqt.Photoqt
+    #- org.signal.Signal
+    - org.videolan.VLC
+    - org.wireshark.Wireshark
+    - org.libreoffice.LibreOffice
+    - org.zotero.Zotero
+    - us.zoom.Zoom
+  become: true
