@@ -1,4 +1,8 @@
 ---
+- include_tasks: repo-list.yml
+  tags:
+    - repo-list
+
 - include_tasks: users.yml
   tags:
     - users
@@ -18,6 +22,10 @@
 - include_tasks: zoom.yml
   tags:
     - zoom
+
+- include_tasks: java.yml
+  tags:
+    - java
 
 - include_tasks: pip.yml
   tags:

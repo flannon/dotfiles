@@ -1,11 +1,4 @@
 ---
-- name: Ensure rpmfusion
-  dnf:
-    name: 
-      - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm 
-      - http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm 
-    state: "{{ package_state }}"
-
 - name: dnf update
   dnf:
     name: "*"
@@ -14,11 +7,6 @@
 - name: Group install Develoment tools
   dnf:
     name: '@Development Tools'
-    state: "{{ package_state }}"
-
-- name: Ensure openjdk
-  dnf:
-    name: java-latest-openjdk
     state: "{{ package_state }}"
 
 #- name: Ensure snapd for snap package management
