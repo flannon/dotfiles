@@ -25,6 +25,12 @@ sed -i 's/^PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_
   	sudo sed -i \
   	's/^#\s*\(%wheel\s\+ALL=(ALL)\s\+NOPASSWD:\s\+ALL\)/\1/' /etc/sudoers 
 
+# Install rpmfusion
+[[ ! -f /etc/yum.repos.d/rpmfusion.repo ]] && \
+  rpm-ostree install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm && \\
+  rpm-ostree install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && \\
+  
+
 # install compat-ffmpeg28 for video support for firefox
 rpm-ostree install compat-ffmpeg28 strace --reboot
 
