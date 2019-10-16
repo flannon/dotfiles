@@ -45,7 +45,7 @@
       - redhat-rpm-config
       - rpmdevtools
       - ruby
-      - Thunar
+      - weechat
     state: "{{ package_state }}"
 
 - name: Ensure libXScrnSaver and libXScrnSaver-devel
