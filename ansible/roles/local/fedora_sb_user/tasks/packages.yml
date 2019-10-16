@@ -46,6 +46,7 @@
       - redhat-rpm-config
       - rpmdevtools
       - ruby
+      - weechat
     state: "{{ package_state }}"
 
 - name: Ensure libXScrnSaver and libXScrnSaver-devel
