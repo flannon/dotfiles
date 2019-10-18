@@ -31,6 +31,7 @@
       - glibc-devel
       - golang
       - jq
+      - keepass
       - libreoffice
       - libgomp
       - libxkbcommon
