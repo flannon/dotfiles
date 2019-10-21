@@ -50,6 +50,10 @@
       - weechat
     state: "{{ package_state }}"
 
+- name: Ensure keybase
+  dnf:
+    name: https://prerelease.keybase.io/keybase_amd64.rpm
+
 - name: Ensure libXScrnSaver and libXScrnSaver-devel
   dnf:
     name:
