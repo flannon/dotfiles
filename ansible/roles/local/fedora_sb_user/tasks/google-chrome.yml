@@ -1,0 +1,16 @@
+---
+- name: "Ensure google-cloud-sdk.repo"
+  template:
+    src: templates/google-chrome.j2
+    dest: /etc/yum.repos.d/google-chrome.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Ensure google-cloud-sdk
+  dnf:
+    name: 
+      - google-chrome
+
+    state: "{{ package_state }}"
+
