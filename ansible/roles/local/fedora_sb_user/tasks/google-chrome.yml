@@ -10,7 +10,7 @@
 - name: Ensure google-cloud-sdk
   dnf:
     name: 
-      - google-chrome
+      - google-chrome-stable
 
     state: "{{ package_state }}"
 
