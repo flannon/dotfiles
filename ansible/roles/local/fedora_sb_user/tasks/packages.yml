@@ -20,6 +20,8 @@
       - ansible-openstack-modules
       - binutils
       - bind-utils
+      - bzip2
+      - bzip2-devel
       - clang
       - cmake
       - device-mapper-persistent-data
@@ -37,6 +39,8 @@
       - libxkbcommon
       - make
       - net-tools
+      - openssl
+      - openssl-devel
       - origin-clients
       - patch
       - python2-devel
@@ -44,9 +48,13 @@
       - python3-openstackclient
       - python3-openstacksdk
       - python3-libselinux
+      - readline
+      - readline-devel
       - redhat-rpm-config
       - rpmdevtools
       - ruby
+      - sqlite
+      - sqlite-devel
       - weechat
     state: "{{ package_state }}"
 
