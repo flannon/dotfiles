@@ -7,10 +7,10 @@
     group: root
     mode: 0644
 
-- name: Ensure google-cloud-sdk
+- name: Ensure chrome and its variants
   dnf:
     name: 
       - google-chrome-stable
-
+      - chromium
     state: "{{ package_state }}"
 
