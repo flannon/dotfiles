@@ -20,6 +20,7 @@
       - ansible-openstack-modules
       - binutils
       - bind-utils
+      - chromium
       - clang
       - cmake
       - device-mapper-persistent-data
