@@ -19,6 +19,10 @@
     name: 
       - ansible-openstack-modules
       - binutils
+      - bind-utils
+      - bzip2
+      - bzip2-devel
+      - chromium
       - clang
       - cmake
       - device-mapper-persistent-data
@@ -30,11 +34,15 @@
       - glibc-devel
       - golang
       - jq
+      - keepass
+      - libffi-devel
       - libreoffice
       - libgomp
       - libxkbcommon
       - make
       - net-tools
+      - openssl
+      - openssl-devel
       - origin-clients
       - patch
       - python2-devel
@@ -42,10 +50,19 @@
       - python3-openstackclient
       - python3-openstacksdk
       - python3-libselinux
+      - readline
+      - readline-devel
       - redhat-rpm-config
       - rpmdevtools
       - ruby
+      - sqlite
+      - sqlite-devel
+      - weechat
     state: "{{ package_state }}"
+
+- name: Ensure keybase
+  dnf:
+    name: https://prerelease.keybase.io/keybase_amd64.rpm
 
 - name: Ensure libXScrnSaver and libXScrnSaver-devel
   dnf:
@@ -108,3 +125,9 @@
     #state: "{{ package_state }}"
     update_cache: true
     state: latest
+
+#- name: Ensure Acrobat Reader
+#  dnf:
+#    name: http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i486linux_enu.rpm
+#    state: "{{ package_state }}"
+#    update_cache: true

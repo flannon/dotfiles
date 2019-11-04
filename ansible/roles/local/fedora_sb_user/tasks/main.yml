@@ -11,6 +11,10 @@
   tags:
     - packages
 
+- include_tasks: chromish.yml
+  tags:
+    - chromish
+
 - include_tasks: gcp-sdk.yml
   tags:
     - gcp-sdk

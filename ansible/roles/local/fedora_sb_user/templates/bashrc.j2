@@ -24,6 +24,7 @@ alias more=less
 alias enter="toolbox enter -c $USER"
 alias vundleinstall="vim +PluginInstall +qall"
 alias code="toolbox run -c $USER bash -c 'code'"
+alias bfg="java -jar ~/bin/bfg.jar"
 
 set -o vi
 
@@ -59,4 +60,9 @@ export MINISHIFT_MEMORY=8192
 [[ -f "/var/home/{{ user }}/google-cloud-sdk/completion.bash.inc" ]] && \
         source '/var/home/{{ user }}/google-cloud-sdk/completion.bash.inc'
 
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH="${PYENV_ROOT}/bin:$PATH"
+
+eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 

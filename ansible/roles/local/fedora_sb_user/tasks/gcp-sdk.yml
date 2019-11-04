@@ -25,7 +25,5 @@
       - google-cloud-sdk-firestore-emulator
       - google-cloud-sdk-tests
         #- kubectl
-
-
     state: "{{ package_state }}"
 
