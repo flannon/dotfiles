@@ -34,3 +34,7 @@
 - include_tasks: pip.yml
   tags:
     - pip
+
+- include_tasks: pyenv.yml
+  tags:
+    - pyenv

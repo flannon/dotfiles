@@ -36,3 +36,8 @@
 - src: https://github.com/hnakamur/ansible-role-atom-packages
   version: master
   name: atom-packages
+
+# pyenv role
+- src: https://github.com/markosamuli/ansible-pyenv
+  version: v2.1.0
+  name: pyenv
