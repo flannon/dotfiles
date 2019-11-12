@@ -1,5 +1,0 @@
----
-# vars file for hopper
-#terraform_version: 0.11.12
-#terraform_version: "{{ terraform_version }}"
-version: "{{ terraform_version }}"
