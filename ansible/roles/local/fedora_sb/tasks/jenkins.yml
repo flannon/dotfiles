@@ -1,0 +1,85 @@
+---
+- name: Debug message from jenkins.yml
+  debug:
+    msg: System message from the jenkins.yml
+
+- name: "Show jenkins_container_image_state"
+  debug:
+    msg: "container_image_state {{ jenkins_container_image_state }}"
+
+- name: "Ensure jenkins image --> {{ jenkins_container_image_name }}"
+  podman_image:
+    name: "{{ jenkins_container_image_name }}"
+    tag: "{{ jenkins_container_image_version }}"
+    state: "{{ jenkins_container_image_state }}"
+  become: false
+
+- name: "Ensure /home/{{ user }}{{ jenkins_project_dir }}"
+  file:
+    path: "/home/{{ user }}{{ jenkins_project_dir }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0755
+  become: false
+
+- name: "Ensure jenkins_home --> /home/{{ user }}{{ jenkins_project_dir }}{{ jenkins_volume_mount_name }}"
+  file:
+    path: "/home/{{ user }}{{ jenkins_project_dir }}{{ jenkins_volume_mount_name }}"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0777
+  become: false
+
+# see - https://github.com/containers/libpod/issues/2536
+# According to issue 2536 functionality to se the SELinux context will
+# be added to podman.  For now we set it manually
+- name: "Set selinux context on nexus-data"
+  sefcontext:
+    target: "/var/home/{{ user }}{{ jenkins_project_dir }}{{ jenkins_volume_mount_name }}(/.*)?"
+    setype: container_file_t
+  become: true
+
+- name: Apply new SELinux file context to the file system
+  command: "restorecon -irv /var/home/{{ user }}{{ jenkins_project_dir }}{{ jenkins_volume_mount_name }}"
+  become: true
+
+- name: "Template jenkins.yml --> /home/{{ user }}{{ jenkins_project_dir }}{{ jenkins_pod_yaml }}"
+  template:
+    src: jenkins.yml.j2
+    dest: "/home/{{ user }}{{ jenkins_project_dir }}{{ jenkins_pod_yaml }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+  become: true
+
+- name: "Validate jenkins.yaml -->  /home/{{ user }}{{ jenkins_project_dir }}{{ jenkins_pod_yaml }}"
+  stat:
+    path: "/home/{{ user }}{{ jenkins_project_dir }}{{ jenkins_pod_yaml }}"
+  register: pod_file
+  when: jenkins_pod_yaml is defined
+  become: true
+
+- name: fail if pod service unit file is missing
+  fail:
+    msg: "Error: Asking to run jenkins pod, but pod definition yml file is missing: /home/{{ user }}{{ jenkins_project_dir }}{{ jenkins_pod_yaml }}"
+  when:
+    - jenkins_pod_yaml is defined
+    - not pod_file.stat.exists
+  become: true
+
+- name: "Jenkins unit file {{ unit_files_dir }}/{{ jenkins_service_name }}"
+  template:
+    src: jenkins_unit_file.j2
+    dest: "{{ unit_files_dir }}/{{ jenkins_service_name }}"
+    owner: root
+    group: root
+    mode: 0755
+  notify:
+    - reload systemctl
+    - "start {{ jenkins_service_name }}"
+      #- link jenkins unit file
+  register: service_file
+  when: jenkins_container_image_name is defined
+  become: true

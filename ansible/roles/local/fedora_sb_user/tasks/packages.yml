@@ -1,0 +1,133 @@
+---
+- name: dnf update
+  dnf:
+    name: "*"
+    state: latest
+
+- name: Group install Develoment tools
+  dnf:
+    name: '@Development Tools'
+    state: "{{ package_state }}"
+
+#- name: Ensure snapd for snap package management
+#  dnf:
+#    name: snapd
+#    state: "{{ package_state }}"
+
+- name: Ensure packages
+  dnf:
+    name: 
+      - ansible-openstack-modules
+      - binutils
+      - bind-utils
+      - bzip2
+      - bzip2-devel
+      - chromium
+      - clang
+      - cmake
+      - device-mapper-persistent-data
+      - dkms
+      - dnf-utils
+      - facter
+      - git
+      - glibc-headers
+      - glibc-devel
+      - golang
+      - jq
+      - keepass
+      - libffi-devel
+      - libreoffice
+      - libgomp
+      - libxkbcommon
+      - make
+      - net-tools
+      - openssl
+      - openssl-devel
+      - origin-clients
+      - patch
+      - python2-devel
+      - python3-devel
+      - python3-openstackclient
+      - python3-openstacksdk
+      - python3-libselinux
+      - readline
+      - readline-devel
+      - redhat-rpm-config
+      - rpmdevtools
+      - ruby
+      - sqlite
+      - sqlite-devel
+      - weechat
+    state: "{{ package_state }}"
+
+- name: Ensure keybase
+  dnf:
+    name: https://prerelease.keybase.io/keybase_amd64.rpm
+
+- name: Ensure libXScrnSaver and libXScrnSaver-devel
+  dnf:
+    name:
+      - libXScrnSaver
+      - libXScrnSaver-devel
+    state: "{{ package_state }}"
+
+#- name: Install lvm2
+#  dnf:
+#    name: lvm2
+#    state: "{{ package_state }}"
+
+#- name: Install net-tools
+#  dnf:
+#    name: net-tools
+#    state: "{{ package_state }}"
+
+#- name: Install openconnect
+#  dnf:
+#    name: openconnect
+#    state: "{{ package_state }}"
+
+- name: Ensure openmpi
+  dnf:
+    name:
+      - openmpi
+      - openmpi-devel
+      - mpich
+      - slurm-torque
+      - perl-Switch
+    state: "{{ package_state }}"
+
+#- name: Install qt5-qtx11extras
+#  dnf:
+#    name: qt5-qtx11extras
+#    state: "{{ package_state }}"
+
+- name: Ensure vim
+  dnf:
+    name: vim-enhanced
+    state: "{{ package_state }}"
+
+- name: vundle install
+  command: "/usr/bin/vim +PluginInstall +qall"
+  become: true
+  become_user: "{{ user }}"
+
+- name: vscode repo file
+  template: 
+    src: templates/vscode.repo.j2
+    dest: /etc/yum.repos.d/vscode.repo
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Ensure VSCode
+  dnf:
+    name: code
+    #state: "{{ package_state }}"
+    update_cache: true
+    state: latest
+
+#- name: Ensure Acrobat Reader
+#  dnf:
+#    name: http://ardownload.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i486linux_enu.rpm
+#    state: "{{ package_state }}"
+#    update_cache: true

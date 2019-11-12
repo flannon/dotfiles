@@ -1,0 +1,8 @@
+---
+- name: "start {{ nexus_service_name }}"
+  systemd:
+    name: "{{ nexus_service_name }}"
+    state: started
+    enabled: yes
+  become: true
+

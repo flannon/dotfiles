@@ -1,0 +1,15 @@
+---
+- name: Debug message from packages.yml
+  debug:
+    msg: System message from the packages.yml
+
+# Make src directory
+- name: "Ensure /home/{{ user }}/src"
+  file:
+    path: "/home/{{ user }}/src"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0755
+  become: false
+

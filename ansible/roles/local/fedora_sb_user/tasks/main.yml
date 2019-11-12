@@ -1,0 +1,40 @@
+---
+- include_tasks: repo-list.yml
+  tags:
+    - repo-list
+
+- include_tasks: users.yml
+  tags:
+    - users
+
+- include_tasks: packages.yml
+  tags:
+    - packages
+
+- include_tasks: chromish.yml
+  tags:
+    - chromish
+
+- include_tasks: gcp-sdk.yml
+  tags:
+    - gcp-sdk
+
+- include_tasks: remote_archives.yml
+  tags:
+    - remote_archives
+
+- include_tasks: zoom.yml
+  tags:
+    - zoom
+
+- include_tasks: java.yml
+  tags:
+    - java
+
+- include_tasks: pip.yml
+  tags:
+    - pip
+
+- include_tasks: pyenv.yml
+  tags:
+    - pyenv

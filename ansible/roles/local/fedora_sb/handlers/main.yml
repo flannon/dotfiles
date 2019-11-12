@@ -1,0 +1,14 @@
+---
+- name: "reload systemctl"
+  systemd:
+    daemon_reload: yes
+  become: true
+
+- import_tasks: nexus.yml
+  tags:
+    - nexus
+
+- import_tasks: jenkins.yml
+  tags:
+    - jenkins
+

@@ -1,0 +1,75 @@
+# Generation of Kubernetes YAML is still under development!
+#
+# Save the output of this file and use kubectl create -f to import
+# it into Kubernetes.
+#
+# Created with podman-1.5.1
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2019-09-01T19:54:41Z"
+  labels:
+    app: jenkins
+  name: jenkins
+spec:
+  containers:
+  - env:
+    - name: PATH
+      value: /usr/local/openjdk-8/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+    - name: TERM
+      value: xterm
+    - name: HOSTNAME
+    - name: container
+      value: podman
+    - name: JAVA_BASE_URL
+      value: https://github.com/AdoptOpenJDK/openjdk8-upstream-binaries/releases/download/jdk8u222-b10/OpenJDK8U-jdk_
+    - name: JENKINS_VERSION
+      value: "2.192"
+    - name: LANG
+      value: C.UTF-8
+    - name: JAVA_HOME
+      value: /usr/local/openjdk-8
+    - name: JAVA_VERSION
+      value: 8u222
+    - name: JENKINS_HOME
+      value: /var/jenkins_home
+    - name: JENKINS_UC
+      value: https://updates.jenkins.io
+    - name: JENKINS_INCREMENTALS_REPO_MIRROR
+      value: https://repo.jenkins-ci.org/incrementals
+    - name: JAVA_URL_VERSION
+      value: 8u222b10
+    - name: REF
+      value: /usr/share/jenkins/ref
+    - name: JENKINS_UC_EXPERIMENTAL
+      value: https://updates.jenkins.io/experimental
+    - name: COPY_REFERENCE_FILE_LOG
+      value: /var/jenkins_home/copy_reference_file.log
+    - name: JENKINS_SLAVE_AGENT_PORT
+      value: "50000"
+    image: docker.io/jenkins/jenkins:latest
+    name: jenkins
+    ports:
+    - containerPort: 8080
+      hostPort: 8099
+      protocol: TCP
+    resources: {}
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities: {}
+      privileged: false
+      readOnlyRootFilesystem: false
+      runAsUser: 1000
+    tty: true
+    volumeMounts:
+    #- mountPath: /home/{{ user }}{{ jenkins_project_dir }}{{ jenkins_volume_mount_name }}
+    - mountPath: "/var{{ jenkins_volume_mount_name }}"
+      name: "home-{{ user }}-Services-jenkins"
+    workingDir: /
+  volumes:
+  - hostPath:
+      path: "/home/{{ user }}/{{ jenkins_project_dir }}{{ jenkins_volume_mount_name }}"
+      type: Directory
+    name: "home-{{ user }}-Services-jenkins"
+status: {}
+

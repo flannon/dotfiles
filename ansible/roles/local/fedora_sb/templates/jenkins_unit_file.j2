@@ -1,0 +1,10 @@
+[Unit]
+Description=Custom Jenkins Podman Pod
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/podman play kube /home/{{ user }}{{ jenkins_project_dir }}{{ jenkins_pod_yaml }}
+
+[Install]
+WantedBy=multi-user.target

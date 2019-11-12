@@ -1,0 +1,6 @@
+---
+- name: Ensure openjdk
+  dnf:
+    name: java-latest-openjdk
+    state: "{{ package_state }}"
+

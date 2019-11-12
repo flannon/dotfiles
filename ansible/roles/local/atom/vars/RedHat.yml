@@ -1,0 +1,5 @@
+---
+pkg_manger: yum
+
+users:
+  - "{{ user }}"

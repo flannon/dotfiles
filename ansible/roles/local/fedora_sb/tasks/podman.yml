@@ -1,0 +1,15 @@
+---
+- name: Debug message from podman.yml
+  debug:
+    msg: System message from the podman.yml
+
+- name: Show container_image_state
+  debug:
+    msg: "container_image_state {{ container_image_state }}"
+
+- name: pull alpine image
+  podman_image:
+    name: docker.io/library/alpine
+    tag: latest
+    state: "{{ container_image_state }}"
+  become: false
