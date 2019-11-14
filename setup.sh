@@ -2,11 +2,6 @@
 #
 [[ $(id -u) != 0 ]] && echo "Must be run as root. Exiting..." && exit 3
 
-[[ $1 == "--rollback" || $1 == "-r" ]] && \
-	rpm-ostree rollback && \
-	systemctl reboot && \
-	exit 0
-
 # Talk to myself - configure sshd for localhost connectivity
 sed -i 's/^#ListenAddress 0.0.0.0/ListenAddress 127.0.0.1/' /etc/ssh/sshd_config
 sed -i 's/^#ListenAddress ::/ListenAddress ::1/' /etc/ssh/sshd_config
