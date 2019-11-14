@@ -1,6 +1,6 @@
 To setup Fedora 30 Silverblue run the following
 
-run the follwoing
+run the following
 
     ./config.sh
     sudo ./setup.sh
