@@ -1,6 +1,8 @@
-To setup Fedora 30 Silverblue run the following
+#### Install
 
-run the following
+    git cone https://github.com/flannon/dotfiles-fedora-sb ~/.dotfiles
+
+#### To setup Fedora 30 Silverblue run the following
 
     ./config.sh
     sudo ./setup.sh
