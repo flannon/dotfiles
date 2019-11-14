@@ -2,7 +2,11 @@ To setup Fedora 30 Silverblue run the following
 
 run the follwoing
 
-    make config
-    make setup
+    ./config.sh
+    sudo ./setup.sh
+    sudo errata.sh
+    build.sh
 
-    make setup-dell (if you have a Dell and need the Broadcom drivers)
+If you have a Dell and need the Broadcom dirvers,
+
+    sudo setup-dell 
