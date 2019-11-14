@@ -1,8 +1,14 @@
-To setup Fedora 30 Silverblue run the following
+#### Install
 
-run the follwoing
+    git cone https://github.com/flannon/dotfiles-fedora-sb ~/.dotfiles
 
-    make config
-    make setup
+#### To setup Fedora 30 Silverblue run the following
 
-    make setup-dell (if you have a Dell and need the Broadcom drivers)
+    ./config.sh
+    sudo ./setup.sh
+    sudo errata.sh
+    build.sh
+
+If you have a Dell and need the Broadcom dirvers,
+
+    sudo setup-dell 
