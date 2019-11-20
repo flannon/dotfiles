@@ -23,10 +23,6 @@
   tags:
     - remote_archives
 
-- include_tasks: zoom.yml
-  tags:
-    - zoom
-
 - include_tasks: java.yml
   tags:
     - java
