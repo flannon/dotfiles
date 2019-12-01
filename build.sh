@@ -18,14 +18,14 @@ mktoolbox () {
   c=$1
   echo $c
   stat_container $c
-  [[ $? != 0 ]] && toolbox create --container $c || echo Container $c exists && return 0
+  [[ $? != 0 ]] && toolbox create --container $c || echo Container $c exists ######## && return 0
   which ansible 
   [[ $? != 0 ]] && toolbox run --container $c bash -c "python3 -m pip install ansible --user"
   toolbox run --container $c bash -c "cd ${INSTALLDIR}/ansible && \
   	${HOME}/.local/bin/ansible-galaxy install -r requirements.yml"
   wait
   toolbox run --container $c bash -c "cd ${INSTALLDIR}/ansible && \
-  	${HOME}/.local/bin/ansible-playbook -vvv -e user=${USER} -i ./inventory playbooks/$c.yml"
+  	${HOME}/.local/bin/ansible-playbook -vvv -e user=${USER} -i ./inventory playbooks/user.yml"
   wait 
 }
 
