@@ -1,10 +1,48 @@
 ---
 # this should be replaced with
 # https://github.com/markosamuli/ansible-pyenv
+#
+- name: Check if pyenv is already installed
+  stat:
+    path: "{{ pyenv_root }}"
+  register: pyenv_state
+
 - name: Ensure pyenv
   git:
     repo: 'https://github.com/pyenv/pyenv'
-    dest: /home/{{ user }}/.pyenv
+    dest: "{{ pyenv_root }}"
     version: v1.2.15
   become: true
   become_user: "{{ user }}"
+  when: pyenv_state.stat.exists == False
+
+- name: Check if pyenv-virtualenv is already installed
+  stat:
+    path: "{{ pyenv_root }}/plugins/pyenv-virtualenv"
+  register: pyenv_virtualenv_state
+
+- name: Ensure pyenv-virtualenv
+  git:
+    repo: 'https://github.com/pyenv/pyenv-virtualenv.git'
+    dest: "{{ pyenv_root }}/plugins/pyenv-virtualenv"
+    #version: v1.1.15
+  become: true
+  become_user: "{{ user }}"
+  when: pyenv_virtualenv_state.stat.exists == False
+
+
+- name: Check if pyenv-virtualenvwrapper is already installed
+  stat:
+    path: "{{ pyenv_root }}/plugins/pyenv-virtualenvwrapper"
+  register: pyenv_virtualenvwrapper_state
+
+- name: Ensure pyenv-virtualenvwrapper
+  git:
+    repo: 'https://github.com/pyenv/pyenv-virtualenvwrapper'
+    dest: "{{ pyenv_root }}/plugins/pyenv-virtualenvwrapper"
+    version: v20140609 
+  become: true
+  become_user: "{{ user }}"
+  when: pyenv_virtualenvwrapper_state.stat.exists == False
+
+
