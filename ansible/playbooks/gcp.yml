@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  user: 
+  become: true
+  #become_method: su
+  #become_user: root
+  connection: local
+  gather_facts: true
+
+  vars: 
+    # To uninstall rpms flip package_state to absent
+    #package_state: latest
+
+  tasks:
+  - name: Debug message from localhost.localdomain 
+    debug:
+      msg: System message from the playbook
+
+  roles:
+    #- housekeeping
+    - gcp_user
+    - vim
+

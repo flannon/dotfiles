@@ -1,0 +1,19 @@
+---
+# $USER
+- name: "bashrc for {{ user }}"
+  template:
+    src: templates/bashrc.j2
+    dest: ~{{ user }}/.bashrc
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+  become: false
+
+- name: "ensure Projects folder"
+  file:
+    path: "/home/{{ user  }}/bin"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0755
+    state: directory
+
