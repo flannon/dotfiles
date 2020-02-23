@@ -1,0 +1,14 @@
+---
+- name: pip install packages
+  pip:
+    name:
+      - awscli
+      - boto
+      - boto3
+      - google-cloud-storage
+      - molecule
+      - six
+    executable: pip3
+    extra_args: --user
+  become: false
+

@@ -17,16 +17,16 @@ sed -i 's/^PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_
 
 # Install rpmfusion
 [[ ! -f $RPMFUSION ]]  && \
-        rpm-ostree  install \
+        dnf  install \
         https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm \
         https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm && \
-        systemctl reboot
+        #systemctl reboot
 
 # update 
-rpm-ostree update
+dnf update
 
 # install compat-ffmpeg28 for video support for firefox
-rpm-ostree install compat-ffmpeg28 gnome-tweak-tool strace --reboot
+dnf install compat-ffmpeg28 gnome-tweak-tool strace 
 
 # Enable sshd
 systemctl enable sshd

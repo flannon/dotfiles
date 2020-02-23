@@ -1,0 +1,14 @@
+---
+- name: Ensure vagrant
+  dnf:
+    name: 
+      - vagrant-libvirt
+      - vagrant-libvirt-doc
+      - vagrant
+    state: "{{ package_state }}"
+
+- name: Ensure libvirtd is running
+  systemd:
+    name: libvirtd
+    enabled: yes
+    state: started

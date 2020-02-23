@@ -1,0 +1,8 @@
+---
+#- name: Ensure rpmfusion
+#  dnf:
+#    name: 
+#      - https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-31.noarch.rpm
+#      - https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-31.noarch.rpm
+#    state: "{{ package_state }}"
+

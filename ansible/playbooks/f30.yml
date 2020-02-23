@@ -1,0 +1,99 @@
+---
+- hosts: localhost
+  user: "{{ user }}"
+  #user: kyle
+  become: true
+  #become_method: su
+  become_user: root
+  connection: local
+  gather_facts: true
+
+  vars: 
+    # To uninstall rpms flip package_state to absent
+    #package_state: latest
+
+    #atom_packages_packages:
+    #   - atom-bash-snippets
+    #   - atom-clang
+    #   - atom-json
+    #   - atom-go-jump-test
+    #  
+    atom_packages_packages:
+      - atom-bash-snippets
+      #- atom-clang
+      - atom-json
+      - atom-go-jump-test
+      #- atom-go-get
+      - atom-gist-dev
+      - atom-beautify
+      - atom-runner
+      - aligner-golang
+      - autocomplete-json
+      - autocomplete-plus
+      - block-select
+      - build-cmake
+      - busy-signal
+      - color-picker
+      - declarations
+      - file-icons
+      - fonts
+      - formatter-gofmt
+      #- git-gui
+      - git-plus
+      - go-plus
+      - go-debug
+      #- go-impl
+      - go-imports
+      - go-rename
+      - go-signature-statusbar
+      - gotests
+      #- got-tip
+      - go-types
+      - gpp-compiler
+      - hclfmt
+      - hyperclick
+      - atom-ide-ui
+      - ide-cpp
+      - ide-go
+      - ide-python
+      - intentions
+      - intentions-colorpicker
+      - intentions-numbers
+      - json-converter
+      - json-to-go-struct
+      - language-ansible
+      - language-cpp14
+      - language-puppet
+      - last-cursor-position
+      - linter
+      - linter-ui-default
+      - linter-ansible-syntax
+      - linter-golinter
+      - linter-gotype
+      - linter-packer-validate
+      - linter-vagrant-validate
+      - linter-terraform-syntax
+      - pretty-json
+      #- platformio-ide-terminal
+      - script
+      - terraform-fmt
+      #- term3
+      - you-complete-me
+      - vim-mode-plus
+      - ex-mode
+      - base16-syntax
+    terraform_version: 0.12.12
+    packer_version: 1.4.3
+  
+  tasks:
+  - name: Debug message from localhost.localdomain 
+    debug:
+      msg: System message from the playbook
+
+  roles:
+    #- housekeeping
+    #- atom
+    #- atom-packages
+    - f30
+    - vim
+
