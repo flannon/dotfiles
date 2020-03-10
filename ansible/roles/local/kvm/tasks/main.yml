@@ -1,0 +1,25 @@
+---
+# tasks file for ansible-role-kvm
+#
+- name: "install {{ role_name }} packages"
+  dnf:
+    name:
+      - bridge-utils 
+      - libvirt
+      - virt-install
+      - qemu-kvm
+      - virt-manager
+      - virt-top
+      - libguestfs-tools
+    state: latest
+
+- name:
+  systemd:
+    name: libvirtd
+    enabled: yes
+    state: started
+
+
+
+
+
