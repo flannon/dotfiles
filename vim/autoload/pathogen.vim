@@ -1,1 +1,0 @@
-/Users/kenny/.vim/vim-pathogen/autoload/pathogen.vim
