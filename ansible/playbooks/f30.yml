@@ -96,4 +96,5 @@
     #- atom-packages
     - f30
     - vim
+    - kvm
 
