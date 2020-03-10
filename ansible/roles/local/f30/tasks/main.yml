@@ -35,6 +35,10 @@
   tags:
     - pyenv
 
+- include_tasks: slack.yml
+  tags:
+    - slack
+
 - include_tasks: vagrant.yml
   tags:
     - vagrant
