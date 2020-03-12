@@ -5,12 +5,16 @@
   dnf:
     name:
       - bridge-utils 
+      - gcc
+      - libguestfs-tools
       - libvirt
-      - virt-install
+      - libvirt-devel
       - qemu-kvm
+      - qemu
+      - ruby-devel
+      - virt-install
       - virt-manager
       - virt-top
-      - libguestfs-tools
     state: latest
 
 - name:
