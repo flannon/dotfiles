@@ -55,5 +55,12 @@ do
 done
 cd $OLDPWD
 
+# configure vim and vundle
+[[ ! -d ${DIRNAME}/vim/bundle/Vundle.vim ]] && \
+  git clone https://github.com/VundleVim/Vundle.vim.git && \
+  ${DIRNAME}/vim/bundle/Vundle.vim
+
+[[ ! -L ${HOME}/.vimrc ]] && ln -s ${DIRNAME}/vimrc ${HOME}/.vimrc
+vim +PluginInstall +qall
 # set vim as the git editor
 #git config --global core.editor $(which vim)
