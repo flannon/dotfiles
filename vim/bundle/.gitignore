@@ -2,4 +2,3 @@
 *
 # except this and Vundle.vim
 !.gitignore
-!Vundle.vim
