@@ -1,0 +1,17 @@
+[[ ! -d ${HOME}/venv ]] && \
+  sudo dnf -y install python3-pip python3-virtualenv ca-certificates && \
+  python3 -m pip install --upgrade pip --user && \
+  git clone https://github.com/pyenv/pyenv.git ~/.pyenv && \
+  cd ~/.pyenv && src/configure && make -C src && \
+  export PYENV_ROOT=\$HOME/.pyenv\ && \
+  export PATH=\$PYENV_ROOT/bin:$PATH\ && \
+  eval \$(pyenv init --path)\ && eval \$(pyenv init -)\ && \
+  pyenv install ${local.python_version} && \
+  cd - && \
+  sudo chmod 777 /usr/local/bin && \
+  $HOME/.pyenv/versions/${local.python_version}/bin/python -m venv /usr/local/bin/venv_${local.python_version_maj} && \
+  #source venv_${local.python_version_maj_min}/bin/activate && \
+  /usr/local/bin/venv_${local.python_version_maj}/bin/python3 -m pip install --upgrade pip && \
+  /usr/local/bin/venv_${local.python_version_maj}/bin/python3 -m pip install certifi && \
+  /usr/local/bin/venv_${local.python_version_maj}/bin/python3 -m pip install ansible-core && \
+  /usr/local/bin/venv_${local.python_version_maj}/bin/python3 -m pip install ansible && \
