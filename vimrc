@@ -55,6 +55,7 @@ au BufReadPost *.php colorscheme two2tango
 au BufReadPost *.pp colorscheme molokai
 au BufReadPost Puppetfile colorscheme molokai
 au BufReadPost *.py colorscheme molokai
+au BufReadPost Makefile colorscheme molokai
 au BufReadPost Rakefile colorscheme molokai
 au BufReadPost *.rb colorscheme molokai
 au BufReadPost *rc colorscheme molokai
