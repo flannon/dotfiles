@@ -64,3 +64,6 @@ cd $OLDPWD
 vim +PluginInstall +qall
 # set vim as the git editor
 #git config --global core.editor $(which vim)
+
+# Add to ${HOME}/.bashrc
+# [[ -f ${HOME}/.dotfiles/cloudbuildrc ]] && source ${HOME}/.dotfiles/cloudbuildrc
