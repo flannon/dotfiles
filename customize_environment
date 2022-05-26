@@ -1,7 +1,7 @@
 TERRAFORM_VERSION="0.13.6" 
 HELM_VERSION="v3.8.0" 
 HELM_FILE="/usr/local/bin/helm"
-MOTS="___________This is the cloudshell message of the date___________"
+MOTD="___________This is the cloudshell message of the date___________"
 
 echo $MOTD
 apt-get update && apt-get install -y --no-install-recommends apt-utils 
