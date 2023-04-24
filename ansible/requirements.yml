@@ -1,0 +1,19 @@
+# ---
+##
+#  This requirments.yml file is run by at `vagrant up` and `vagrant reload`
+#  To run manually you can,
+#     `ansible-galaxy install -r requirements.yml`
+# Further details on ansible-galaxy are available at,
+#      at http://docs.ansible.com/ansible/galaxy.html
+##
+
+# housekeeping role
+- src: https://github.com/nyudlts/ansible-role-housekeeping
+  version: master
+  name: housekeeping
+
+# logrotate role
+#- src: https://github.com/nickhammond/ansible-logrotate
+#  version: v0.0.5
+#  name: logrotate
+

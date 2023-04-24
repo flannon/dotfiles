@@ -1,0 +1,64 @@
+---
+- hosts: all
+  gather_facts: true
+  connection: local
+  become: false
+
+  vars: 
+    ntp_manage_config: true
+    ntp_timezone: America/New_York
+
+  roles:
+    #- housekeeping
+    #- ntp
+    #- logrotate
+    - operator-sdk
+
+  tasks:
+    #- name: debug message
+    #  debug:
+    #    msg: "System '{{ inventory_hostname }}' has uuid '{{ ansible_product_uuid }}'"
+
+    #    - name: testy
+    #  command: whoami
+    #  register: whoami
+    #- debug:
+    #    var: whoami.stdout
+    #  
+    #- name: Print debug message
+    #  debug:
+    #    msg: Hello, world!
+    #    
+    #- name: facts_os name
+    #  debug:
+    #    #msg: '{{ ansible_facts["en0"]["ipv4"]["address"] }}'
+    #    msg: "{{ ansible_facts['facter_os']['name']}}"
+    #
+    #- name: facts_os family
+    #  debug:
+    #    msg: "{{ ansible_facts['facter_os']['family']}}"
+    #
+    #- name: facts_os release full
+    #  debug:
+    #    msg: "{{ ansible_facts['facter_os']['release']['full']}}"
+    #
+    #- name: facts_os macosx version full
+    #  debug:
+    #    msg: "{{ ansible_facts['facter_os']['macosx']['version']['full']}}"
+    #
+    #- name: facter_processors count
+    #  debug:
+    #    msg: "{{ ansible_facts['facter_processors']['count']}}"
+    #
+    #- name: facter_processors models
+    #  debug:
+    #    msg: "{{ ansible_facts['facter_processors']['models'][0]}}"
+    #
+    #- name: facts interface
+    #  debug:
+    #    msg: "{{ ansible_facts['facter_kernel'] }}"
+    #
+    #- name: facter_networking fqdn
+    #  debug:
+    #    msg: "{{ ansible_facts['facter_networking']['fqdn'] }}"
+    #

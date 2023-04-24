@@ -1,0 +1,872 @@
+{
+    "ansible_all_ipv4_addresses": [
+        "192.168.0.8",
+        "192.168.99.1",
+        "192.168.33.1"
+    ],
+    "ansible_all_ipv6_addresses": [
+        "fe80::3e15:c2ff:fede:4982%en0",
+        "fe80::740e:49ff:feb6:8a78%awdl0"
+    ],
+    "ansible_apparmor": {
+        "status": "disabled"
+    },
+    "ansible_architecture": "x86_64",
+    "ansible_awdl0": {
+        "device": "awdl0",
+        "flags": [
+            "UP",
+            "BROADCAST",
+            "RUNNING",
+            "PROMISC",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "ipv4": [],
+        "ipv6": [
+            {
+                "address": "fe80::740e:49ff:feb6:8a78%awdl0",
+                "prefix": "64",
+                "scope": "0x9"
+            }
+        ],
+        "macaddress": "76:0e:49:b6:8a:78",
+        "media": "Unknown",
+        "media_select": "autoselect",
+        "mtu": "1484",
+        "options": [
+            "PERFORMNUD"
+        ],
+        "status": "active",
+        "type": "ether"
+    },
+    "ansible_bridge0": {
+        "device": "bridge0",
+        "flags": [
+            "BROADCAST",
+            "SMART",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "ipv4": [],
+        "ipv6": [],
+        "macaddress": "3e:15:c2:ed:16:00",
+        "media": "Unknown",
+        "media_select": "Unknown",
+        "media_type": "unknown type",
+        "mtu": "1500",
+        "options": [
+            "RXCSUM",
+            "TXCSUM",
+            "TSO4",
+            "TSO6"
+        ],
+        "status": "inactive",
+        "type": "ether"
+    },
+    "ansible_date_time": {
+        "date": "2018-12-16",
+        "day": "16",
+        "epoch": "1545015839",
+        "hour": "19",
+        "iso8601": "2018-12-17T03:03:59Z",
+        "iso8601_basic": "20181216T190359915904",
+        "iso8601_basic_short": "20181216T190359",
+        "iso8601_micro": "2018-12-17T03:03:59.915997Z",
+        "minute": "03",
+        "month": "12",
+        "second": "59",
+        "time": "19:03:59",
+        "tz": "PST",
+        "tz_offset": "-0800",
+        "weekday": "Sunday",
+        "weekday_number": "0",
+        "weeknumber": "50",
+        "year": "2018"
+    },
+    "ansible_default_ipv4": {
+        "address": "192.168.0.8",
+        "broadcast": "192.168.0.255",
+        "device": "en0",
+        "flags": [
+            "UP",
+            "BROADCAST",
+            "SMART",
+            "RUNNING",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "gateway": "192.168.0.1",
+        "interface": "en0",
+        "macaddress": "3c:15:c2:de:49:82",
+        "media": "Unknown",
+        "media_select": "autoselect",
+        "mtu": "1500",
+        "netmask": "255.255.255.0",
+        "network": "192.168.0.0",
+        "options": [
+            "PERFORMNUD"
+        ],
+        "status": "active",
+        "type": "ether"
+    },
+    "ansible_default_ipv6": {},
+    "ansible_distribution": "MacOSX",
+    "ansible_distribution_major_version": "10",
+    "ansible_distribution_release": "15.6.0",
+    "ansible_distribution_version": "10.11.6",
+    "ansible_dns": {
+        "domain": "Home",
+        "nameservers": [
+            "192.168.0.1",
+            "205.171.3.25"
+        ]
+    },
+    "ansible_domain": "local",
+    "ansible_effective_group_id": 0,
+    "ansible_effective_user_id": 0,
+    "ansible_en0": {
+        "device": "en0",
+        "flags": [
+            "UP",
+            "BROADCAST",
+            "SMART",
+            "RUNNING",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "ipv4": [
+            {
+                "address": "192.168.0.8",
+                "broadcast": "192.168.0.255",
+                "netmask": "255.255.255.0",
+                "network": "192.168.0.0"
+            }
+        ],
+        "ipv6": [
+            {
+                "address": "fe80::3e15:c2ff:fede:4982%en0",
+                "prefix": "64",
+                "scope": "0x4"
+            }
+        ],
+        "macaddress": "3c:15:c2:de:49:82",
+        "media": "Unknown",
+        "media_select": "autoselect",
+        "mtu": "1500",
+        "options": [
+            "PERFORMNUD"
+        ],
+        "status": "active",
+        "type": "ether"
+    },
+    "ansible_en1": {
+        "device": "en1",
+        "flags": [
+            "UP",
+            "BROADCAST",
+            "SMART",
+            "RUNNING",
+            "PROMISC",
+            "SIMPLEX"
+        ],
+        "ipv4": [],
+        "ipv6": [],
+        "macaddress": "72:00:03:e9:dd:10",
+        "media": "Unknown",
+        "media_select": "autoselect",
+        "media_type": "full-duplex",
+        "mtu": "1500",
+        "options": [
+            "TSO4",
+            "TSO6"
+        ],
+        "status": "inactive",
+        "type": "ether"
+    },
+    "ansible_en2": {
+        "device": "en2",
+        "flags": [
+            "UP",
+            "BROADCAST",
+            "SMART",
+            "RUNNING",
+            "PROMISC",
+            "SIMPLEX"
+        ],
+        "ipv4": [],
+        "ipv6": [],
+        "macaddress": "72:00:03:e9:dd:11",
+        "media": "Unknown",
+        "media_select": "autoselect",
+        "media_type": "full-duplex",
+        "mtu": "1500",
+        "options": [
+            "TSO4",
+            "TSO6"
+        ],
+        "status": "inactive",
+        "type": "ether"
+    },
+    "ansible_env": {
+        "DISPLAY": "/private/tmp/com.apple.launchd.6Pr8H862Y4/org.macosforge.xquartz:0",
+        "HOME": "/var/root",
+        "LANG": "en_US.UTF-8",
+        "LOGNAME": "root",
+        "MAIL": "/var/mail/root",
+        "PATH": "/usr/local/bin:/usr/local/Cellar/pyenv/1.2.8_1/libexec:/Users/stan/.pyenv/plugins/pyenv-update/bin:/Users/stan/Documents/dlib/gcp/google-cloud-sdk/bin:/usr/local/Cellar/pyenv-virtualenv/1.1.3/shims:/Users/stan/.pyenv/shims:/Users/stan/.pyenv/bin:/opt/puppetlabs/bin/:/usr/local/bin:/usr/local/sbin:/Users/stan/.rbenv/shims:/bin:/Users/stan/.rbenv/bin:/Users/stan/.pyenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/puppetlabs/bin:/Users/stan/bin:.",
+        "PWD": "/Users/stan/.dotfiles/ansible",
+        "SHELL": "/bin/bash",
+        "SHLVL": "1",
+        "SSH_AUTH_SOCK": "/var/folders/_d/yvy6ng7x42g9bj02xc2n15vm0000gn/T//ssh-61YVD5ccp9As/agent.58861",
+        "SUDO_COMMAND": "/bin/sh -c echo BECOME-SUCCESS-pdmxulascrbdbaczqjhabrblqwhjxjoo; /usr/bin/python /Users/stan/.ansible/tmp/ansible-tmp-1545015837.231383-27668952013685/AnsiballZ_setup.py",
+        "SUDO_GID": "20",
+        "SUDO_UID": "501",
+        "SUDO_USER": "stan",
+        "TERM": "xterm-256color",
+        "USER": "root",
+        "USERNAME": "root",
+        "VERSIONER_PYTHON_PREFER_32_BIT": "no",
+        "VERSIONER_PYTHON_VERSION": "2.7",
+        "_": "/usr/bin/python",
+        "__CF_USER_TEXT_ENCODING": "0x0:0:0"
+    },
+    "ansible_fips": false,
+    "ansible_fqdn": "stan-2.local",
+    "ansible_gif0": {
+        "device": "gif0",
+        "flags": [
+            "POINTOPOINT",
+            "MULTICAST"
+        ],
+        "ipv4": [],
+        "ipv6": [],
+        "macaddress": "unknown",
+        "mtu": "1280",
+        "type": "unknown"
+    },
+    "ansible_hostname": "stan-2",
+    "ansible_interfaces": [
+        "awdl0",
+        "bridge0",
+        "en0",
+        "en1",
+        "en2",
+        "gif0",
+        "lo0",
+        "p2p0",
+        "stf0",
+        "vboxnet0",
+        "vboxnet1",
+        "vboxnet2",
+        "vboxnet3",
+        "vboxnet4",
+        "vboxnet5",
+        "vboxnet6"
+    ],
+    "ansible_is_chroot": false,
+    "ansible_iscsi_iqn": "",
+    "ansible_kernel": "15.6.0",
+    "ansible_lo0": {
+        "device": "lo0",
+        "flags": [
+            "UP",
+            "LOOPBACK",
+            "RUNNING",
+            "MULTICAST"
+        ],
+        "ipv4": [
+            {
+                "address": "127.0.0.1",
+                "broadcast": "127.255.255.255",
+                "netmask": "255.0.0.0",
+                "network": "127.0.0.0"
+            }
+        ],
+        "ipv6": [
+            {
+                "address": "::1",
+                "prefix": "128"
+            },
+            {
+                "address": "fe80::1%lo0",
+                "prefix": "64",
+                "scope": "0x1"
+            }
+        ],
+        "macaddress": "unknown",
+        "mtu": "16384",
+        "options": [
+            "PERFORMNUD"
+        ],
+        "type": "loopback"
+    },
+    "ansible_local": {},
+    "ansible_lsb": {},
+    "ansible_machine": "x86_64",
+    "ansible_memfree_mb": -221,
+    "ansible_memtotal_mb": 16384,
+    "ansible_model": "MacBookPro11,3",
+    "ansible_nodename": "stan-2.local",
+    "ansible_os_family": "Darwin",
+    "ansible_osrevision": "199506",
+    "ansible_osversion": "15G22010",
+    "ansible_p2p0": {
+        "device": "p2p0",
+        "flags": [
+            "UP",
+            "BROADCAST",
+            "RUNNING",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "ipv4": [],
+        "ipv6": [],
+        "macaddress": "0e:15:c2:de:49:82",
+        "media": "Unknown",
+        "media_select": "autoselect",
+        "mtu": "2304",
+        "status": "inactive",
+        "type": "ether"
+    },
+    "ansible_pkg_mgr": "homebrew",
+    "ansible_processor": "Intel(R) Core(TM) i7-4850HQ CPU @ 2.30GHz",
+    "ansible_processor_cores": "4",
+    "ansible_processor_vcpus": "8",
+    "ansible_python": {
+        "executable": "/usr/bin/python",
+        "has_sslcontext": true,
+        "type": "CPython",
+        "version": {
+            "major": 2,
+            "micro": 10,
+            "minor": 7,
+            "releaselevel": "final",
+            "serial": 0
+        },
+        "version_info": [
+            2,
+            7,
+            10,
+            "final",
+            0
+        ]
+    },
+    "ansible_python_version": "2.7.10",
+    "ansible_real_group_id": 0,
+    "ansible_real_user_id": 0,
+    "ansible_selinux": {
+        "status": "Missing selinux Python library"
+    },
+    "ansible_selinux_python_present": false,
+    "ansible_service_mgr": "launchd",
+    "ansible_ssh_host_key_dsa_public": "AAAAB3NzaC1kc3MAAACBAIPCCt+/QGATFj+A2KtlybPWli0V1BQ5P4Wv3OpunJ7LlXWGkUXvjLqudpTze41cgXq4ITqkMQbh0QEp6b/BLjlNNkpfdbGZC8JKrfNf3VAocI4DK+WKkxdw3Mz8yG2lsTRT3Oblu2qYC8iHRGBA22eHsUpstDddWmU/2Ja3TAytAAAAFQD1Fik7ynLECxxczFaVbpwPlw25ZwAAAIA3RCfO9jmPOMXjWecF59OeQyGZ2QNpVH/QqwG8UJ5EpksCfFYidv6Mvg8DbUgCyF9t9mjlZiPLtt0mxf2zVhMIk2KUrsB45JXDmuENsPjhfzWd152Km7SrtFNbwhdNzBSkdpn+/Yz1imxRAuKbuU8keumk9x/Ll5N8jZcHDaQn6AAAAIAQBqdASkbvo72rvMNmCAm9fHx/dVQKn7sFkZKAgqygRJxZNqf5wtq2px5ezf27pXN/X+8biEVEf9cwf4rdozMI/iStFDzzmW7GTbEcjBv8yhae+pgCOhbVvDa4xahM6UQ8PRgrbqpxZXu1RXdAKoVFeFiXEj++QwZ2xuTA4QmQOA==",
+    "ansible_ssh_host_key_ecdsa_public": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHbhpbI0lt2sLoYizkAThmR3UJZ0sYEYP65zmuaMzbyZM4opDs/26K3nLFEIjU8anCSrx0rL9Jfhldms3zQZl9I=",
+    "ansible_ssh_host_key_ed25519_public": "AAAAC3NzaC1lZDI1NTE5AAAAIG2F8yFBrnB2pyxagaJZ0iY6zwv9JjHVJI9J8w3I7I4x",
+    "ansible_ssh_host_key_rsa_public": "AAAAB3NzaC1yc2EAAAADAQABAAABAQC/BWb7oFyJsyfjt52iSohw0jL1BnHv67V7nUihLLhTdf5Qwp6jKurk4kNUaMdDMug0f7h9QGpzYOHH1wXxtw4zjwGgHyBC4dKD9+RgqKSn8FWcXR5K0fEMcWsXim8jpVWt/BWUD5YYXOLwLP1vqMGehPrO5iU/c/UY2JUFrWVwSXAmgAKLtZBaM2uEpWvoo9xT6XXRTd+paW8m4eFZi9G6LxEyJpRLJciyd9Wb2Nn48Jm+b0pLXmHZldlCLR1facVNDI/mAsJ3xYp+HWcFz2IW5K/Iryp48lSMTjN6oRYdbLaxa6mXV6e4PpWh2vm5S/UT3aDf9xYcs2N57zOtAH//",
+    "ansible_stf0": {
+        "device": "stf0",
+        "flags": [],
+        "ipv4": [],
+        "ipv6": [],
+        "macaddress": "unknown",
+        "mtu": "1280",
+        "type": "unknown"
+    },
+    "ansible_system": "Darwin",
+    "ansible_user_dir": "/var/root",
+    "ansible_user_gecos": "System Administrator",
+    "ansible_user_gid": 0,
+    "ansible_user_id": "root",
+    "ansible_user_shell": "/bin/sh",
+    "ansible_user_uid": 0,
+    "ansible_userspace_architecture": "x86_64",
+    "ansible_userspace_bits": "64",
+    "ansible_vboxnet0": {
+        "device": "vboxnet0",
+        "flags": [
+            "BROADCAST",
+            "RUNNING",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "ipv4": [],
+        "ipv6": [],
+        "macaddress": "0a:00:27:00:00:00",
+        "mtu": "1500",
+        "type": "ether"
+    },
+    "ansible_vboxnet1": {
+        "device": "vboxnet1",
+        "flags": [
+            "UP",
+            "BROADCAST",
+            "RUNNING",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "ipv4": [
+            {
+                "address": "192.168.99.1",
+                "broadcast": "192.168.99.255",
+                "netmask": "255.255.255.0",
+                "network": "192.168.99.0"
+            }
+        ],
+        "ipv6": [],
+        "macaddress": "0a:00:27:00:00:01",
+        "mtu": "1500",
+        "type": "ether"
+    },
+    "ansible_vboxnet2": {
+        "device": "vboxnet2",
+        "flags": [
+            "BROADCAST",
+            "RUNNING",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "ipv4": [],
+        "ipv6": [],
+        "macaddress": "0a:00:27:00:00:02",
+        "mtu": "1500",
+        "type": "ether"
+    },
+    "ansible_vboxnet3": {
+        "device": "vboxnet3",
+        "flags": [
+            "BROADCAST",
+            "RUNNING",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "ipv4": [],
+        "ipv6": [],
+        "macaddress": "0a:00:27:00:00:03",
+        "mtu": "1500",
+        "type": "ether"
+    },
+    "ansible_vboxnet4": {
+        "device": "vboxnet4",
+        "flags": [
+            "UP",
+            "BROADCAST",
+            "RUNNING",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "ipv4": [
+            {
+                "address": "192.168.33.1",
+                "broadcast": "192.168.33.255",
+                "netmask": "255.255.255.0",
+                "network": "192.168.33.0"
+            }
+        ],
+        "ipv6": [],
+        "macaddress": "0a:00:27:00:00:04",
+        "mtu": "1500",
+        "type": "ether"
+    },
+    "ansible_vboxnet5": {
+        "device": "vboxnet5",
+        "flags": [
+            "BROADCAST",
+            "RUNNING",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "ipv4": [],
+        "ipv6": [],
+        "macaddress": "0a:00:27:00:00:05",
+        "mtu": "1500",
+        "type": "ether"
+    },
+    "ansible_vboxnet6": {
+        "device": "vboxnet6",
+        "flags": [
+            "BROADCAST",
+            "RUNNING",
+            "SIMPLEX",
+            "MULTICAST"
+        ],
+        "ipv4": [],
+        "ipv6": [],
+        "macaddress": "0a:00:27:00:00:06",
+        "mtu": "1500",
+        "type": "ether"
+    },
+    "ansible_virtualization_role": "",
+    "ansible_virtualization_type": "",
+    "facter_aio_agent_version": "1.10.4",
+    "facter_augeas": {
+        "version": "1.4.0"
+    },
+    "facter_dmi": {
+        "product": {
+            "name": "MacBookPro11,3"
+        }
+    },
+    "facter_facterversion": "3.6.5",
+    "facter_filesystems": "autofs,devfs,hfs",
+    "facter_identity": {
+        "gid": 0,
+        "group": "wheel",
+        "privileged": true,
+        "uid": 0,
+        "user": "root"
+    },
+    "facter_is_virtual": false,
+    "facter_kernel": "Darwin",
+    "facter_kernelmajversion": "15.6",
+    "facter_kernelrelease": "15.6.0",
+    "facter_kernelversion": "15.6.0",
+    "facter_load_averages": {
+        "15m": 3.78466796875,
+        "1m": 3.81103515625,
+        "5m": 3.80615234375
+    },
+    "facter_memory": {
+        "swap": {
+            "available": "1.11 GiB",
+            "available_bytes": 1196687360,
+            "capacity": "44.27%",
+            "encrypted": true,
+            "total": "2.00 GiB",
+            "total_bytes": 2147483648,
+            "used": "906.75 MiB",
+            "used_bytes": 950796288
+        },
+        "system": {
+            "available": "3.64 GiB",
+            "available_bytes": 3906932736,
+            "capacity": "77.26%",
+            "total": "16.00 GiB",
+            "total_bytes": 17179869184,
+            "used": "12.36 GiB",
+            "used_bytes": 13272936448
+        }
+    },
+    "facter_mountpoints": {
+        "/": {
+            "available": "109.83 GiB",
+            "available_bytes": 117927325696,
+            "capacity": "76.37%",
+            "device": "/dev/disk1",
+            "filesystem": "hfs",
+            "options": [
+                "local",
+                "root",
+                "journaled"
+            ],
+            "size": "464.77 GiB",
+            "size_bytes": 499046809600,
+            "used": "354.95 GiB",
+            "used_bytes": 381119483904
+        },
+        "/dev": {
+            "available": "0 bytes",
+            "available_bytes": 0,
+            "capacity": "100%",
+            "device": "devfs",
+            "filesystem": "devfs",
+            "options": [
+                "local",
+                "nobrowse"
+            ],
+            "size": "187.00 KiB",
+            "size_bytes": 191488,
+            "used": "187.00 KiB",
+            "used_bytes": 191488
+        },
+        "/home": {
+            "available": "0 bytes",
+            "available_bytes": 0,
+            "capacity": "100%",
+            "device": "map auto_home",
+            "filesystem": "autofs",
+            "options": [
+                "nobrowse",
+                "automounted"
+            ],
+            "size": "0 bytes",
+            "size_bytes": 0,
+            "used": "0 bytes",
+            "used_bytes": 0
+        },
+        "/net": {
+            "available": "0 bytes",
+            "available_bytes": 0,
+            "capacity": "100%",
+            "device": "map -hosts",
+            "filesystem": "autofs",
+            "options": [
+                "nosuid",
+                "nobrowse",
+                "automounted"
+            ],
+            "size": "0 bytes",
+            "size_bytes": 0,
+            "used": "0 bytes",
+            "used_bytes": 0
+        }
+    },
+    "facter_networking": {
+        "dhcp": "192.168.0.1",
+        "domain": "local",
+        "fqdn": "stan-2.local",
+        "hostname": "stan-2",
+        "interfaces": {
+            "awdl0": {
+                "bindings6": [
+                    {
+                        "address": "fe80::740e:49ff:feb6:8a78",
+                        "netmask": "ffff:ffff:ffff:ffff::",
+                        "network": "fe80::"
+                    }
+                ],
+                "ip6": "fe80::740e:49ff:feb6:8a78",
+                "mac": "76:0e:49:b6:8a:78",
+                "mtu": 1484,
+                "netmask6": "ffff:ffff:ffff:ffff::",
+                "network6": "fe80::"
+            },
+            "bridge0": {
+                "mac": "3e:15:c2:ed:16:00",
+                "mtu": 1500
+            },
+            "en0": {
+                "bindings": [
+                    {
+                        "address": "192.168.0.8",
+                        "netmask": "255.255.255.0",
+                        "network": "192.168.0.0"
+                    }
+                ],
+                "bindings6": [
+                    {
+                        "address": "fe80::3e15:c2ff:fede:4982",
+                        "netmask": "ffff:ffff:ffff:ffff::",
+                        "network": "fe80::"
+                    }
+                ],
+                "dhcp": "192.168.0.1",
+                "ip": "192.168.0.8",
+                "ip6": "fe80::3e15:c2ff:fede:4982",
+                "mac": "3c:15:c2:de:49:82",
+                "mtu": 1500,
+                "netmask": "255.255.255.0",
+                "netmask6": "ffff:ffff:ffff:ffff::",
+                "network": "192.168.0.0",
+                "network6": "fe80::"
+            },
+            "en1": {
+                "mac": "72:00:03:e9:dd:10",
+                "mtu": 1500
+            },
+            "en2": {
+                "mac": "72:00:03:e9:dd:11",
+                "mtu": 1500
+            },
+            "gif0": {
+                "mtu": 1280
+            },
+            "lo0": {
+                "bindings": [
+                    {
+                        "address": "127.0.0.1",
+                        "netmask": "255.0.0.0",
+                        "network": "127.0.0.0"
+                    }
+                ],
+                "bindings6": [
+                    {
+                        "address": "::1",
+                        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+                        "network": "::1"
+                    },
+                    {
+                        "address": "fe80::1",
+                        "netmask": "ffff:ffff:ffff:ffff::",
+                        "network": "fe80::"
+                    }
+                ],
+                "ip": "127.0.0.1",
+                "ip6": "::1",
+                "mtu": 16384,
+                "netmask": "255.0.0.0",
+                "netmask6": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+                "network": "127.0.0.0",
+                "network6": "::1"
+            },
+            "p2p0": {
+                "mac": "0e:15:c2:de:49:82",
+                "mtu": 2304
+            },
+            "stf0": {
+                "mtu": 1280
+            },
+            "vboxnet0": {
+                "mac": "0a:00:27:00:00:00",
+                "mtu": 1500
+            },
+            "vboxnet1": {
+                "bindings": [
+                    {
+                        "address": "192.168.99.1",
+                        "network": "192.168.99.1"
+                    }
+                ],
+                "ip": "192.168.99.1",
+                "mac": "0a:00:27:00:00:01",
+                "mtu": 1500,
+                "network": "192.168.99.1"
+            },
+            "vboxnet2": {
+                "mac": "0a:00:27:00:00:02",
+                "mtu": 1500
+            },
+            "vboxnet3": {
+                "mac": "0a:00:27:00:00:03",
+                "mtu": 1500
+            },
+            "vboxnet4": {
+                "bindings": [
+                    {
+                        "address": "192.168.33.1",
+                        "network": "192.168.33.1"
+                    }
+                ],
+                "ip": "192.168.33.1",
+                "mac": "0a:00:27:00:00:04",
+                "mtu": 1500,
+                "network": "192.168.33.1"
+            },
+            "vboxnet5": {
+                "mac": "0a:00:27:00:00:05",
+                "mtu": 1500
+            },
+            "vboxnet6": {
+                "mac": "0a:00:27:00:00:06",
+                "mtu": 1500
+            }
+        },
+        "ip": "192.168.0.8",
+        "ip6": "fe80::3e15:c2ff:fede:4982",
+        "mac": "3c:15:c2:de:49:82",
+        "mtu": 1500,
+        "netmask": "255.255.255.0",
+        "netmask6": "ffff:ffff:ffff:ffff::",
+        "network": "192.168.0.0",
+        "network6": "fe80::",
+        "primary": "en0"
+    },
+    "facter_os": {
+        "architecture": "x86_64",
+        "family": "Darwin",
+        "hardware": "x86_64",
+        "macosx": {
+            "build": "15G22010",
+            "product": "Mac OS X",
+            "version": {
+                "full": "10.11.6",
+                "major": "10.11",
+                "minor": "6"
+            }
+        },
+        "name": "Darwin",
+        "release": {
+            "full": "15.6.0",
+            "major": "15",
+            "minor": "6"
+        }
+    },
+    "facter_path": "/usr/local/bin:/usr/local/Cellar/pyenv/1.2.8_1/libexec:/Users/stan/.pyenv/plugins/pyenv-update/bin:/Users/stan/Documents/dlib/gcp/google-cloud-sdk/bin:/usr/local/Cellar/pyenv-virtualenv/1.1.3/shims:/Users/stan/.pyenv/shims:/Users/stan/.pyenv/bin:/opt/puppetlabs/bin/:/usr/local/bin:/usr/local/sbin:/Users/stan/.rbenv/shims:/bin:/Users/stan/.rbenv/bin:/Users/stan/.pyenv/shims:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/puppetlabs/bin:/Users/stan/bin:.",
+    "facter_processors": {
+        "count": 8,
+        "isa": "i386",
+        "models": [
+            "Intel(R) Core(TM) i7-4850HQ CPU @ 2.30GHz",
+            "Intel(R) Core(TM) i7-4850HQ CPU @ 2.30GHz",
+            "Intel(R) Core(TM) i7-4850HQ CPU @ 2.30GHz",
+            "Intel(R) Core(TM) i7-4850HQ CPU @ 2.30GHz",
+            "Intel(R) Core(TM) i7-4850HQ CPU @ 2.30GHz",
+            "Intel(R) Core(TM) i7-4850HQ CPU @ 2.30GHz",
+            "Intel(R) Core(TM) i7-4850HQ CPU @ 2.30GHz",
+            "Intel(R) Core(TM) i7-4850HQ CPU @ 2.30GHz"
+        ],
+        "physicalcount": 4,
+        "speed": "2.30 GHz"
+    },
+    "facter_puppetversion": "4.10.4",
+    "facter_ruby": {
+        "platform": "x86_64-darwin15.0",
+        "sitedir": "/opt/puppetlabs/puppet/lib/ruby/site_ruby/2.1.0",
+        "version": "2.1.9"
+    },
+    "facter_ssh": {
+        "dsa": {
+            "fingerprints": {
+                "sha1": "SSHFP 2 1 9c12bb4baa84a1179d83d1ed29c19ae35249d6b6",
+                "sha256": "SSHFP 2 2 fad210ca8c08552f5e9af05d39887f628bb6f597f9c4879f6db1905a84afc093"
+            },
+            "key": "AAAAB3NzaC1kc3MAAACBAIPCCt+/QGATFj+A2KtlybPWli0V1BQ5P4Wv3OpunJ7LlXWGkUXvjLqudpTze41cgXq4ITqkMQbh0QEp6b/BLjlNNkpfdbGZC8JKrfNf3VAocI4DK+WKkxdw3Mz8yG2lsTRT3Oblu2qYC8iHRGBA22eHsUpstDddWmU/2Ja3TAytAAAAFQD1Fik7ynLECxxczFaVbpwPlw25ZwAAAIA3RCfO9jmPOMXjWecF59OeQyGZ2QNpVH/QqwG8UJ5EpksCfFYidv6Mvg8DbUgCyF9t9mjlZiPLtt0mxf2zVhMIk2KUrsB45JXDmuENsPjhfzWd152Km7SrtFNbwhdNzBSkdpn+/Yz1imxRAuKbuU8keumk9x/Ll5N8jZcHDaQn6AAAAIAQBqdASkbvo72rvMNmCAm9fHx/dVQKn7sFkZKAgqygRJxZNqf5wtq2px5ezf27pXN/X+8biEVEf9cwf4rdozMI/iStFDzzmW7GTbEcjBv8yhae+pgCOhbVvDa4xahM6UQ8PRgrbqpxZXu1RXdAKoVFeFiXEj++QwZ2xuTA4QmQOA=="
+        },
+        "ecdsa": {
+            "fingerprints": {
+                "sha1": "SSHFP 3 1 55b324686a0d193c4d3ff2a20268ccb6a0c975bf",
+                "sha256": "SSHFP 3 2 dfbfaf71348876ff19613d9b73d5d058a1616e408b42a751d8051291a4ff9e5f"
+            },
+            "key": "AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBHbhpbI0lt2sLoYizkAThmR3UJZ0sYEYP65zmuaMzbyZM4opDs/26K3nLFEIjU8anCSrx0rL9Jfhldms3zQZl9I="
+        },
+        "ed25519": {
+            "fingerprints": {
+                "sha1": "SSHFP 4 1 36dd416c9022a29a301d620cad0d460ea91b7095",
+                "sha256": "SSHFP 4 2 e47116246655f0283201cd7c675a0267f7d53233df3c51e51719d5cb99af5c5a"
+            },
+            "key": "AAAAC3NzaC1lZDI1NTE5AAAAIG2F8yFBrnB2pyxagaJZ0iY6zwv9JjHVJI9J8w3I7I4x"
+        },
+        "rsa": {
+            "fingerprints": {
+                "sha1": "SSHFP 1 1 90a8a4a2e2cd4b43017ce1543d45201a80b0d192",
+                "sha256": "SSHFP 1 2 9ddc5be1e28b4e81e3fbab1710ac85848e70fe323ebfb2aade1f7b212aad618c"
+            },
+            "key": "AAAAB3NzaC1yc2EAAAADAQABAAABAQC/BWb7oFyJsyfjt52iSohw0jL1BnHv67V7nUihLLhTdf5Qwp6jKurk4kNUaMdDMug0f7h9QGpzYOHH1wXxtw4zjwGgHyBC4dKD9+RgqKSn8FWcXR5K0fEMcWsXim8jpVWt/BWUD5YYXOLwLP1vqMGehPrO5iU/c/UY2JUFrWVwSXAmgAKLtZBaM2uEpWvoo9xT6XXRTd+paW8m4eFZi9G6LxEyJpRLJciyd9Wb2Nn48Jm+b0pLXmHZldlCLR1facVNDI/mAsJ3xYp+HWcFz2IW5K/Iryp48lSMTjN6oRYdbLaxa6mXV6e4PpWh2vm5S/UT3aDf9xYcs2N57zOtAH//"
+        }
+    },
+    "facter_system_profiler": {
+        "boot_mode": "Normal",
+        "boot_rom_version": "MBP112.0146.B00",
+        "boot_volume": "Stan",
+        "computer_name": "stan (2)",
+        "cores": "4",
+        "hardware_uuid": "47C2E0FE-3F6B-56A4-9A4B-6CA98A3A3592",
+        "kernel_version": "Darwin 15.6.0",
+        "l2_cache_per_core": "256 KB",
+        "l3_cache": "6 MB",
+        "memory": "16 GB",
+        "model_identifier": "MacBookPro11,3",
+        "model_name": "MacBook Pro",
+        "processor_name": "Intel Core i7",
+        "processor_speed": "2.3 GHz",
+        "processors": "1",
+        "secure_virtual_memory": "Enabled",
+        "serial_number": "C02MW10WFD59",
+        "smc_version": "2.19f12",
+        "system_version": "OS X 10.11.6 (15G22010)",
+        "uptime": "4 days 3:40",
+        "username": "System Administrator (root)"
+    },
+    "facter_system_uptime": {
+        "days": 4,
+        "hours": 99,
+        "seconds": 358825,
+        "uptime": "4 days"
+    },
+    "facter_timezone": "PST",
+    "facter_virtual": "physical",
+    "gather_subset": [
+        "all"
+    ],
+    "module_setup": true
+}
